@@ -1,0 +1,17 @@
+D:\CPP\Nez\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.csprojResolveAssemblyReference.cache
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Nez.PipelineImporter.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Nez.PipelineImporter.pdb
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Ionic.ZLib.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\MonoGame.Framework.Content.Pipeline.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\MonoGame.Framework.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Newtonsoft.Json.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Nez.dll
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Nez.pdb
+D:\CPP\Nez\Nez.PipelineImporter\bin\Debug\Newtonsoft.Json.xml
+D:\CPP\Nez\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.dll
+D:\CPP\Nez\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Pipeline Importer\Nez.PipelineImporter.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Pipeline Importer\Nez.PipelineImporter.pdb
+D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.csprojResolveAssemblyReference.cache
+D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.dll
+D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.pdb

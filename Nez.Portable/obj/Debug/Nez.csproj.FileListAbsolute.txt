@@ -1,0 +1,11 @@
+D:\CPP\Nez\Nez.Portable\bin\Debug\Nez.dll
+D:\CPP\Nez\Nez.Portable\bin\Debug\Nez.pdb
+D:\CPP\Nez\Nez.Portable\bin\Debug\MonoGame.Framework.dll
+D:\CPP\Nez\Nez.Portable\obj\Debug\Nez.csprojResolveAssemblyReference.cache
+D:\CPP\Nez\Nez.Portable\obj\Debug\Nez.dll
+D:\CPP\Nez\Nez.Portable\obj\Debug\Nez.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez\Nez.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez\Nez.pdb
+D:\CPP\HospitalCeo\Nez.Portable\obj\Debug\Nez.dll
+D:\CPP\HospitalCeo\Nez.Portable\obj\Debug\Nez.pdb
+D:\CPP\HospitalCeo\Nez.Portable\obj\Debug\Nez.csprojResolveAssemblyReference.cache

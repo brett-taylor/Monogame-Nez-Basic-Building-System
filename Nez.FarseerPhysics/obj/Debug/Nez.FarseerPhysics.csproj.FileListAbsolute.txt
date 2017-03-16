@@ -1,0 +1,13 @@
+D:\CPP\Nez\Nez.FarseerPhysics\bin\Debug\Nez.FarseerPhysics.dll
+D:\CPP\Nez\Nez.FarseerPhysics\bin\Debug\Nez.FarseerPhysics.pdb
+D:\CPP\Nez\Nez.FarseerPhysics\bin\Debug\MonoGame.Framework.dll
+D:\CPP\Nez\Nez.FarseerPhysics\bin\Debug\Nez.dll
+D:\CPP\Nez\Nez.FarseerPhysics\bin\Debug\Nez.pdb
+D:\CPP\Nez\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.csprojResolveAssemblyReference.cache
+D:\CPP\Nez\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.dll
+D:\CPP\Nez\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Farseer Physics\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Farseer Physics\Nez.FarseerPhysics.pdb
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.csprojResolveAssemblyReference.cache
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.pdb
