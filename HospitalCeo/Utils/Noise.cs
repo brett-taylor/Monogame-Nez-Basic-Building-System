@@ -339,7 +339,7 @@ namespace HospitalCeo.Utils
         private static float grad(int hash, float x, float y)
         {
             int h = hash & 7;      // Convert low 3 bits of hash code
-            float u = h < 4 ? x : y;  // into 8 simple gradient directions,
+            float u = h < 4 ? x : y;  // into 8 simple gradient Compasss,
             float v = h < 4 ? y : x;  // and compute the dot product with (x,y).
             return ((h & 1) != 0 ? -u : u) + ((h & 2) != 0 ? -2.0f * v : 2.0f * v);
         }
@@ -347,7 +347,7 @@ namespace HospitalCeo.Utils
         private static float grad(int hash, float x, float y, float z)
         {
             int h = hash & 15;     // Convert low 4 bits of hash code into 12 simple
-            float u = h < 8 ? x : y; // gradient directions, and compute dot product.
+            float u = h < 8 ? x : y; // gradient Compasss, and compute dot product.
             float v = h < 4 ? y : h == 12 || h == 14 ? x : z; // Fix repeats at h = 12 to 15
             return ((h & 1) != 0 ? -u : u) + ((h & 2) != 0 ? -v : v);
         }
@@ -355,7 +355,7 @@ namespace HospitalCeo.Utils
         private static float grad(int hash, float x, float y, float z, float t)
         {
             int h = hash & 31;      // Convert low 5 bits of hash code into 32 simple
-            float u = h < 24 ? x : y; // gradient directions, and compute dot product.
+            float u = h < 24 ? x : y; // gradient Compasss, and compute dot product.
             float v = h < 16 ? y : z;
             float w = h < 8 ? z : t;
             return ((h & 1) != 0 ? -u : u) + ((h & 2) != 0 ? -v : v) + ((h & 4) != 0 ? -w : w);

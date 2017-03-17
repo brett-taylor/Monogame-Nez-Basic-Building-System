@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.Console;
 using Nez.Sprites;
+using Nez.Textures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using HospitalCeo.World;
@@ -16,9 +17,10 @@ namespace HospitalCeo.Building
     {
         protected Entity entity;
         protected Tile tile;
+        protected Sprite sprite;
 
         public virtual string GetName() { return "Not set"; }
-        public virtual string GetSpriteName() { return "Not set"; }
+        public virtual Subtexture GetSprite() { return Utils.GlobalContent.Util.White_Tile; }
         public virtual BuildingType GetBuildingType() { return BuildingType.Gameplay; }
         public virtual void OnBuildingCompleted() { }
         public virtual bool CustomSpriteSettings() { return false; }
@@ -31,37 +33,25 @@ namespace HospitalCeo.Building
 
         public Building(Vector2 position)
         {
-            entity = WorldController.SCENE.createEntity(GetName() + " x: " + position.X + " - y: " + position.Y);
-            entity.addComponent<Sprite>(new Sprite(WorldController.SCENE.content.Load<Texture2D>(GetSpriteName())));
             tile = WorldController.GetTileAt(position);
+            entity = WorldController.SCENE.createEntity(GetName() + " x: " + position.X + " - y: " + position.Y);
+            entity.position = position;
+            SetSprite(GetSprite());
         }
 
-        public void SetSprite(string spriteName)
+        public void SetSprite(Subtexture texture)
         {
-            Sprite sprite = new Sprite(WorldController.SCENE.content.Load<Texture2D>(spriteName));
-            if (sprite != null) SetSprite(sprite);
-            else DebugConsole.instance.log("Sprite not found: " + spriteName);
-        }
-
-        public void SetSprite(Sprite sprite)
-        {
-            entity.removeComponent<Sprite>();
-            entity.addComponent<Sprite>(sprite);
+            if (sprite == null)
+            {
+                sprite = entity.addComponent(new Sprite(texture));
+                sprite.renderLayer = 18;
+            }
+            sprite.setSubtexture(texture);
         }
 
         public void DoUpdate()
         {
             Update();
-        }
-
-        public void DoFixedUpdate()
-        {
-            FixedUpdate();
-        }
-
-        public void DoLateUpdate()
-        {
-            FixedUpdate();
         }
 
         public void Destory()

@@ -21,6 +21,7 @@ namespace HospitalCeo
         public void update()
         {
             World.WorldController.Update();
+            InputManager.Update();
             Building.InfrastructureBuildingController.Update();
         }
 
@@ -31,8 +32,9 @@ namespace HospitalCeo
             base.Initialize();
             Core.registerGlobalManager(this);
 
+            Utils.GlobalContent.Initialise();
             World.WorldController.Initialize();
-            Building.InfrastructureBuildingController.Initialise();
+            InputManager.Initialise();
         }
     }
 }

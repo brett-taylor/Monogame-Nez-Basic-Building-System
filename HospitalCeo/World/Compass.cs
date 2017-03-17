@@ -1,6 +1,6 @@
 ﻿/*
 * Brett Taylor
-* Directions enum
+* Compasss enum
 */
 namespace HospitalCeo.World
 {
@@ -18,9 +18,9 @@ namespace HospitalCeo.World
 
     static class CompassnMethods
     {
-        public static int ToInt(this Compass direction)
+        public static int ToInt(this Compass Compass)
         {
-            switch (direction)
+            switch (Compass)
             {
                 case Compass.N:
                     return 0;
@@ -43,7 +43,7 @@ namespace HospitalCeo.World
             }
         }
 
-        public static Compass ToDirection(int i)
+        public static Compass ToCompass(int i)
         {
             switch (i)
             {

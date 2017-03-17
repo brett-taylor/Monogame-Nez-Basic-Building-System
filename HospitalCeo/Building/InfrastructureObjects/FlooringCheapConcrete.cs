@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Nez.Textures;
 
 namespace HospitalCeo.Building
 {
@@ -13,9 +14,9 @@ namespace HospitalCeo.Building
             return "Cheap Concrete Flooring";
         }
 
-        public override string GetSpriteName()
+        public override Subtexture GetSprite()
         {
-            return "hospitalceo/Tiles/Tile_CheapConcrete";
+            return Utils.GlobalContent.Flooring.CheapConcrete;
         }
 
         public override BuildingType GetBuildingType()

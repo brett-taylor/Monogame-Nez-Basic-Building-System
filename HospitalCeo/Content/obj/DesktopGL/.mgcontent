@@ -4,27 +4,6 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Tiles/Tile_CheapConcrete.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Tiles/Tile_Dirt.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Tiles/Tile_Grass.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Tiles/Tile_Sand.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/UI/Pixel_White.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_Cross.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_East_Ending.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_Horizontal.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_L_East_South.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_L_North_East.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_L_North_West.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_L_South_West.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_North_Ending.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_South_Ending.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_T_East_South_West.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_T_North_East_South.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_T_North_East_West.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_T_North_South_West.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_Vertical.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/Walls/BaseWall/Wall_Basic_West_Ending.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/ClearSprite.png</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/effects/transitions/Squares.fx</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/effects/transitions/TextureWipe.fx</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/effects/transitions/Wind.fx</File>
@@ -71,5 +50,6 @@
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/textureWipeTransition/wink.png</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/gooCursor.bmp</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/heatDistortionNoise.png</File>
+    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/tiles.png</File>
   </SourceFiles>
 </SourceFileCollection>

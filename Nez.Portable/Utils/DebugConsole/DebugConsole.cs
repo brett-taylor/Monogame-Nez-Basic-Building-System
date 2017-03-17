@@ -161,6 +161,11 @@ namespace Nez.Console
             return isOpen;
         }
 
+        public void Open()
+        {
+            isOpen = _canOpen = true;
+        }
+
 
 		#region Updating and Rendering
 

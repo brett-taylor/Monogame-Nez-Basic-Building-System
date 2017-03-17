@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Sprites;
 /*
  * Brett Taylor
  * World Controller, handles creating the world
@@ -13,7 +12,7 @@ namespace HospitalCeo.World
     public static class WorldController
     {
         public static Scene SCENE { get; private set; }
-        public const int WORLD_WIDTH = 60, WORLD_HEIGHT = 60;
+        public const int WORLD_WIDTH = 70, WORLD_HEIGHT = 70;
         private static Tile[,] tiles;
         public static Entity inputManager { get; private set; }
 
@@ -23,10 +22,6 @@ namespace HospitalCeo.World
             SCENE = Scene.createWithDefaultRenderer(Color.LightSlateGray);
             Core.scene = SCENE;
 
-            // Create the input manager
-            inputManager = SCENE.createEntity("Input Manager");
-            inputManager.addComponent(new Components.Controls());
-
             // Create the world
             CreateBaseTiles();
             CreateDetails();
@@ -34,20 +29,21 @@ namespace HospitalCeo.World
 
         public static void Update()
         {
-
+            foreach (Tile t in tiles)
+            {
+                if (t != null) t.Update();
+            }
         }
 
         private static void CreateBaseTiles()
         {
             tiles = new Tile[WORLD_WIDTH, WORLD_HEIGHT];
-            Texture2D tileGrass = SCENE.content.Load<Texture2D>("hospitalceo/Tiles/Tile_Grass");
 
             for (int x = 0; x < tiles.GetUpperBound(0); x++)
             {
                 for (int y = 0; y < tiles.GetUpperBound(1); y++)
                 {
-                    tiles[x, y] = new Tile(tileGrass, new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100), new Vector2(x, y));
-                    new Vector2(x, y);
+                    tiles[x, y] = new Tile(Utils.GlobalContent.Earth.Grass, new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100), new Vector2(x, y));
                 }
             }
         }
@@ -55,23 +51,21 @@ namespace HospitalCeo.World
         private static void CreateDetails()
         {
             float[,] noiseMap = Utils.Noise.Calc2D(WORLD_WIDTH, WORLD_HEIGHT, 0.10f);
-            Texture2D tileDirt = SCENE.content.Load<Texture2D>("hospitalceo/Tiles/Tile_Dirt");
-            Texture2D tileSand = SCENE.content.Load<Texture2D>("hospitalceo/Tiles/Tile_Sand");
 
             for (int y = 0; y < WORLD_HEIGHT; y++)
             {
                 for (int x = 0; x < WORLD_WIDTH; x++)
                 {
                     if (tiles[x, y] == null) continue;
-                    if (noiseMap[x, y] < 30f) tiles[x, y].SetSprite(tileDirt);
-                    else if (noiseMap[x, y] > 220f) tiles[x, y].SetSprite(tileSand);
+                    if (noiseMap[x, y] < 30f) tiles[x, y].SetSprite(Utils.GlobalContent.Earth.Dirt);
+                    else if (noiseMap[x, y] > 220f) tiles[x, y].SetSprite(Utils.GlobalContent.Earth.Sand);
                 }
             }
         }
 
         public static Tile GetMouseOverTile()
         {
-            Tile t = GetTileAt(Components.Controls.GetScreenWorldPoint());
+            Tile t = GetTileAt(InputManager.GetScreenWorldPoint());
             return t != null ? t : null;
         }
 

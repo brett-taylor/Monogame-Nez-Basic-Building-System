@@ -41,12 +41,15 @@
     <Compile Include="Building\BuildingType.cs" />
     <Compile Include="Building\Building.cs" />
     <Compile Include="Building\InfrastructureBuildingController.cs" />
+    <Compile Include="Building\InfrastructureObjects\BaseWall.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
-    <Compile Include="Components\Controls.cs" />
+    <Compile Include="Components\CameraBounds.cs" />
+    <Compile Include="InputManager.cs" />
     <Compile Include="HospitalCeo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Commands.cs" />
+    <Compile Include="Utils\GlobalContent.cs" />
     <Compile Include="Utils\Noise.cs" />
     <Compile Include="World\Compass.cs" />
     <Compile Include="World\Tile.cs" />
@@ -67,27 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
-    <Content Include="Content\hospitalceo\ClearSprite.png" />
-    <Content Include="Content\hospitalceo\Tiles\Tile_CheapConcrete.png" />
-    <Content Include="Content\hospitalceo\Tiles\Tile_Dirt.png" />
-    <Content Include="Content\hospitalceo\Tiles\Tile_Grass.png" />
-    <Content Include="Content\hospitalceo\Tiles\Tile_Sand.png" />
-    <Content Include="Content\hospitalceo\UI\Pixel_White.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_Cross.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_East_Ending.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_Horizontal.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_East_South.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_North_East.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_North_West.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_South_West.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_North_Ending.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_South_Ending.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_East_South_West.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_East_South.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_East_West.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_South_West.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_Vertical.png" />
-    <Content Include="Content\hospitalceo\Walls\BaseWall\Wall_Basic_West_Ending.png" />
+    <Content Include="Content\hospitalceo\tiles.png" />
     <Content Include="OpenTK.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
