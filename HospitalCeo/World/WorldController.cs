@@ -12,8 +12,8 @@ namespace HospitalCeo.World
     public static class WorldController
     {
         public static Scene SCENE { get; private set; }
-        public const int WORLD_WIDTH = 70, WORLD_HEIGHT = 70;
-        private static Tile[,] tiles;
+        public const int WORLD_WIDTH = 30, WORLD_HEIGHT = 30;
+        public static Tile[,] tiles { get; private set; }
         public static Entity inputManager { get; private set; }
 
         public static void Initialize()

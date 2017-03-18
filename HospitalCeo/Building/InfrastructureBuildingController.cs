@@ -5,6 +5,7 @@ using Nez.Console;
 using Nez.Sprites;
 using Microsoft.Xna.Framework;
 using HospitalCeo.World;
+using HospitalCeo.UI.World;
 
 /*
  * Brett Taylor
@@ -20,8 +21,8 @@ namespace HospitalCeo.Building
         private static bool isLeftMouseButtonDown = false;
         private static bool rightClickBuildRefractoryTime = false; // This is used for when the player cancels a resizing - they must first take their finger off the lmb to start resizing
         private static Vector2 originalStartingTile, startingTile, lastUpdateTile, buildPosition, buildTile;
-        //private static BuildingRuler buildingRulerWidth;
-        //private static BuildingRuler buildingRulerHeight;
+        private static BuildingRuler buildingRulerWidth;
+        private static BuildingRuler buildingRulerHeight;
         private static Vector2 sizeOfBuilding;
         private static Type buildingType;
         private static bool oneSquareWide = false;
@@ -48,7 +49,8 @@ namespace HospitalCeo.Building
 
             // Creating the prototype gameobject
             prototypeBuilding = WorldController.SCENE.createEntity("Prototype building");
-            prototypeBuilding.addComponent<Sprite>(new Sprite(Utils.GlobalContent.Util.White_Tile));
+            Sprite sprite = prototypeBuilding.addComponent<Sprite>(new Sprite(Utils.GlobalContent.Util.White_Tile));
+            sprite.color = Color.Green;
             prototypeBuilding.transform.position = WorldController.GetMouseOverTile().position;
 
             // Set up some variables used in the logic
@@ -61,8 +63,8 @@ namespace HospitalCeo.Building
             isLeftMouseButtonDown = false;
             
             // Create the building rulers
-            //buildingRulerWidth = new BuildingRuler(false);
-            //buildingRulerHeight = new BuildingRuler(true);
+            buildingRulerWidth = new BuildingRuler(false);
+            buildingRulerHeight = new BuildingRuler(true);
 
             // Grab if it should be one square wide or not.
             Building tempBuilding = (Building) Activator.CreateInstance(type, Vector2.Zero);
@@ -118,6 +120,7 @@ namespace HospitalCeo.Building
             {
                 SuccessfullBuilding();
                 StopBuilding();
+                StartBuilding(buildingType);
             }
 
             // If left click is now up and right click build refactory time is true then reset that
@@ -193,8 +196,8 @@ namespace HospitalCeo.Building
             prototypeBuilding.transform.position = buildPosition;
 
             // Update the rulers
-            //buildingRulerWidth.Update(new Vector2(startingPositionX, startingPositionY), sizeOfBuilding);
-            //buildingRulerHeight.Update(new Vector2(startingPositionX, startingPositionY), sizeOfBuilding);
+            buildingRulerWidth.Update(buildPosition, sizeOfBuilding);
+            buildingRulerHeight.Update(buildPosition, sizeOfBuilding);
 
             // Update what tile we last hovered over
             lastUpdateTile = WorldController.GetMouseOverTile().position;
@@ -216,20 +219,29 @@ namespace HospitalCeo.Building
 
         public static void SuccessfullBuilding()
         {
+            CreateInfrastructure(buildingType, buildTile, sizeOfBuilding);
+        }
+
+        public static void CreateInfrastructure(Type typeOfBuilding, Vector2 actualPosition, Vector2 actualSize)
+        {
+            if (buildingType == typeof(Foundation))
+            {
+                FoundationCreate(actualPosition, actualSize);
+                return;
+            }
+
             List<Building> listOfNewBuildings = new List<Building>();
 
             // Place the building
-            for (int x = 0; x < (sizeOfBuilding.X); x++)
+            for (int x = 0; x < (actualSize.X); x++)
             {
-                for (int y = 0; y < (sizeOfBuilding.Y); y++)
+                for (int y = 0; y < (actualSize.Y); y++)
                 {
-                    Tile t = WorldController.GetTileAt((int) buildTile.X + x, (int) buildTile.Y + y);
-                    if (t == null)
-                    {
-                        return;
-                    }
+                    Tile t = WorldController.GetTileAt((int) actualPosition.X + x, (int) actualPosition.Y + y);
+                    if (t == null) continue;
+                    if (t.GetInfrastructureItem() != null) continue;
 
-                    Building tempBuilding = (Building) Activator.CreateInstance(buildingType, t.position);
+                    Building tempBuilding = (Building) Activator.CreateInstance(typeOfBuilding, t.position);
                     tempBuilding.OnBuildingCompleted();
                     t.SetInfrastructureItem(tempBuilding);
                     tempBuilding.OnBuildingCompleted();
@@ -248,6 +260,91 @@ namespace HospitalCeo.Building
             foreach (Building building in listOfNewBuildings)
             {
                 building.SetSpritesCorrectly();
+            }
+        }
+
+        // If we were building the foundation then change it to flooring - walls
+        private static void FoundationCreate(Vector2 actualPosition, Vector2 actualSize)
+        {
+            List<BaseWall> newWalls = new List<BaseWall>();
+
+            // Build the Top / Bottom wall
+            for (int x = 0; x < actualSize.X; x++)
+            {
+                // Top Wall
+                Tile topTile = WorldController.GetTileAt((int) actualPosition.X + x, (int) actualPosition.Y);
+                if (topTile != null)
+                {
+                    if (topTile.GetInfrastructureItem() == null)
+                    {
+                        BaseWall wall = new BaseWall(topTile.position);
+                        newWalls.Add(wall);
+                        topTile.SetInfrastructureItem(wall);
+                    }
+                }
+
+                // Bottom Wall
+                Tile bottomTile = WorldController.GetTileAt((int) actualPosition.X + x, (int) actualPosition.Y + (int) actualSize.Y - 1);
+                if (bottomTile != null)
+                {
+                    if (bottomTile.GetInfrastructureItem() == null)
+                    {
+                        BaseWall wall = new BaseWall(bottomTile.position);
+                        newWalls.Add(wall);
+                        bottomTile.SetInfrastructureItem(wall);
+                    }
+                }
+            }
+
+            // Build the Left / Right Wall
+            for (int y = 0; y < actualSize.Y; y++)
+            {
+                // Left Wall
+                Tile leftTile = WorldController.GetTileAt((int) actualPosition.X, (int) actualPosition.Y + y);
+                if (leftTile != null)
+                {
+                    if (leftTile.GetInfrastructureItem() == null)
+                    {
+                        BaseWall wall = new BaseWall(leftTile.position);
+                        newWalls.Add(wall);
+                        leftTile.SetInfrastructureItem(wall);
+                    }
+                }
+
+                // Right Wall
+                Tile rightTile = WorldController.GetTileAt((int) actualPosition.X + (int) actualSize.X - 1, (int) actualPosition.Y + y);
+                if (rightTile != null)
+                {
+                    if (rightTile.GetInfrastructureItem() == null)
+                    {
+                        BaseWall wall = new BaseWall(rightTile.position);
+                        newWalls.Add(wall);
+                        rightTile.SetInfrastructureItem(wall);
+                    }
+                }
+            }
+
+            // Build the floor
+            for (int x = 1; x < actualSize.X - 1; x++)
+            {
+                for (int y = 1; y < actualSize.Y - 1; y++)
+                {
+                    Tile tile = WorldController.GetTileAt((int)actualPosition.X + x, (int)actualPosition.Y + y);
+                    if (tile != null)
+                    {
+                        if (tile.GetGameplayItem() == null)
+                        {
+                            FlooringCheapConcrete flooring = new FlooringCheapConcrete(tile.position);
+                        }
+                    }
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine("Wall count: " + newWalls.Count);
+            // Set up the wall sprites
+            foreach (Building wall in newWalls)
+            {
+                wall.SetSpritesCorrectly();
             }
         }
     }

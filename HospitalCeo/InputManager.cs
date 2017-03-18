@@ -104,6 +104,22 @@ namespace HospitalCeo
             {
                 camera.transform.position = new Vector2(camera.transform.position.X, camera.transform.position.Y + 10f);
             }
+
+            // ------------ Debug Keys ------------
+            if (IsKeyDown(Keys.F))
+            {
+                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.FlooringCheapConcrete));
+            }
+
+            if (IsKeyDown(Keys.G))
+            {
+                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.BaseWall));
+            }
+
+            if (IsKeyDown(Keys.H))
+            {
+                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.Foundation));
+            }
         }
 
         public static bool IsKeyDown(Keys kc)

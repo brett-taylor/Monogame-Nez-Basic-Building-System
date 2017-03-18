@@ -192,6 +192,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">../Sprites/ClearSprite.png</key>
+            <key type="filename">../Sprites/Tiles/Tile_CheapConcrete - Copy.png</key>
             <key type="filename">../Sprites/Tiles/Tile_CheapConcrete.png</key>
             <key type="filename">../Sprites/Tiles/Tile_Dirt.png</key>
             <key type="filename">../Sprites/Tiles/Tile_Grass.png</key>
