@@ -14,7 +14,7 @@ namespace HospitalCeo
 {
     public class HospitalCeo : Core, IUpdatableManager
     {
-        public HospitalCeo() : base()
+        public HospitalCeo() : base(1000, 600)
         {
         }
 

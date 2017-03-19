@@ -5,7 +5,7 @@ using Nez.Console;
 using Nez.Sprites;
 using Microsoft.Xna.Framework;
 using HospitalCeo.World;
-using HospitalCeo.UI.World;
+using HospitalCeo.Components;
 
 /*
  * Brett Taylor
@@ -17,15 +17,15 @@ namespace HospitalCeo.Building
 {
     public static class InfrastructureBuildingController
     {
-        private static Entity prototypeBuilding;
+        private static Entity prototypeBuilding, buildingRuler;
         private static bool isLeftMouseButtonDown = false;
         private static bool rightClickBuildRefractoryTime = false; // This is used for when the player cancels a resizing - they must first take their finger off the lmb to start resizing
         private static Vector2 originalStartingTile, startingTile, lastUpdateTile, buildPosition, buildTile;
-        private static BuildingRuler buildingRulerWidth;
-        private static BuildingRuler buildingRulerHeight;
         private static Vector2 sizeOfBuilding;
         private static Type buildingType;
         private static bool oneSquareWide = false;
+        private static BuildingRulerLine rulerLineComponent;
+        private static BuildingRulerText rulerTextComponent;
 
         public static void StartBuilding(Type type)
         {
@@ -61,16 +61,21 @@ namespace HospitalCeo.Building
             buildPosition = new Vector2(-1, -1);
             buildTile = new Vector2(-1, -1);
             isLeftMouseButtonDown = false;
-            
-            // Create the building rulers
-            buildingRulerWidth = new BuildingRuler(false);
-            buildingRulerHeight = new BuildingRuler(true);
 
             // Grab if it should be one square wide or not.
             Building tempBuilding = (Building) Activator.CreateInstance(type, Vector2.Zero);
             oneSquareWide = tempBuilding.OneSquareWidth();
             tempBuilding.Destory();
             tempBuilding = null;
+
+            // Create the building rulers;
+            rulerLineComponent = new BuildingRulerLine();
+            rulerTextComponent = new BuildingRulerText();
+            buildingRuler = WorldController.SCENE.createEntity("Building Ruler");
+            buildingRuler.addComponent<BuildingRulerLine>(rulerLineComponent);
+            buildingRuler.addComponent<BuildingRulerText>(rulerTextComponent);
+            rulerLineComponent.setEnabled(false);
+            rulerTextComponent.setEnabled(false);
         }
 
         public static void Update()
@@ -111,8 +116,6 @@ namespace HospitalCeo.Building
                 rightClickBuildRefractoryTime = true;
                 prototypeBuilding.transform.localScale = new Vector2(1, 1);
                 sizeOfBuilding = new Vector2(1, 1);
-                //buildingRulerWidth.Hide();
-                //buildingRulerHeight.Hide();
             }
 
             // If left click is up and last frame we were building
@@ -166,24 +169,6 @@ namespace HospitalCeo.Building
             // Work out size of building
             sizeOfBuilding = new Vector2((endingPositionX - startingPositionX) + 1, (endingPositionY - startingPositionY) + 1);
 
-            // If the building is one square wide.
-            /*if (oneSquareWide)
-            {
-                // If x is longer than y - make y one otherwise make x one
-                if (sizeOfBuilding.X >= sizeOfBuilding.Y) // Horizontal
-                {
-                    int yOffset = (int)sizeOfBuilding.Y - 1;
-                    sizeOfBuilding = new Vector2(sizeOfBuilding.X, 1);
-                    buildTile = new Vector2(startingPositionX, originalStartingTile.Y);
-                }
-                else // Vertical
-                {
-                    int xOffset = (int)sizeOfBuilding.X - 1;
-                    sizeOfBuilding = new Vector2(1, sizeOfBuilding.Y);
-                }
-            }
-            else buildTile = WorldController.GetTileAt(new Vector2(startingPositionX, startingPositionY)).position;*/
-
             // Scale accordingly
             float newXScale = sizeOfBuilding.X == 1 ? 1 : sizeOfBuilding.X;
             float newYScale = sizeOfBuilding.Y == 1 ? 1 : sizeOfBuilding.Y;
@@ -195,9 +180,13 @@ namespace HospitalCeo.Building
             buildPosition = new Vector2(buildPosition.X + (prototypeBuilding.scale.X * 100) / 2 - 50, buildPosition.Y + (prototypeBuilding.scale.Y * 100) / 2 - 50);
             prototypeBuilding.transform.position = buildPosition;
 
-            // Update the rulers
-            buildingRulerWidth.Update(buildPosition, sizeOfBuilding);
-            buildingRulerHeight.Update(buildPosition, sizeOfBuilding);
+            // Update the building rulers line
+            rulerLineComponent.setEnabled(true);
+            rulerLineComponent.update(buildPosition, sizeOfBuilding);
+
+            // Update the building rulers text
+            rulerTextComponent.setEnabled(true);
+            rulerTextComponent.update(buildPosition, sizeOfBuilding);
 
             // Update what tile we last hovered over
             lastUpdateTile = WorldController.GetMouseOverTile().position;
@@ -206,13 +195,14 @@ namespace HospitalCeo.Building
         // Used for when the left mouse button is not down and instead repositioning the object instead of resizing.
         private static void NotDraggingUpdate()
         {
+            rulerLineComponent.setEnabled(false);
+            rulerTextComponent.setEnabled(false);
             prototypeBuilding.transform.position = WorldController.GetMouseOverTile().position;
         }
 
         public static void StopBuilding()
         {
-            //buildingRulerWidth.Destory();
-            //buildingRulerHeight.Destory();
+            buildingRuler.destroy();
             prototypeBuilding.destroy();
             prototypeBuilding = null;
         }
@@ -340,7 +330,6 @@ namespace HospitalCeo.Building
                 }
             }
 
-            System.Diagnostics.Debug.WriteLine("Wall count: " + newWalls.Count);
             // Set up the wall sprites
             foreach (Building wall in newWalls)
             {

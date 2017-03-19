@@ -74,12 +74,12 @@ namespace HospitalCeo
             }
 
             // ------------ Camera Zoom ------------
-            if (Input.mouseWheelDelta < 0)
+            if (Input.mouseWheelDelta < 0 || IsKeyDown(Keys.Subtract) || IsKeyDown(Keys.OemMinus))
             {
                 camera.zoomOut(0.1f);
             }
 
-            if (Input.mouseWheelDelta > 0)
+            if (Input.mouseWheelDelta > 0 || IsKeyDown(Keys.Add) || IsKeyDown(Keys.OemPlus))
             {
                 camera.zoomIn(0.1f);
             }
