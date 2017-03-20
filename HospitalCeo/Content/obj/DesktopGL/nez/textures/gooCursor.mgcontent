@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/gooCursor.bmp</SourceFile>
+  <SourceFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/nez/textures/gooCursor.bmp</SourceFile>
   <SourceTime>2017-03-19T15:52:24+00:00</SourceTime>
-  <DestFile>D:/CPP/HospitalCeo/HospitalCeo/Content/bin/DesktopGL/nez/textures/gooCursor.xnb</DestFile>
-  <DestTime>2017-03-19T18:28:49.731802+00:00</DestTime>
+  <DestFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/bin/DesktopGL/nez/textures/gooCursor.xnb</DestFile>
+  <DestTime>2017-03-20T00:26:23.352081+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T07:36:08+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

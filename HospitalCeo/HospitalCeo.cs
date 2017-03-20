@@ -22,7 +22,6 @@ namespace HospitalCeo
         {
             World.WorldController.Update();
             InputManager.Update();
-            Building.InfrastructureBuildingController.Update();
         }
 
         protected override void Initialize()
@@ -35,6 +34,7 @@ namespace HospitalCeo
             Utils.GlobalContent.Initialise();
             World.WorldController.Initialize();
             InputManager.Initialise();
+            Building.BuildingController.Initialise();
         }
     }
 }

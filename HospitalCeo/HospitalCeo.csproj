@@ -38,19 +38,21 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Building\BuildingController.cs" />
     <Compile Include="Building\BuildingType.cs" />
     <Compile Include="Building\Building.cs" />
-    <Compile Include="Building\InfrastructureBuildingController.cs" />
+    <Compile Include="Building\DraggingComponent.cs" />
+    <Compile Include="Building\InfrastructureBuildingComponent.cs" />
     <Compile Include="Building\InfrastructureObjects\Foundation.cs" />
     <Compile Include="Building\InfrastructureObjects\BaseWall.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
-    <Compile Include="Components\BuildingRulerText.cs" />
-    <Compile Include="Components\CameraBounds.cs" />
+    <Compile Include="UI\World\BuildingRulerTextComponent.cs" />
+    <Compile Include="UI\World\CameraBoundsComponent.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="HospitalCeo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\BuildingRulerLine.cs" />
+    <Compile Include="UI\World\BuildingRulerLineComponent.cs" />
     <Compile Include="Utils\Commands.cs" />
     <Compile Include="Utils\GlobalContent.cs" />
     <Compile Include="Utils\Noise.cs" />
@@ -172,7 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Building\GameplayObjects\" />
-    <Folder Include="UI\World\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

@@ -33,7 +33,7 @@ namespace HospitalCeo.Utils
                 DebugConsole.instance.log(buildingName + " not a valid building");
                 return;
             }
-            Building.InfrastructureBuildingController.StartBuilding(type);
+            Building.BuildingController.StartBuilding(type);
         }
 
 

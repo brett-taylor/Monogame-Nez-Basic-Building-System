@@ -1,5 +1,4 @@
-﻿using HospitalCeo.Components;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nez;
 using Nez.Console;
@@ -24,7 +23,7 @@ namespace HospitalCeo
             // Set up the camera stuff
             camera = World.WorldController.SCENE.camera;
             cameraBounding = World.WorldController.SCENE.createEntity("Camera bounding entity");
-            cameraBounding.addComponent(new CameraBounds(new Vector2(-50, -50), new Vector2(WORLD_WIDTH, WORLD_HEIGHT)));
+            cameraBounding.addComponent(new UI.World.CameraBoundsComponent(new Vector2(-50, -50), new Vector2(WORLD_WIDTH, WORLD_HEIGHT)));
             camera.setMaximumZoom(1.5f);
             camera.setMinimumZoom(0.4f);
         }
@@ -108,17 +107,17 @@ namespace HospitalCeo
             // ------------ Debug Keys ------------
             if (IsKeyDown(Keys.F))
             {
-                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.FlooringCheapConcrete));
+                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapConcrete));
             }
 
             if (IsKeyDown(Keys.G))
             {
-                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.BaseWall));
+                Building.BuildingController.StartBuilding(typeof(Building.BaseWall));
             }
 
             if (IsKeyDown(Keys.H))
             {
-                Building.InfrastructureBuildingController.StartBuilding(typeof(Building.Foundation));
+                Building.BuildingController.StartBuilding(typeof(Building.Foundation));
             }
         }
 

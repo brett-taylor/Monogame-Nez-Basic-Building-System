@@ -1,28 +1,29 @@
 ﻿using Nez;
 using Microsoft.Xna.Framework;
+using HospitalCeo.World;
 
 /*
  * Brett Taylor
  * Building ruler gets given a position and size and if size is greater than 2 writes the size
  */
 
-namespace HospitalCeo.Components
+namespace HospitalCeo.UI.World
 {
-    public class BuildingRulerText : Component
+    public class BuildingRulerTextComponent : Component
     {
         private Entity xAxis, yAxis;
         private Text xAxisText, yAxisText;
         private Vector2 position, size;
 
-        public BuildingRulerText() : base()
+        public BuildingRulerTextComponent() : base()
         {
-            xAxis = World.WorldController.SCENE.createEntity("Building ruler text x axis");
+            xAxis = WorldController.SCENE.createEntity("Building ruler text x axis");
             xAxis.setEnabled(false);
             xAxisText = new Text(Graphics.instance.bitmapFont, "", new Vector2(0, 0), Color.White);
             xAxis.scale = new Vector2(3f, 3f);
             xAxis.addComponent<Text>(xAxisText);
 
-            yAxis = World.WorldController.SCENE.createEntity("Building ruler text y axis");
+            yAxis = WorldController.SCENE.createEntity("Building ruler text y axis");
             yAxis.setEnabled(false);
             yAxisText = new Text(Graphics.instance.bitmapFont, "", new Vector2(0, 0), Color.White);
             yAxis.scale = new Vector2(3f, 3f);
@@ -31,24 +32,25 @@ namespace HospitalCeo.Components
 
         public void update(Vector2 position, Vector2 size)
         {
+            System.Diagnostics.Debug.WriteLine(position + "" + size);
             this.position = position;
             this.size = size;
 
             // Horizontal Ruler
-            if (size.X >= 3)
+            if (size.X >= 300)
             {
                 xAxis.setEnabled(true);
-                xAxisText.setText(size.X + "m");
-                xAxisText.transform.position = new Vector2(position.X - 20, position.Y + ((size.Y * 100) / 2) + 50);
+                xAxisText.setText(size.X / 100 + "m");
+                xAxisText.transform.position = new Vector2(position.X + (size.X / 2) - 70, position.Y + size.Y + 50);
             }
             else xAxis.setEnabled(false);
 
             // Vertical Ruler
-            if (size.Y >= 3)
+            if (size.Y >= 300)
             {
                 yAxis.setEnabled(true);
-                yAxisText.setText(size.Y + "m");
-                yAxisText.transform.position = new Vector2(position.X - ((size.X * 100) / 2) - 100, position.Y - 20);
+                yAxisText.setText(size.Y /100 + "m");
+                yAxisText.transform.position = new Vector2(position.X - 180, position.Y + (size.Y / 2) - 70);
             }
             else yAxis.setEnabled(false);
         }
