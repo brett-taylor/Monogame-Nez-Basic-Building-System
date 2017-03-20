@@ -24,7 +24,6 @@ namespace HospitalCeo.World
 
             // Create the world
             CreateBaseTiles();
-            CreateDetails();
         }
 
         public static void Update()
@@ -37,28 +36,31 @@ namespace HospitalCeo.World
 
         private static void CreateBaseTiles()
         {
+            float[,] noiseMap = Utils.Noise.Calc2D(WORLD_WIDTH, WORLD_HEIGHT, 0.10f);
             tiles = new Tile[WORLD_WIDTH, WORLD_HEIGHT];
 
             for (int x = 0; x < tiles.GetUpperBound(0); x++)
             {
                 for (int y = 0; y < tiles.GetUpperBound(1); y++)
                 {
-                    tiles[x, y] = new Tile(Utils.GlobalContent.Earth.Grass, new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100), new Vector2(x, y));
-                }
-            }
-        }
+                    // Create the sprite
+                    Sprite sprite;
+                    if (noiseMap[x, y] < 30f) sprite = new Sprite(Utils.GlobalContent.Earth.Dirt);
+                    else if (noiseMap[x, y] > 220f) sprite = new Sprite(Utils.GlobalContent.Earth.Sand);
+                    else sprite = new Sprite(Utils.GlobalContent.Earth.Grass);
+                    sprite.renderLayer = 20;
 
-        private static void CreateDetails()
-        {
-            float[,] noiseMap = Utils.Noise.Calc2D(WORLD_WIDTH, WORLD_HEIGHT, 0.10f);
+                    // Create the entity
+                    Entity entity = SCENE.createEntity("Tile at x: " + x + " y: " + y);
+                    entity.position = new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100);
 
-            for (int y = 0; y < WORLD_HEIGHT; y++)
-            {
-                for (int x = 0; x < WORLD_WIDTH; x++)
-                {
-                    if (tiles[x, y] == null) continue;
-                    if (noiseMap[x, y] < 30f) tiles[x, y].SetSprite(Utils.GlobalContent.Earth.Dirt);
-                    else if (noiseMap[x, y] > 220f) tiles[x, y].SetSprite(Utils.GlobalContent.Earth.Sand);
+                    // Create the tile
+                    Tile tile = new Tile(entity, sprite, entity.position, new Vector2(x, y));
+                    tiles[x, y] = tile;
+
+                    // Add components
+                    entity.addComponent<Sprite>(sprite);
+                    entity.addComponent<Tile>(tile);
                 }
             }
         }

@@ -11,6 +11,19 @@ using HospitalCeo.World;
  * Base building class, everything should be inherited from this
  */
 
+/*
+ * TO:DO
+ * Convert buildings into a component system as well
+ * BuildingComponent - Handles all building logic
+ * BuildingRenderable - Handles the rendering of buildings
+ * Custom Building Components:
+ *  FoundationComponent - Would on build convert to walls and flooring
+ *  
+ * Functions:
+ *  OnBuildCompleted
+ *  OnUpdate
+ */ 
+
 namespace HospitalCeo.Building
 {
     public class Building
@@ -61,7 +74,7 @@ namespace HospitalCeo.Building
 
         public override string ToString()
         {
-            return GetName() + " " + GetBuildingType() + " "+ tile.position;
+            return GetName() + " " + GetBuildingType() + " "+ tile.GetPosition();
         }
     }
 }

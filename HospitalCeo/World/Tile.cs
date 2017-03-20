@@ -1,49 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
-using Nez.Textures;
 using HospitalCeo.Building;
 
 /*
  * Brett Taylor
- * Base Tile Class
+ * Base Tile Component
  */
 
 namespace HospitalCeo.World
 {
-    public class Tile
+    public class Tile : Component
     {
-        public Vector2 position { get; private set; }
-        public Vector2 tileNumber { get; private set; }
+        private Sprite sprite;
         private Entity entity;
+        private Vector2 position;
+        private Vector2 tileNumber;
         private Building.Building infrastructureItem;
         private Building.Building gameplayItem;
-        private Sprite sprite;
 
-        public Tile(Subtexture texture, Vector2 position, Vector2 tileNumber)
+        public Tile(Entity entity, Sprite sprite, Vector2 position, Vector2 tileNumber)
         {
-            entity = WorldController.SCENE.createEntity("tile: " + position + " : " + tileNumber);
+            this.entity = entity;
+            this.sprite = sprite;
             this.position = position;
             this.tileNumber = tileNumber;
-            entity.position = position;
-            SetSprite(texture);
         }
 
         public void Update()
         {
             if (infrastructureItem != null) infrastructureItem.DoUpdate();
             if (gameplayItem != null) gameplayItem.DoUpdate();
-        }
-
-        public void SetSprite(Subtexture texture)
-        {
-            if (sprite == null)
-            {
-                sprite = entity.addComponent(new Sprite(texture));
-                sprite.renderLayer = 19;
-            }
-            sprite.setSubtexture(texture);
         }
 
         public override string ToString()
@@ -55,10 +42,10 @@ namespace HospitalCeo.World
         {
             Tile[] ns = new Tile[doDiaganol ? 8 : 4];
 
-            ns[0] = WorldController.GetTileAt((int) tileNumber.X,      (int) tileNumber.Y - 1);   // North
-            ns[1] = WorldController.GetTileAt((int) tileNumber.X - 1,  (int) tileNumber.Y);       // East
-            ns[2] = WorldController.GetTileAt((int) tileNumber.X,      (int) tileNumber.Y + 1);   // South
-            ns[3] = WorldController.GetTileAt((int) tileNumber.X + 1,  (int) tileNumber.Y);       // West
+            ns[0] = WorldController.GetTileAt((int) tileNumber.X,       (int) tileNumber.Y - 1);   // North
+            ns[1] = WorldController.GetTileAt((int) tileNumber.X - 1,   (int) tileNumber.Y);       // East
+            ns[2] = WorldController.GetTileAt((int) tileNumber.X,       (int) tileNumber.Y + 1);   // South
+            ns[3] = WorldController.GetTileAt((int) tileNumber.X + 1,   (int) tileNumber.Y);       // West
 
             if (doDiaganol)
             {
@@ -178,6 +165,21 @@ namespace HospitalCeo.World
             }
 
             return false;
+        }
+
+        public Vector2 GetTileNumber()
+        {
+            return tileNumber;
+        }
+
+        public Vector2 GetPosition()
+        {
+            return entity.transform.position;
+        }
+
+        public Sprite GetSprite()
+        {
+            return sprite;
         }
     }
 }

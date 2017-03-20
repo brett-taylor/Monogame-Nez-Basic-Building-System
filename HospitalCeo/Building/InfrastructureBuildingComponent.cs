@@ -61,7 +61,7 @@ namespace HospitalCeo.Building
                     if (t == null) continue;
                     if (t.GetInfrastructureItem() != null) continue;
 
-                    Building tempBuilding = (Building)Activator.CreateInstance(buildingType, t.position);
+                    Building tempBuilding = (Building)Activator.CreateInstance(buildingType, t.GetPosition());
                     tempBuilding.OnBuildingCompleted();
                     t.SetInfrastructureItem(tempBuilding);
                     tempBuilding.OnBuildingCompleted();
@@ -97,7 +97,7 @@ namespace HospitalCeo.Building
                 {
                     if (topTile.GetInfrastructureItem() == null)
                     {
-                        BaseWall wall = new BaseWall(topTile.position);
+                        BaseWall wall = new BaseWall(topTile.GetPosition());
                         newWalls.Add(wall);
                         topTile.SetInfrastructureItem(wall);
                     }
@@ -109,7 +109,7 @@ namespace HospitalCeo.Building
                 {
                     if (bottomTile.GetInfrastructureItem() == null)
                     {
-                        BaseWall wall = new BaseWall(bottomTile.position);
+                        BaseWall wall = new BaseWall(bottomTile.GetPosition());
                         newWalls.Add(wall);
                         bottomTile.SetInfrastructureItem(wall);
                     }
@@ -125,7 +125,7 @@ namespace HospitalCeo.Building
                 {
                     if (leftTile.GetInfrastructureItem() == null)
                     {
-                        BaseWall wall = new BaseWall(leftTile.position);
+                        BaseWall wall = new BaseWall(leftTile.GetPosition());
                         newWalls.Add(wall);
                         leftTile.SetInfrastructureItem(wall);
                     }
@@ -137,7 +137,7 @@ namespace HospitalCeo.Building
                 {
                     if (rightTile.GetInfrastructureItem() == null)
                     {
-                        BaseWall wall = new BaseWall(rightTile.position);
+                        BaseWall wall = new BaseWall(rightTile.GetPosition());
                         newWalls.Add(wall);
                         rightTile.SetInfrastructureItem(wall);
                     }
@@ -154,7 +154,7 @@ namespace HospitalCeo.Building
                     {
                         if (tile.GetGameplayItem() == null)
                         {
-                            FlooringCheapConcrete flooring = new FlooringCheapConcrete(tile.position);
+                            FlooringCheapConcrete flooring = new FlooringCheapConcrete(tile.GetPosition());
                         }
                     }
                 }

@@ -143,11 +143,11 @@ namespace HospitalCeo.Building
             if (tileUnderMouse == lastTileUpdated) return;
 
             // Lets flip the starting and ending positions if they will go into negatives.
-            Vector2 currentTile = WorldController.GetMouseOverTile().tileNumber;
-            int startingTileX = Mathf.floorToInt(startingTile.tileNumber.X);
-            int startingTileY = Mathf.floorToInt(startingTile.tileNumber.Y);
-            int endingTileX = Mathf.floorToInt(tileUnderMouse.tileNumber.X);
-            int endingTileY = Mathf.floorToInt(tileUnderMouse.tileNumber.Y);
+            Vector2 currentTile = WorldController.GetMouseOverTile().GetTileNumber();
+            int startingTileX = Mathf.floorToInt(startingTile.GetTileNumber().X);
+            int startingTileY = Mathf.floorToInt(startingTile.GetTileNumber().Y);
+            int endingTileX = Mathf.floorToInt(tileUnderMouse.GetTileNumber().X);
+            int endingTileY = Mathf.floorToInt(tileUnderMouse.GetTileNumber().Y);
 
             if (endingTileX < startingTileX)
             {
@@ -167,10 +167,10 @@ namespace HospitalCeo.Building
             Tile t = WorldController.GetTileAt(startingTileX, startingTileY);
             if (t == null) StopDragging();
             draggingSizePixel = WorkOutSize(new Vector2((endingTileX - startingTileX + 1), (endingTileY - startingTileY + 1)));
-            draggingPositionPixel = t.position;
+            draggingPositionPixel = t.GetPosition();
 
             // Work out the size of the zone on tiles
-            draggingPositionTile = t.tileNumber;
+            draggingPositionTile = t.GetTileNumber();
             draggingSizeTile = new Vector2((endingTileX - startingTileX + 1), (endingTileY - startingTileY + 1));
 
             // Update the building rulers line
@@ -192,11 +192,11 @@ namespace HospitalCeo.Building
             rulerTextComponent.setEnabled(false);
 
             // Set the position & size in pixels
-            draggingPositionPixel = tileUnderMouse.position;
+            draggingPositionPixel = tileUnderMouse.GetPosition();
             draggingSizePixel = WorkOutSize(new Vector2(1, 1));
 
             // Set the position & size in tiles
-            draggingPositionTile = tileUnderMouse.tileNumber;
+            draggingPositionTile = tileUnderMouse.GetTileNumber();
             draggingSizeTile = new Vector2(1, 1);
         }
 
