@@ -1,0 +1,55 @@
+Building
+Each Building would need a BuildingRenderable
+Each Building would need a BuildingInformation
+
+BuildingLogic Implements IBuildingInformation
+	- GetEntity()
+	- GetTile()
+	- OnActualBuild()
+	- OnActualDestory()
+	- AttachToEntity()
+	- AttachToTile()
+	- CreateRenderer()
+	- SetPosition()
+
+IBuildingInformation
+	- Name
+	- SubTexture
+	- IsOneSquareWidth
+
+IBuildingUpdate : IUpdatable
+	- Update
+
+
+IBuildingRender : RenderableComponent
+	- Render
+
+
+
+public class Bed : BuildingLogic, IBuildingUpdate, IBuildingRender
+{
+	void BuildingLogic.GetName()
+	{
+		return name
+	}
+
+	void BuildingLogic.GetSubtexture()
+	{
+		return the sub texture
+	}
+
+	void IBuildingUpdate.update()
+	{
+		do some update shizzle
+	}
+
+	public override OnBuild()
+	{
+		lets tell the world we have another bed here
+	}
+
+	public overide OnDestory()
+	{
+		lets tell the world we have removed this bed
+	}
+}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/hospitalceo/tiles.png</SourceFile>
-  <SourceTime>2017-03-19T15:52:24+00:00</SourceTime>
+  <SourceTime>2017-03-20T17:10:14+00:00</SourceTime>
   <DestFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/bin/DesktopGL/hospitalceo/tiles.xnb</DestFile>
-  <DestTime>2017-03-20T00:26:23.4367243+00:00</DestTime>
+  <DestTime>2017-03-22T00:02:11.5130182+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T07:36:08+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

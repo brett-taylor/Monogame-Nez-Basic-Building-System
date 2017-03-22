@@ -52,15 +52,28 @@ namespace HospitalCeo.Utils
             DebugConsole.instance.log("Gameplay Building: " + t.GetGameplayItem());
         }
 
-        [Command("empty-map", "Clears the map of all buildings")]
-        private static void emptyMap()
+        [Command("draw-tile-under-cursor", "Draws the tile's number and position on screen")]
+        private static void drawTileUnderCursor()
         {
-            foreach (World.Tile t in World.WorldController.tiles)
+            if (!Core.debugRenderEnabled)
             {
-                if (t == null) return;
-                if (t.GetInfrastructureItem() != null) t.GetInfrastructureItem().Destory();
-                if (t.GetGameplayItem() != null) t.GetGameplayItem().Destory();
+                DebugConsole.instance.log("Will not draw unless debug-renderer is turned on");
+                DebugConsole.instance.Open();
             }
+
+            World.TileRenderer.drawTileInformation = !World.TileRenderer.drawTileInformation;
+        }
+
+        [Command("draw-tile-infrastructure-status", "Draws a square on each tile indicating its infrastructure status")]
+        private static void drawTileInfrastructureStatus()
+        {
+            if (!Core.debugRenderEnabled)
+            {
+                DebugConsole.instance.log("Will not draw unless debug-renderer is turned on");
+                DebugConsole.instance.Open();
+            }
+
+            World.TileSprite.drawInfrastructureStatus = !World.TileSprite.drawInfrastructureStatus;
         }
     }
 }

@@ -112,12 +112,17 @@ namespace HospitalCeo
 
             if (IsKeyDown(Keys.G))
             {
-                Building.BuildingController.StartBuilding(typeof(Building.BaseWall));
+                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapCarpet));
             }
 
             if (IsKeyDown(Keys.H))
             {
-                Building.BuildingController.StartBuilding(typeof(Building.Foundation));
+                Building.BuildingController.StartBuilding(typeof(Building.CheapWall));
+            }
+
+            if (IsKeyDown(Keys.J))
+            {
+                Building.BuildingController.StartBuilding(typeof(Building.CheapWallFoundation));
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
+using Nez.Textures;
 using HospitalCeo.Building;
 
 /*
@@ -10,27 +11,23 @@ using HospitalCeo.Building;
 
 namespace HospitalCeo.World
 {
-    public class Tile : Component
+    public class Tile
     {
-        private Sprite sprite;
-        private Entity entity;
+        private Subtexture texture;
         private Vector2 position;
         private Vector2 tileNumber;
-        private Building.Building infrastructureItem;
-        private Building.Building gameplayItem;
+        private BuildingLogic infrastructureItem;
+        private BuildingLogic gameplayItem;
 
-        public Tile(Entity entity, Sprite sprite, Vector2 position, Vector2 tileNumber)
+        public Tile(Subtexture texture, Vector2 position, Vector2 tileNumber)
         {
-            this.entity = entity;
-            this.sprite = sprite;
+            this.texture = texture;
             this.position = position;
             this.tileNumber = tileNumber;
         }
 
         public void Update()
         {
-            if (infrastructureItem != null) infrastructureItem.DoUpdate();
-            if (gameplayItem != null) gameplayItem.DoUpdate();
         }
 
         public override string ToString()
@@ -83,32 +80,27 @@ namespace HospitalCeo.World
             }
         }
 
-        public void SetInfrastructureItem(Building.Building item)
+        public void SetInfrastructureItem(Building.BuildingLogic item)
         {
             this.infrastructureItem = item;
         }
 
-        public void SetGameplayItem(Building.Building item)
+        public void SetGameplayItem(Building.BuildingLogic item)
         {
             this.gameplayItem = item;
         }
 
-        public Building.Building GetInfrastructureItem()
+        public Building.BuildingLogic GetInfrastructureItem()
         {
             return infrastructureItem == null ? null : infrastructureItem;
         }
 
-        public Building.Building GetGameplayItem()
+        public Building.BuildingLogic GetGameplayItem()
         {
             return gameplayItem == null ? null : gameplayItem;
         }
 
-        public Entity GetEntity()
-        {
-            return entity;
-        }
-
-        public int SimilarItemsAroundTile(Building.Building building)
+        public int SimilarItemsAroundTile(BuildingLogic building)
         {
             Compass[] Compasss = { Compass.N, Compass.E, Compass.S, Compass.W };
             int similarAmount = 0;
@@ -119,7 +111,7 @@ namespace HospitalCeo.World
                 {
                     Tile t = GetNeighbour(d);
                     if (t != null)
-                        if (t.GetInfrastructureItem() != null && t.GetInfrastructureItem().GetType() == building.GetType())
+                        if ( t.GetInfrastructureItem() != null && t.GetInfrastructureItem().GetBuildingCatergory() == building.GetBuildingCatergory())
                             similarAmount++;
                 }
             }
@@ -137,15 +129,15 @@ namespace HospitalCeo.World
             return similarAmount;
         }
 
-        public bool SimilarItemNextToTile(Compass Compass, Building.Building building)
+        public bool SimilarItemNextToTile(Compass Compass, Building.BuildingLogic building)
         {
             if (building.GetBuildingType() == BuildingType.Infrastructure)
             {
                 Tile t = GetNeighbour(Compass);
                 if (t != null)
                 {
-                    Building.Building neighbourBuilding = t.GetInfrastructureItem();
-                    if (neighbourBuilding != null && neighbourBuilding.GetType() == building.GetType())
+                    Building.BuildingLogic neighbourBuilding = t.GetInfrastructureItem();
+                    if (neighbourBuilding != null && neighbourBuilding.GetBuildingCatergory() == building.GetBuildingCatergory())
                     {
                         return true;
                     }
@@ -156,7 +148,7 @@ namespace HospitalCeo.World
                 Tile t = GetNeighbour(Compass);
                 if (t != null)
                 {
-                    Building.Building neighbourBuilding = t.GetGameplayItem();
+                    Building.BuildingLogic neighbourBuilding = t.GetGameplayItem();
                     if (neighbourBuilding != null && neighbourBuilding.GetType() == building.GetType())
                     {
                         return true;
@@ -174,12 +166,12 @@ namespace HospitalCeo.World
 
         public Vector2 GetPosition()
         {
-            return entity.transform.position;
+            return position;
         }
 
-        public Sprite GetSprite()
+        public Subtexture GetTexture()
         {
-            return sprite;
+            return texture;
         }
     }
 }

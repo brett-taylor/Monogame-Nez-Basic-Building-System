@@ -32,7 +32,6 @@ namespace HospitalCeo.UI.World
 
         public void update(Vector2 position, Vector2 size)
         {
-            System.Diagnostics.Debug.WriteLine(position + "" + size);
             this.position = position;
             this.size = size;
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
+using Nez.Textures;
 /*
  * Brett Taylor
  * World Controller, handles creating the world
@@ -12,9 +13,10 @@ namespace HospitalCeo.World
     public static class WorldController
     {
         public static Scene SCENE { get; private set; }
-        public const int WORLD_WIDTH = 30, WORLD_HEIGHT = 30;
+        public const int WORLD_WIDTH = 100, WORLD_HEIGHT = 100;
         public static Tile[,] tiles { get; private set; }
         public static Entity inputManager { get; private set; }
+        private static Entity tilesGraphic;
 
         public static void Initialize()
         {
@@ -43,26 +45,18 @@ namespace HospitalCeo.World
             {
                 for (int y = 0; y < tiles.GetUpperBound(1); y++)
                 {
-                    // Create the sprite
-                    Sprite sprite;
-                    if (noiseMap[x, y] < 30f) sprite = new Sprite(Utils.GlobalContent.Earth.Dirt);
-                    else if (noiseMap[x, y] > 220f) sprite = new Sprite(Utils.GlobalContent.Earth.Sand);
-                    else sprite = new Sprite(Utils.GlobalContent.Earth.Grass);
-                    sprite.renderLayer = 20;
+                    Subtexture texture;
+                    if (noiseMap[x, y] < 30f) texture = Utils.GlobalContent.Earth.Dirt;
+                    else if (noiseMap[x, y] > 220f) texture = Utils.GlobalContent.Earth.Sand;
+                    else texture = Utils.GlobalContent.Earth.Grass;
 
-                    // Create the entity
-                    Entity entity = SCENE.createEntity("Tile at x: " + x + " y: " + y);
-                    entity.position = new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100);
-
-                    // Create the tile
-                    Tile tile = new Tile(entity, sprite, entity.position, new Vector2(x, y));
+                    Tile tile = new Tile(texture, new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100), new Vector2(x, y));
                     tiles[x, y] = tile;
-
-                    // Add components
-                    entity.addComponent<Sprite>(sprite);
-                    entity.addComponent<Tile>(tile);
                 }
             }
+
+            tilesGraphic = SCENE.createEntity("Tiles graphic");
+            tilesGraphic.addComponent<TileRenderer>(new TileRenderer());
         }
 
         public static Tile GetMouseOverTile()

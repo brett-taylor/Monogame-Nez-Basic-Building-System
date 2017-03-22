@@ -10,8 +10,8 @@ namespace HospitalCeo.UI.World
 {
     public class BuildingRulerLineComponent : RenderableComponent
     {
-        public override float width { get { return 3000; } } // Have to be called as part of RenderableComponent
-        public override float height { get { return 3000; } } // Have to be called as part of RenderableComponent
+        public override float width { get { return 100000; } } // Have to be called as part of RenderableComponent
+        public override float height { get { return 10000; } } // Have to be called as part of RenderableComponent
         private Vector2 position, size;
 
         public BuildingRulerLineComponent() : base()
@@ -20,7 +20,7 @@ namespace HospitalCeo.UI.World
 
         public override void render(Graphics graphics, Camera camera)
         {
-            if (size.X >= 2 | size.Y >= 2)
+            if (size.X >= 200 | size.Y >= 200)
             {
                 // Horizontal Ruler
                 if (size.X >= 200)
@@ -46,7 +46,6 @@ namespace HospitalCeo.UI.World
 
         public void update(Vector2 position, Vector2 size)
         {
-            System.Diagnostics.Debug.WriteLine(position + "" + size);
             this.position = position;
             this.size = size;
         }

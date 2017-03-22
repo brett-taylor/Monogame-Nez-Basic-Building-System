@@ -1,27 +1,35 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Textures;
 
 namespace HospitalCeo.Building
 {
-    public class FlooringCheapConcrete : Building
+    public class FlooringCheapConcrete : BuildingLogic
     {
-        public FlooringCheapConcrete(Vector2 position) : base(position)
-        {
-        }
-
         public override string GetName()
         {
             return "Cheap Concrete Flooring";
         }
 
-        public override Subtexture GetSprite()
+        public override BuildingType GetBuildingType()
+        {
+            return BuildingType.Infrastructure;
+        }
+
+        public override Subtexture GetTexture()
         {
             return Utils.GlobalContent.Flooring.CheapConcrete;
         }
 
-        public override BuildingType GetBuildingType()
+        public override Vector2 GetTileSize()
         {
-            return BuildingType.Infrastructure;
+            return tileSize;
+        }
+
+        public override BuildingCategory GetBuildingCatergory()
+        {
+            return BuildingCategory.Flooring;
         }
     }
 }

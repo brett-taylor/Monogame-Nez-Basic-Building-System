@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Nez;
 using Nez.Console;
 using Microsoft.Xna.Framework;
@@ -35,17 +35,16 @@ namespace HospitalCeo.Building
         private bool shouldShowRulerLines = true;
         private bool shouldShowRulerLengthText = true;
 
-        public virtual void OnSuccessfullDrag(Vector2 tileNumber, Vector2 size) { }
+        public virtual void OnSuccessfullDrag(Vector2 tileNumber, Vector2 size, List<Tile> tilesAffected) { }
         public virtual void OnFinishedDragging() { }
         public override float width { get { return 10000; } } // Have to be called as part of RenderableComponent
         public override float height { get { return 10000; } } // Have to be called as part of RenderableComponent
 
-        public DraggingComponent(Color drawingColor, bool shouldShowRulerLines, bool shouldShowRulerLengthText, bool carryOnAfterSuccessfullDraw) : base()
+        public DraggingComponent(Color drawingColor, bool shouldShowRulerLines, bool shouldShowRulerLengthText) : base()
         {
             this.drawingColor = drawingColor;
             this.shouldShowRulerLines = shouldShowRulerLines;
             this.shouldShowRulerLengthText = shouldShowRulerLengthText;
-            this.carryOnAfterSuccessfullDraw = carryOnAfterSuccessfullDraw;
 
             // Create the building rulers;
             rulerLineComponent = new BuildingRulerLineComponent();
@@ -63,9 +62,11 @@ namespace HospitalCeo.Building
             graphics.batcher.drawRect(new Rectangle((int) draggingPositionPixel.X - 50, (int) draggingPositionPixel.Y - 50, (int) draggingSizePixel.X, (int) draggingSizePixel.Y), drawingColor);
         }
 
-        protected void StartDragging()
+        protected void StartDragging(bool carryOnAfterSuccessfullDraw)
         {
             isActive = true;
+            this.carryOnAfterSuccessfullDraw = carryOnAfterSuccessfullDraw;
+            System.Diagnostics.Debug.WriteLine(carryOnAfterSuccessfullDraw);
         }
 
         void IUpdatable.update()
@@ -118,7 +119,6 @@ namespace HospitalCeo.Building
             {
                 SuccesfullDrag();
             }
-
 
             // If left click is now up and right click build refactory time is true then reset that
             if (!InputManager.IsLeftMouseDown() & rightClickBuildRefractoryTime)
@@ -203,6 +203,7 @@ namespace HospitalCeo.Building
         // Gets rid of all the dragging stuff.
         private void StopDragging()
         {
+            System.Diagnostics.Debug.WriteLine("Stopped dragging");
             lastTileUpdated = null;
             startingTile = null;
             isLeftMouseButtonDown = false;
@@ -214,8 +215,9 @@ namespace HospitalCeo.Building
         }
 
         // Used when we are fully finished with dragging - removes everything
-        private void FinishDragging()
+        protected void FinishDragging()
         {
+            System.Diagnostics.Debug.WriteLine("Finished dragging");
             isActive = false;
             StopDragging();
             OnFinishedDragging();
@@ -224,11 +226,25 @@ namespace HospitalCeo.Building
         // Lets stop dragging and send the position and size to the OnSuccessfullDrag method.
         private void SuccesfullDrag()
         {
-            OnSuccessfullDrag(draggingPositionTile, draggingSizeTile);
+            List<Tile> tilesAffected = new List<Tile>();
 
-            // If we should carry on dragging a zone after successfully placing a building or not.
-            if (carryOnAfterSuccessfullDraw) StopDragging();
-            else FinishDragging();
+            for (int x = 0; x < draggingSizeTile.X; x++)
+            {
+                for (int y = 0; y < draggingSizeTile.Y; y++)
+                {
+                    Tile t = WorldController.GetTileAt((int)draggingPositionTile.X + x, (int)draggingPositionTile.Y + y);
+                    if (t == null) continue;
+                    tilesAffected.Add(t);
+                }
+            }
+
+            OnSuccessfullDrag(draggingPositionTile, draggingSizeTile, tilesAffected);
+
+            // If we should carry on dragging a zone after placing lets stop dragging
+            if (carryOnAfterSuccessfullDraw)
+                StopDragging();
+            else
+                FinishDragging();
         }
 
         public bool IsDragging()

@@ -19,17 +19,21 @@ namespace HospitalCeo.Building
         {
             // Create the infrastructure building entity
             infrastructureBuilding = WorldController.SCENE.createEntity("Infrastructure building entity");
-            infrastructureBuildingComponent = infrastructureBuilding.addComponent<InfrastructureBuildingComponent>(new InfrastructureBuildingComponent(Color.Blue, true, true, true));
+            infrastructureBuildingComponent = infrastructureBuilding.addComponent<InfrastructureBuildingComponent>(new InfrastructureBuildingComponent(new Color(Color.Green, 0.2f), true, true));
         }
 
-        public static void StartBuilding(Type buildingType)
+        public static void StartBuilding(Type buildingLogic)
         {
-            infrastructureBuildingComponent.StartBuilding(buildingType);
+            infrastructureBuildingComponent.StartBuilding(buildingLogic);
         }
 
-        public static void FinishBuilding()
+        public static void ForceFinishBuilding()
         {
+        }
 
+        public static void PlaceBuilding(Type buildingType, Vector2 tilePosition, Vector2 tileSize)
+        {
+            infrastructureBuildingComponent.PlaceBuilding(buildingType, tilePosition, tileSize);
         }
     }
 }

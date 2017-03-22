@@ -38,13 +38,23 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
+    <Compile Include="Building\Building Components\BuildingWallRenderer.cs" />
+    <Compile Include="Building\Building Components\BuildingRepeatedTiledRenderer.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingWallSprites.cs" />
+    <Compile Include="Building\BuildingCategory.cs" />
+    <Compile Include="Building\IBuildingBeforeBuild.cs" />
+    <Compile Include="Building\IBuildingCustomRenderer.cs" />
+    <Compile Include="Building\IBuildingOnBuild.cs" />
     <Compile Include="Building\BuildingController.cs" />
+    <Compile Include="Building\BuildingLogic.cs" />
     <Compile Include="Building\BuildingType.cs" />
-    <Compile Include="Building\Building.cs" />
     <Compile Include="Building\DraggingComponent.cs" />
+    <Compile Include="Building\IBuildingInformation.cs" />
     <Compile Include="Building\InfrastructureBuildingComponent.cs" />
-    <Compile Include="Building\InfrastructureObjects\Foundation.cs" />
-    <Compile Include="Building\InfrastructureObjects\BaseWall.cs" />
+    <Compile Include="Building\InfrastructureObjects\CheapWall.cs" />
+    <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />
+    <Compile Include="Building\InfrastructureObjects\CheapWallFoundation.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
     <Compile Include="UI\World\BuildingRulerTextComponent.cs" />
     <Compile Include="UI\World\CameraBoundsComponent.cs" />
@@ -56,8 +66,10 @@
     <Compile Include="Utils\Commands.cs" />
     <Compile Include="Utils\GlobalContent.cs" />
     <Compile Include="Utils\Noise.cs" />
+    <Compile Include="World\TileRenderer.cs" />
     <Compile Include="World\Compass.cs" />
     <Compile Include="World\Tile.cs" />
+    <Compile Include="World\TileSprite.cs" />
     <Compile Include="World\WorldController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,89 +96,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\nez\effects\Bevels.mgfxo" />
-    <None Include="Content\nez\effects\BloomCombine.mgfxo" />
-    <None Include="Content\nez\effects\BloomExtract.mgfxo" />
-    <None Include="Content\nez\effects\Crosshatch.mgfxo" />
-    <None Include="Content\nez\effects\DeferredLighting.mgfxo" />
-    <None Include="Content\nez\effects\DeferredSprite.mgfxo" />
-    <None Include="Content\nez\effects\Dissolve.mgfxo" />
-    <None Include="Content\nez\effects\Dots.mgfxo" />
-    <None Include="Content\nez\effects\ForwardLighting.mgfxo" />
-    <None Include="Content\nez\effects\GaussianBlur.mgfxo" />
-    <None Include="Content\nez\effects\Grayscale.mgfxo" />
-    <None Include="Content\nez\effects\HeatDistortion.mgfxo" />
-    <None Include="Content\nez\effects\Invert.mgfxo" />
-    <None Include="Content\nez\effects\Letterbox.mgfxo" />
-    <None Include="Content\nez\effects\MultiTexture.mgfxo" />
-    <None Include="Content\nez\effects\MultiTextureOverlay.mgfxo" />
-    <None Include="Content\nez\effects\Noise.mgfxo" />
-    <None Include="Content\nez\effects\PaletteCycler.mgfxo" />
-    <None Include="Content\nez\effects\PixelGlitch.mgfxo" />
-    <None Include="Content\nez\effects\PolygonLight.mgfxo" />
-    <None Include="Content\nez\effects\Reflection.mgfxo" />
-    <None Include="Content\nez\effects\Scanlines.mgfxo" />
-    <None Include="Content\nez\effects\Sepia.mgfxo" />
-    <None Include="Content\nez\effects\SpriteAlphaTest.mgfxo" />
-    <None Include="Content\nez\effects\SpriteBlinkEffect.mgfxo" />
-    <None Include="Content\nez\effects\SpriteEffect.mgfxo" />
-    <None Include="Content\nez\effects\SpriteLightMultiply.mgfxo" />
-    <None Include="Content\nez\effects\SpriteLines.mgfxo" />
-    <None Include="Content\nez\effects\transitions\Squares.mgfxo" />
-    <None Include="Content\nez\effects\transitions\TextureWipe.mgfxo" />
-    <None Include="Content\nez\effects\transitions\Wind.mgfxo" />
-    <None Include="Content\nez\effects\Twist.mgfxo" />
-    <None Include="Content\nez\effects\Vignette.mgfxo" />
-    <None Include="Content\nez\FNAEffects\Bevels.fxb" />
-    <None Include="Content\nez\FNAEffects\BloomCombine.fxb" />
-    <None Include="Content\nez\FNAEffects\BloomExtract.fxb" />
-    <None Include="Content\nez\FNAEffects\Crosshatch.fxb" />
-    <None Include="Content\nez\FNAEffects\DeferredLighting.fxb" />
-    <None Include="Content\nez\FNAEffects\DeferredSprite.fxb" />
-    <None Include="Content\nez\FNAEffects\Dissolve.fxb" />
-    <None Include="Content\nez\FNAEffects\Dots.fxb" />
-    <None Include="Content\nez\FNAEffects\ForwardLighting.fxb" />
-    <None Include="Content\nez\FNAEffects\GaussianBlur.fxb" />
-    <None Include="Content\nez\FNAEffects\Grayscale.fxb" />
-    <None Include="Content\nez\FNAEffects\HeatDistortion.fxb" />
-    <None Include="Content\nez\FNAEffects\Invert.fxb" />
-    <None Include="Content\nez\FNAEffects\Letterbox.fxb" />
-    <None Include="Content\nez\FNAEffects\MultiTexture.fxb" />
-    <None Include="Content\nez\FNAEffects\MultiTextureOverlay.fxb" />
-    <None Include="Content\nez\FNAEffects\Noise.fxb" />
-    <None Include="Content\nez\FNAEffects\PaletteCycler.fxb" />
-    <None Include="Content\nez\FNAEffects\PixelGlitch.fxb" />
-    <None Include="Content\nez\FNAEffects\PolygonLight.fxb" />
-    <None Include="Content\nez\FNAEffects\Reflection.fxb" />
-    <None Include="Content\nez\FNAEffects\Scanlines.fxb" />
-    <None Include="Content\nez\FNAEffects\Sepia.fxb" />
-    <None Include="Content\nez\FNAEffects\SpriteAlphaTest.fxb" />
-    <None Include="Content\nez\FNAEffects\SpriteBlinkEffect.fxb" />
-    <None Include="Content\nez\FNAEffects\SpriteEffect.fxb" />
-    <None Include="Content\nez\FNAEffects\SpriteLightMultiply.fxb" />
-    <None Include="Content\nez\FNAEffects\SpriteLines.fxb" />
-    <None Include="Content\nez\FNAEffects\Squares.fxb" />
-    <None Include="Content\nez\FNAEffects\TextureWipe.fxb" />
-    <None Include="Content\nez\FNAEffects\transitions\Squares.fxb" />
-    <None Include="Content\nez\FNAEffects\transitions\TextureWipe.fxb" />
-    <None Include="Content\nez\FNAEffects\transitions\Wind.fxb" />
-    <None Include="Content\nez\FNAEffects\Twist.fxb" />
-    <None Include="Content\nez\FNAEffects\Vignette.fxb" />
-    <None Include="Content\nez\FNAEffects\Wind.fxb" />
-    <None Include="Content\nez\NezDefaultBMFont.xnb" />
-    <None Include="Content\nez\textures\gooCursor.xnb" />
-    <None Include="Content\nez\textures\heatDistortionNoise.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\angular.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\crissCross.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\diagonalDistort.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\horizontal.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\noise.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\pokemon.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\sawTooth.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\spiral.xnb" />
-    <None Include="Content\nez\textures\textureWipeTransition\wink.xnb" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Nez.Portable\Nez.csproj">
       <Project>{60b7197d-d0d5-405c-90a2-a56903e9b039}</Project>
       <Name>Nez</Name>
@@ -174,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Building\GameplayObjects\" />
+    <Folder Include="Content\nez\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
