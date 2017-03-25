@@ -32,10 +32,13 @@ namespace HospitalCeo.Building
             return BuildingCategory.Wall;
         }
 
-        void IBuildingCustomRenderer.DoCustomRenderer()
+        void IBuildingCustomRenderer.DoCustomRenderer(BuildingBaseRenderer renderer)
         {
-            entity.addComponent<BuildingWallRenderer>(new BuildingWallRenderer());
-            entity.getComponent<BuildingWallRenderer>().SetCorrectWallSprites();
+        }
+
+        Type IBuildingCustomRenderer.GetRenderer()
+        {
+            return typeof(BuildingWallRenderer);
         }
 
         // ---------- Start of the IBuildingWallSprites interface

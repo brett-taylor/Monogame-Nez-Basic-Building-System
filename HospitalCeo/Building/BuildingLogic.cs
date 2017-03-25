@@ -4,6 +4,8 @@ using Nez.Sprites;
 using Nez.Textures;
 using Microsoft.Xna.Framework;
 using HospitalCeo.World;
+using HospitalCeo.Tasks;
+using System;
 
 /*
  * Brett Taylor
@@ -15,10 +17,10 @@ namespace HospitalCeo.Building
     public abstract class BuildingLogic : Component, IBuildingInformation
     {
         // Variables
-        protected Sprite sprite;
         protected List<Tile> tiles;
         protected Vector2 tileSize;
         protected Vector2 tilePosition;
+        protected BuildingBaseRenderer renderer;
 
         // IBuildingInformation Interface
         public abstract string GetName();
@@ -26,11 +28,6 @@ namespace HospitalCeo.Building
         public abstract BuildingType GetBuildingType();
         public abstract BuildingCategory GetBuildingCatergory();
         public abstract Vector2 GetTileSize();
-
-        public virtual bool UsesCustomRenderer()
-        {
-            return false;
-        }
 
         public virtual bool IsOneSquareWidth()
         {
@@ -67,9 +64,15 @@ namespace HospitalCeo.Building
             }
         }
 
-        public void CreateRenderer()
+        public void CreateRenderer(System.Type type)
         {
-            entity.addComponent(new BuildingRepeatedTiledRenderer());
+            renderer = (BuildingBaseRenderer) System.Activator.CreateInstance(type, this);
+            entity.addComponent(renderer);
+        }
+
+        public BuildingBaseRenderer GetRenderer()
+        {
+            return renderer;
         }
 
         public void SetPosition(Vector2 positon)
@@ -92,6 +95,29 @@ namespace HospitalCeo.Building
         public Vector2 GetTilePosition()
         {
             return tilePosition;
+        }
+
+        public void StartConstruction()
+        {
+            for (int x = 0; x < tileSize.X; x++)
+            {
+                for (int y = 0; y < tileSize.Y; y++)
+                {
+                    Tile t = WorldController.GetTileAt((int)tilePosition.X + x, (int)tilePosition.Y + y);
+                    Task task = new Task(t, .5f, onComplete => {});
+
+                    task.RegisterTaskUpdate(
+                        onUpdate =>
+                        {
+                            int percentage = (int) (100 - (onUpdate.GetTimeLeft() / onUpdate.GetTimeMaximum()) * 100);
+                            BuildingSprite sprite = renderer.GetSpriteAt(onUpdate.GetTile().GetTileNumber());
+
+                            if (sprite != null) sprite.SetPercentageBuilt(percentage);
+                        });
+
+                    TaskManager.WORKMAN_TASK_QUEUE.Enqueue(task);
+                }
+            }
         }
     }
 }

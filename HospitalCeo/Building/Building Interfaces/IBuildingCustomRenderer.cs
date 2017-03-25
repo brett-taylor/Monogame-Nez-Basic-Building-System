@@ -4,6 +4,7 @@ namespace HospitalCeo.Building
 {
     interface IBuildingCustomRenderer
     {
-        void DoCustomRenderer();
+        void DoCustomRenderer(BuildingBaseRenderer renderer);
+        System.Type GetRenderer();
     }
 }

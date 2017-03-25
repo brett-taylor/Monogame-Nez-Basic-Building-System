@@ -38,7 +38,8 @@ namespace HospitalCeo.World
             Tile t = WorldController.GetMouseOverTile();
             if (t != null)
             {
-                Debug.drawText("[Tile] Tile Position: " + t.GetTileNumber() + " : " + t.GetPosition(), Color.Purple, duration: 0, scale: 3);
+                Debug.drawText(" [Tile] Tile Infrastructure: " + t.GetInfrastructureItem(), duration: 0);
+                Debug.drawText(" [Tile] Tile Position: " + t.GetTileNumber() + " : " + t.GetPosition(), duration: 0);
             }
         }
     }

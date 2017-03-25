@@ -24,19 +24,6 @@ namespace HospitalCeo.Utils
             InputManager.camera.position = new Vector2(0, 0);
         }
 
-        [Command("building", "Starts Buidling")]
-        private static void startBuilding(string buildingName)
-        {
-            Type type = Type.GetType(buildingName);
-            if (type == null)
-            {
-                DebugConsole.instance.log(buildingName + " not a valid building");
-                return;
-            }
-            Building.BuildingController.StartBuilding(type);
-        }
-
-
         [Command("tile-under-cursor", "Prints the tile's position and the building on top of it. AS well as draws a box around it")]
         private static void tileUnderCursor()
         {
@@ -74,6 +61,16 @@ namespace HospitalCeo.Utils
             }
 
             World.TileSprite.drawInfrastructureStatus = !World.TileSprite.drawInfrastructureStatus;
+        }
+
+        [Command("build", "Starts building the building that the cursor is above")]
+        private static void buildBuilding()
+        {
+            Building.BuildingLogic building = World.WorldController.GetMouseOverTile().GetInfrastructureItem();
+            if (building != null)
+            {
+                System.Diagnostics.Debug.WriteLine("STart building");
+            }
         }
     }
 }

@@ -38,19 +38,32 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AI\Interfaces\IMobSwapSprite.cs" />
+    <Compile Include="AI\Interfaces\IMobRotatedSprite.cs" />
+    <Compile Include="AI\Mob.cs" />
+    <Compile Include="AI\MobSwapSpriteRenderer.cs" />
+    <Compile Include="AI\PathfindingComponent.cs" />
+    <Compile Include="AI\Staff\Staff.cs" />
+    <Compile Include="AI\Staff\Workman.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskManager.cs" />
+    <Compile Include="Tasks\TaskQueue.cs" />
+    <Compile Include="Building\Building Components\BuildingBaseRenderer.cs" />
     <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
+    <Compile Include="Building\Building Components\BuildingSprite.cs" />
     <Compile Include="Building\Building Components\BuildingWallRenderer.cs" />
     <Compile Include="Building\Building Components\BuildingRepeatedTiledRenderer.cs" />
     <Compile Include="Building\Building Interfaces\IBuildingWallSprites.cs" />
     <Compile Include="Building\BuildingCategory.cs" />
-    <Compile Include="Building\IBuildingBeforeBuild.cs" />
-    <Compile Include="Building\IBuildingCustomRenderer.cs" />
-    <Compile Include="Building\IBuildingOnBuild.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingBeforeBuild.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingPlaceableOverBuilding.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingCustomRenderer.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingOnBuild.cs" />
     <Compile Include="Building\BuildingController.cs" />
     <Compile Include="Building\BuildingLogic.cs" />
     <Compile Include="Building\BuildingType.cs" />
     <Compile Include="Building\DraggingComponent.cs" />
-    <Compile Include="Building\IBuildingInformation.cs" />
+    <Compile Include="Building\Building Interfaces\IBuildingInformation.cs" />
     <Compile Include="Building\InfrastructureBuildingComponent.cs" />
     <Compile Include="Building\InfrastructureObjects\CheapWall.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />

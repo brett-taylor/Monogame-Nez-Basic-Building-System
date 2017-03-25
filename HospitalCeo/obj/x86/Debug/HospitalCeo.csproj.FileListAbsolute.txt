@@ -112,3 +112,5 @@ C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\NVorbis
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\OpenTK.dll
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.pdb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb

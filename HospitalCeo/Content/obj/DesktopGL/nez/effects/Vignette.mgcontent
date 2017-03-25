@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/nez/effects/Vignette.fx</SourceFile>
+  <SourceFile>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/effects/Vignette.fx</SourceFile>
   <SourceTime>2017-03-19T15:52:24+00:00</SourceTime>
-  <DestFile>C:/Users/Brett/Documents/HospitalCeo/HospitalCeo/Content/bin/DesktopGL/nez/effects/Vignette.xnb</DestFile>
-  <DestTime>2017-03-22T00:02:10.7329408+00:00</DestTime>
+  <DestFile>D:/CPP/HospitalCeo/HospitalCeo/Content/bin/DesktopGL/nez/effects/Vignette.xnb</DestFile>
+  <DestTime>2017-03-25T18:56:46.1121523+00:00</DestTime>
   <Importer>EffectImporter</Importer>
   <ImporterTime>2016-03-30T07:36:08+01:00</ImporterTime>
   <Processor>EffectProcessor</Processor>

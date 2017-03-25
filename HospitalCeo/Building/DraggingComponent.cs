@@ -66,7 +66,6 @@ namespace HospitalCeo.Building
         {
             isActive = true;
             this.carryOnAfterSuccessfullDraw = carryOnAfterSuccessfullDraw;
-            System.Diagnostics.Debug.WriteLine(carryOnAfterSuccessfullDraw);
         }
 
         void IUpdatable.update()
@@ -203,7 +202,6 @@ namespace HospitalCeo.Building
         // Gets rid of all the dragging stuff.
         private void StopDragging()
         {
-            System.Diagnostics.Debug.WriteLine("Stopped dragging");
             lastTileUpdated = null;
             startingTile = null;
             isLeftMouseButtonDown = false;
@@ -217,7 +215,6 @@ namespace HospitalCeo.Building
         // Used when we are fully finished with dragging - removes everything
         protected void FinishDragging()
         {
-            System.Diagnostics.Debug.WriteLine("Finished dragging");
             isActive = false;
             StopDragging();
             OnFinishedDragging();

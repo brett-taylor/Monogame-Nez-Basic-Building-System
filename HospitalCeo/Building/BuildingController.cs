@@ -31,9 +31,9 @@ namespace HospitalCeo.Building
         {
         }
 
-        public static void PlaceBuilding(Type buildingType, Vector2 tilePosition, Vector2 tileSize)
+        public static BuildingLogic PlaceBuilding(Type buildingType, Vector2 tilePosition, Vector2 tileSize, BuildingCategory[] extraCategories = null)
         {
-            infrastructureBuildingComponent.PlaceBuilding(buildingType, tilePosition, tileSize);
+            return infrastructureBuildingComponent.PlaceBuilding(buildingType, tilePosition, tileSize, extraCategories);
         }
     }
 }

@@ -14,12 +14,17 @@ namespace HospitalCeo.Utils
     public static class GlobalContent
     {
         public static List<Subtexture> INFRASTRUCTURE_SPRITE_ALTAS;
+        public static List<Subtexture> MOB_SPRITE_ATLAS;
 
         public static void Initialise()
         {
-            Texture2D spriteAltas = Core.content.Load<Texture2D>("hospitalceo/tiles");
-            INFRASTRUCTURE_SPRITE_ALTAS = Subtexture.subtexturesFromAtlas(spriteAltas, 100, 100);
-            Nez.Console.DebugConsole.instance.log("Amount of textures loaded: " + INFRASTRUCTURE_SPRITE_ALTAS.Count);
+            Texture2D infrastrucureSpriteAtlas = Core.content.Load<Texture2D>("hospitalceo/tiles");
+            INFRASTRUCTURE_SPRITE_ALTAS = Subtexture.subtexturesFromAtlas(infrastrucureSpriteAtlas, 100, 100);
+            Nez.Console.DebugConsole.instance.log("Amount of infrastructure textures loaded: " + INFRASTRUCTURE_SPRITE_ALTAS.Count);
+
+            Texture2D mobSpriteAtlas = Core.content.Load<Texture2D>("hospitalceo/mobs");
+            MOB_SPRITE_ATLAS = Subtexture.subtexturesFromAtlas(mobSpriteAtlas, 70, 70);
+            Nez.Console.DebugConsole.instance.log("Amount of mob textures loaded: " + MOB_SPRITE_ATLAS.Count);
         }
 
         public static class Util
@@ -63,6 +68,13 @@ namespace HospitalCeo.Utils
                 public static Subtexture T_North_East_West = INFRASTRUCTURE_SPRITE_ALTAS[16];
                 public static Subtexture T_East_South_West = INFRASTRUCTURE_SPRITE_ALTAS[6];
             }
+        }
+
+        public static class Worker
+        {
+            public static Subtexture Worker_North = MOB_SPRITE_ATLAS[1];
+            public static Subtexture Worker_South = MOB_SPRITE_ATLAS[2];
+            public static Subtexture Worker_West = MOB_SPRITE_ATLAS[0];
         }
     }
 }

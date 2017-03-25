@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HospitalCeo.World;
 using Microsoft.Xna.Framework;
 using Nez;
@@ -7,17 +8,19 @@ using Nez.Textures;
 
 namespace HospitalCeo.Building
 {
-    public class BuildingWallRenderer : Component
+    public class BuildingWallRenderer : BuildingBaseRenderer
     {
-        private BuildingLogic building;
-        private Sprite[,] sprites;
-
-        public void SetCorrectWallSprites()
+        public BuildingWallRenderer(BuildingLogic building) : base(building)
         {
+            this.building = building;
+        }
+
+        public override void onAddedToEntity()
+        {
+            base.onAddedToEntity();
+
             // Start from the top left of the building and go towards the bottom right correcting sprites
             // Once done run one loop outside of the building checking for walls connecting to it.
-            building = entity.getComponent<BuildingLogic>();
-            sprites = new Sprite[(int) building.GetTileSize().X, (int) building.GetTileSize().Y];
             SetInternalSprites();
             SetExternalSprites();
         }
@@ -30,11 +33,12 @@ namespace HospitalCeo.Building
                 {
                     Tile t = WorldController.GetTileAt((int) building.GetTilePosition().X + x, (int) building.GetTilePosition().Y + y);
                     int amount = t.SimilarItemsAroundTile(this.building);
-                    Sprite sprite = new Sprite(WorkOutSprite(amount, t));
+
+                    BuildingSprite sprite = new BuildingSprite(WorkOutSprite(amount, t), building.GetTilePosition() * 100 + new Vector2(x * 100, y * 100));
                     sprite.renderLayer = 18;
                     sprite.localOffset = new Vector2(x * 100, y * 100);
-                    sprites[x, y] = sprite;
                     entity.addComponent<Sprite>(sprite);
+                    sprites[x, y] = sprite;
                 }
             }
         }
@@ -73,24 +77,13 @@ namespace HospitalCeo.Building
                         BuildingWallRenderer otherWallRenderer = other.getComponent<BuildingWallRenderer>();
                         if (otherWallRenderer != null)
                         {
-                            Sprite sprite = GetSpriteAt(otherWallRenderer, tile.GetTileNumber());
+                            BuildingSprite sprite = otherWallRenderer.GetSpriteAt(tile.GetTileNumber());
                             if (sprite != null)
                                 sprite.setSubtexture(WorkOutSprite(amount, tile));
                         }
                     }
                 }
             }
-        }
-
-        public Sprite GetSpriteAt(BuildingWallRenderer other, Vector2 position)
-        {
-            Vector2 spritePosition = position - other.building.GetTilePosition();
-            if (spritePosition.X > other.sprites.GetUpperBound(0) || spritePosition.Y > other.sprites.GetUpperBound(1))
-            {
-                System.Diagnostics.Debug.WriteLine("Out of bounds BuildingWallRenderer.GetSpriteAt() :" + position);
-                return null;
-            }
-            return other.sprites[(int) spritePosition.X, (int) spritePosition.Y];
         }
 
         private Subtexture WorkOutSprite(int amountOfConnections, Tile tile)

@@ -12,7 +12,6 @@ namespace HospitalCeo.Building
         BuildingType GetBuildingType();
         BuildingCategory GetBuildingCatergory();
         Vector2 GetTileSize();
-        bool UsesCustomRenderer();
         bool IsOneSquareWidth();
     }
 }

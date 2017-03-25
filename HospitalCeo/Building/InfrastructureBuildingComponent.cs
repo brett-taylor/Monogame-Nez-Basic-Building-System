@@ -16,6 +16,7 @@ namespace HospitalCeo.Building
     public class InfrastructureBuildingComponent : DraggingComponent
     {
         private Type buildingLogic;
+        private BuildingCategory[] extraCategories;
 
         public InfrastructureBuildingComponent(Color drawingColor, bool shouldShowRulerLines, bool shouldShowRulerLengthText) : base(drawingColor, shouldShowRulerLines, shouldShowRulerLengthText)
         {
@@ -47,9 +48,10 @@ namespace HospitalCeo.Building
             PlaceBuilding(tileNumber, size, tilesAffected);
         }
 
-        public void PlaceBuilding(Type building, Vector2 tilePosition, Vector2 size)
+        public BuildingLogic PlaceBuilding(Type building, Vector2 tilePosition, Vector2 size, BuildingCategory[] extraCategories)
         {
             this.buildingLogic = building;
+            this.extraCategories = extraCategories;
             List<Tile> tilesAffected = new List<Tile>();
 
             for (int x = 0; x < size.X; x++)
@@ -62,21 +64,72 @@ namespace HospitalCeo.Building
                 }
             }
 
-            PlaceBuilding(tilePosition, size, tilesAffected);
+            return PlaceBuilding(tilePosition, size, tilesAffected);
         }
 
-        public void PlaceBuilding(Vector2 tilePosition, Vector2 size, List<Tile> tilesAffected)
+        public BuildingLogic PlaceBuilding(Vector2 tilePosition, Vector2 size, List<Tile> tilesAffected)
         {
-            if (buildingLogic == null) return;
-            if (tilesAffected == null || tilesAffected.Count == 0) return;
-
-            foreach (Tile t in tilesAffected)
-            {
-                if (t.GetInfrastructureItem() != null) return;
-            }
+            if (buildingLogic == null) return null;
+            if (tilesAffected == null || tilesAffected.Count == 0) return null;
 
             // Create the building logic and then run OnBeforeBuild
-            BuildingLogic logic = (BuildingLogic)Activator.CreateInstance(buildingLogic);
+            BuildingLogic logic = (BuildingLogic) Activator.CreateInstance(buildingLogic);
+
+            // Get what it can be built over
+            /*List<BuildingCategory> buildableOver = new List<BuildingCategory>();
+            buildableOver.Add(logic.GetBuildingCatergory());
+
+            IBuildingPlaceableOverBuilding placeableOverBuilding = logic as IBuildingPlaceableOverBuilding;
+            if (placeableOverBuilding != null)
+            {
+                foreach (BuildingCategory cat in placeableOverBuilding.GetBuildableOver())
+                {
+                    if (!buildableOver.Contains(cat)) buildableOver.Add(cat);
+                }
+            }
+
+            if (extraCategories != null)
+            {
+                foreach (BuildingCategory cat in extraCategories)
+                {
+                    if (!buildableOver.Contains(cat)) buildableOver.Add(cat);
+                }
+            }
+
+            // Check every building in the zone we are wanting to replace
+            foreach (Tile t in tilesAffected)
+            {
+                BuildingLogic building = t.GetInfrastructureItem();
+                if (building != null)
+                {
+                    if (!buildableOver.Contains(building.GetBuildingCatergory())) return null;
+                }
+            }
+
+            // Delete the current infrastructure within the zone (including the sprite) 
+            foreach (Tile t in tilesAffected)
+            {
+                BuildingLogic building = t.GetInfrastructureItem();
+                if (building == null) continue;
+
+                BuildingBaseRenderer render = building.GetRenderer();
+                System.Diagnostics.Debug.WriteLine(t);
+                System.Diagnostics.Debug.WriteLine(render);
+
+                BuildingSprite sprite = building.GetRenderer().GetSpriteAt(t.GetTileNumber());
+                if (sprite != null)
+                    sprite.active = false;
+            }*/
+
+            // TEMP DO NOT ALLOW ANY BUILDING OVER A BUILDING
+            // GET THE ABOVE CODE WORKING
+            foreach (Tile t in tilesAffected)
+            {
+                BuildingLogic building = t.GetInfrastructureItem();
+                if (building != null) return null;
+            }
+
+            // Grab if the building wants to do something before it is officially built
             IBuildingBeforeBuild logicBeforeBuild = logic as IBuildingBeforeBuild;
             if (logicBeforeBuild != null)
             {
@@ -87,7 +140,7 @@ namespace HospitalCeo.Building
                 {
                     logic = null;
                     logicBeforeBuild = null;
-                    return;
+                    return null;
                 }
             }
 
@@ -108,10 +161,18 @@ namespace HospitalCeo.Building
 
             // If the logic doesnt have has IBuildingCustomRenderer on it then create the default renderer otherwise add the custom one
             IBuildingCustomRenderer customRenderer = logic as IBuildingCustomRenderer;
-            if (customRenderer == null)
-                logic.CreateRenderer();
+            if (customRenderer != null)
+            {
+                logic.CreateRenderer(customRenderer.GetRenderer());
+                customRenderer.DoCustomRenderer(logic.GetRenderer());
+            }
             else
-                customRenderer.DoCustomRenderer();
+                logic.CreateRenderer(typeof(BuildingRepeatedTiledRenderer));
+
+            // Start the construction
+            logic.StartConstruction();
+
+            return logic;
         }
     }
 }
