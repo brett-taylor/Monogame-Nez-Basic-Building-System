@@ -11,6 +11,6 @@ D:\CPP\HospitalCeo\Nez.Portable\obj\Debug\Nez.pdb
 D:\CPP\HospitalCeo\Nez.Portable\obj\Debug\Nez.csprojResolveAssemblyReference.cache
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez\Nez.dll
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez\Nez.pdb
-C:\Users\Brett\Documents\HospitalCeo\Nez.Portable\obj\Debug\Nez.csprojResolveAssemblyReference.cache
 C:\Users\Brett\Documents\HospitalCeo\Nez.Portable\obj\Debug\Nez.dll
 C:\Users\Brett\Documents\HospitalCeo\Nez.Portable\obj\Debug\Nez.pdb
+C:\Users\Brett\Documents\HospitalCeo\Nez.Portable\obj\Debug\Nez.csprojResolveAssemblyReference.cache

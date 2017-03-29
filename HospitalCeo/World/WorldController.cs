@@ -2,6 +2,8 @@
 using Nez;
 using Nez.Sprites;
 using Nez.Textures;
+using Nez.AI.Pathfinding;
+
 /*
  * Brett Taylor
  * World Controller, handles creating the world
@@ -17,6 +19,7 @@ namespace HospitalCeo.World
         public static Tile[,] tiles { get; private set; }
         public static Entity inputManager { get; private set; }
         private static Entity tilesGraphic;
+        public static Pathfinding.PathfindingHuman PATHFINDING_HUMAN_GRID { get; set; }
 
         public static void Initialize()
         {
@@ -26,6 +29,9 @@ namespace HospitalCeo.World
 
             // Create the world
             CreateBaseTiles();
+
+            // Create the pathfind
+            PATHFINDING_HUMAN_GRID = new Pathfinding.PathfindingHuman();
         }
 
         public static void Update()
@@ -59,21 +65,37 @@ namespace HospitalCeo.World
             tilesGraphic.addComponent<TileRenderer>(new TileRenderer());
         }
 
-        public static Tile GetMouseOverTile()
+        public static Tile GetMouseOverTile(bool ShouldUseToFloor = false)
         {
-            Tile t = GetTileAt(InputManager.GetScreenWorldPoint());
+            Tile t = GetTileAt(InputManager.GetScreenWorldPoint(), ShouldUseToFloor);
             return t != null ? t : null;
         }
 
-        public static Tile GetTileAt(Vector2 coord)
+        /*
+         * ShouldUseToFloor should be used when dealing with negative tiles
+         * as floor will return floor(-1.5) = 2.0
+         * as (int) will return (int) -1.5 = -1
+         */
+        public static Tile GetTileAt(Vector2 coord, bool ShouldUseToFloor = false, bool isTileCoords = false)
         {
-            int x = Mathf.floorToInt(coord.X) / 100;
-            int y = Mathf.floorToInt(coord.Y) / 100;
-            if (x >= WORLD_WIDTH || x < 0 || y >= WORLD_HEIGHT || y < 0)
+            int x = (int) coord.X;
+            int y = (int) coord.Y;
+
+            if (!isTileCoords)
             {
-                return null;
+                if (ShouldUseToFloor)
+                {
+                    x = Mathf.floorToInt(x) / 100;
+                    y = Mathf.floorToInt(y) / 100;
+                }
+                else
+                {
+                    x = x / 100;
+                    y = y / 100;
+                }
             }
-            return tiles[x, y];
+
+            return GetTileAt(x, y);
         }
 
         public static Tile GetTileAt(int x, int y)

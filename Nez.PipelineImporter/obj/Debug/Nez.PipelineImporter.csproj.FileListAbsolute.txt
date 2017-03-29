@@ -15,3 +15,8 @@ D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Pipeline Importer\Nez.PipelineImporter.pd
 D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.csprojResolveAssemblyReference.cache
 D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.dll
 D:\CPP\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez Pipeline Importer\Nez.PipelineImporter.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez Pipeline Importer\Nez.PipelineImporter.pdb
+C:\Users\Brett\Documents\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.dll
+C:\Users\Brett\Documents\HospitalCeo\Nez.PipelineImporter\obj\Debug\Nez.PipelineImporter.pdb

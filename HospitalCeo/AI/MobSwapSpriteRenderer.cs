@@ -10,7 +10,6 @@ namespace HospitalCeo.AI
     {
         private Vector2 lastPosition;
         private Staff.Staff staff;
-        private float timer  = 2f;
 
         public MobSwapSpriteRenderer(Subtexture tex) : base(tex)
         {

@@ -1,0 +1,57 @@
+Task should consist of subtasks and subtasks consists of actions
+
+Tasks will have a queue of Subtasks
+Subtasks will have a queue of actions
+When a task is top of the WORLD_TASKS queue,
+the subtask top of the TASK_SUBTASK queue is chosen,
+the qction top of the TASK_SUB_TASK_ACTIONS queue is chosen and delegated to a worker
+The worker then completes the action.
+
+This allow us to have a building as a task, and then subtasks to tell workers to (EG) remove,
+all buildings or tasks currently in the area. Then to (EG) move all resources needed for the building,
+to the task position. And then finally (EG) build the actual building.
+
+Building Task
+	Sub task
+		- Remove tree
+		- Remove tree
+		- Remove tree
+	Sub task:
+		- Move concrete to building position
+		- Move concrete to building position
+		- Move concrete to building position
+	Sub task:
+		- Build flooring
+		- Build flooring
+		- Build flooring
+		- Build flooring
+		- Build wall
+		- Build wall
+		- Build wall
+		- Build wall
+Task will now be done
+
+Task
+{
+	QUEUE of type subtasks: subtasks
+	SUBTASK getTopSubtask();
+}
+
+SubTask
+{
+	QUEUE of type actions: actions
+	ACTION getTopAction();
+}
+
+ACTION
+{
+	action onComplete;
+	float GetTimeLeft();
+}
+
+Task
+Subtask
+Instruction
+Process
+
+	

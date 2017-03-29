@@ -55,8 +55,8 @@ D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.csprojResolveAssemblyRe
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.exe
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.pdb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\tiles.xnb
-C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.exe
-C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\tiles.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\nez\effects\Bevels.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\nez\effects\BloomCombine.xnb
@@ -108,9 +108,29 @@ C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Hospita
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\HospitalCeo.pdb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.dll
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\NVorbis.dll
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\OpenTK.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.Content.Pipeline.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Ionic.ZLib.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.csprojResolveAssemblyReference.cache
-C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.exe
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.Content.Pipeline.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Ionic.ZLib.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml

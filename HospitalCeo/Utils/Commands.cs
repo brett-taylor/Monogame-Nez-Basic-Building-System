@@ -63,6 +63,18 @@ namespace HospitalCeo.Utils
             World.TileSprite.drawInfrastructureStatus = !World.TileSprite.drawInfrastructureStatus;
         }
 
+        [Command("draw-tile-pathfind-status", "Draws a square on each tile indicating its pathfinding status")]
+        private static void drawTilePathfindingStatus()
+        {
+            if (!Core.debugRenderEnabled)
+            {
+                DebugConsole.instance.log("Will not draw unless debug-renderer is turned on");
+                DebugConsole.instance.Open();
+            }
+
+            World.TileSprite.drawPathfindingInformation = !World.TileSprite.drawPathfindingInformation;
+        }
+
         [Command("build", "Starts building the building that the cursor is above")]
         private static void buildBuilding()
         {

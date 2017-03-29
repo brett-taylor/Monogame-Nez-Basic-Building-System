@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
 using Nez.Textures;
@@ -18,6 +19,7 @@ namespace HospitalCeo.World
         private Vector2 tileNumber;
         private BuildingLogic infrastructureItem;
         private BuildingLogic gameplayItem;
+        private Pathfinding.PathfindingNode<Tile> pathfindNode;
 
         public Tile(Subtexture texture, Vector2 position, Vector2 tileNumber)
         {
@@ -172,6 +174,32 @@ namespace HospitalCeo.World
         public Subtexture GetTexture()
         {
             return texture;
+        }
+
+        public float GetMovementCost()
+        {
+            if (infrastructureItem == null) return 1;
+            return 1 * infrastructureItem.GetMovementCost();
+        }
+
+        public void AddToPathfind(Pathfinding.PathfindingNode<Tile> node)
+        {
+            pathfindNode = node;
+        }
+
+        public void RemoveFromPathfind()
+        {
+            pathfindNode = null;
+        }
+
+        public bool CanPathfindTo()
+        {
+            return pathfindNode == null ? false : true;
+        }
+
+        public Pathfinding.PathfindingNode<Tile> GetPathfindNode()
+        {
+            return pathfindNode;
         }
     }
 }

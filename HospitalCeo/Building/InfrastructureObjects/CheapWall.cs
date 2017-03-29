@@ -41,6 +41,11 @@ namespace HospitalCeo.Building
             return typeof(BuildingWallRenderer);
         }
 
+        public override int GetMovementCost()
+        {
+            return -1;
+        }
+
         // ---------- Start of the IBuildingWallSprites interface
         public virtual Subtexture SpriteNameHorizontal()
         {

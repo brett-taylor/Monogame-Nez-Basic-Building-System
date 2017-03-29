@@ -13,26 +13,23 @@ namespace HospitalCeo.AI.Staff
 {
     public class Workman : Staff, IUpdatable
     {
-        private Task buildTask;
+        private Instruction currentInstructions;
+        private Process currentProcess;
         private bool isDoingTask;
 
         public Workman(Vector2 position) : base(position)
         {
-        }
-
-        public override string GetName()
-        {
-            return "Worker";
-        }
-
-        public override Subtexture GetNorthFacingSprite()
-        {
-            return Utils.GlobalContent.Worker.Worker_North;
+            SetMovementSpeed(Nez.Random.range(0.2f, 1.8f));
         }
 
         public override Subtexture GetEastFacingSprite()
         {
             return Utils.GlobalContent.Worker.Worker_West;
+        }
+
+        public override Subtexture GetNorthFacingSprite()
+        {
+            return Utils.GlobalContent.Worker.Worker_North;
         }
 
         public override Subtexture GetSouthFacingSprite()
@@ -50,32 +47,42 @@ namespace HospitalCeo.AI.Staff
             return false;
         }
 
-        public void update()
+        private void ReachedJobTile()
         {
-            if (buildTask == null)
+            isDoingTask = true;
+        }
+
+        void IUpdatable.update()
+        {
+            if (currentInstructions == null && Task.AnyTasks())
             {
-                if (TaskManager.WORKMAN_TASK_QUEUE.Count >= 1)
+                currentInstructions = Task.GetNextInstruction();
+            }
+
+            if (currentInstructions != null)
+            {
+                if (currentInstructions.IsFinished())
                 {
-                    buildTask = TaskManager.WORKMAN_TASK_QUEUE.Dequeue();
-                    pathfinder.SetDestinationTile(buildTask.GetTile());
+                    currentInstructions = null;
+                }
+
+                if (currentProcess == null & currentInstructions != null)
+                {
+                    currentProcess = currentInstructions.GetNextProcess(this.entity);
+                    pathfinder.SetDestination(this, currentProcess.GetWorkTile().GetPosition());
                     pathfinder.RegisterOnReachHandle(ReachedJobTile);
                 }
             }
 
-            if (isDoingTask == true)
+            if (isDoingTask && currentProcess != null)
             {
-                buildTask.StartTask(Time.deltaTime);
-                if (buildTask.GetTimeLeft() < 0)
+                currentProcess.DoProcess(Time.deltaTime);
+                if (currentProcess.GetRemainingTime() < 0)
                 {
-                    buildTask = null;
+                    currentProcess = null;
                     isDoingTask = false;
                 }
             }
-        }
-
-        private void ReachedJobTile()
-        {
-            isDoingTask = true;
         }
     }
 }

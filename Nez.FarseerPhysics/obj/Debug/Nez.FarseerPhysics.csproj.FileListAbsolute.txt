@@ -11,3 +11,8 @@ D:\CPP\HospitalCeo\HospitalCeo\bin\Nez Farseer Physics\Nez.FarseerPhysics.pdb
 D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.csprojResolveAssemblyReference.cache
 D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.dll
 D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez Farseer Physics\Nez.FarseerPhysics.dll
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\Nez Farseer Physics\Nez.FarseerPhysics.pdb
+C:\Users\Brett\Documents\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.dll
+C:\Users\Brett\Documents\HospitalCeo\Nez.FarseerPhysics\obj\Debug\Nez.FarseerPhysics.pdb

@@ -4,8 +4,8 @@ using Nez.Sprites;
 using Nez.Textures;
 using Microsoft.Xna.Framework;
 using HospitalCeo.World;
-using HospitalCeo.Tasks;
 using System;
+using HospitalCeo.Tasks;
 
 /*
  * Brett Taylor
@@ -37,6 +37,11 @@ namespace HospitalCeo.Building
         public virtual bool CarryOnBuildingAfterBuild()
         {
             return true;
+        }
+
+        public virtual int GetMovementCost()
+        {
+            return 1;
         }
 
         public Entity GetEntity()
@@ -99,23 +104,47 @@ namespace HospitalCeo.Building
 
         public void StartConstruction()
         {
+            Task building = new Task();
+            Subtask constructBuilding = new Subtask();
+            building.AddSubtask(constructBuilding);
+
             for (int x = 0; x < tileSize.X; x++)
             {
                 for (int y = 0; y < tileSize.Y; y++)
                 {
-                    Tile t = WorldController.GetTileAt((int)tilePosition.X + x, (int)tilePosition.Y + y);
-                    Task task = new Task(t, .5f, onComplete => {});
+                    // Grab the tile
+                    Tile t = WorldController.GetTileAt((int) tilePosition.X + x, (int) tilePosition.Y + y);
+                    Instruction instruction = new Instruction();
 
-                    task.RegisterTaskUpdate(
-                        onUpdate =>
+                    // Create the wait At tile for 2 seconds process
+                    Process waitAtTile = new Process(t, 1f, onComplete => { });
+                    instruction.AddProcess(waitAtTile);
+
+                    Process turnRed = new Process(t, 0.01f, onComplete => { onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.Red; });
+                    instruction.AddProcess(turnRed);
+
+                    Process faceNorth = new Process(t, 0.01f, onComplete => { onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().setSubtexture(onComplete.GetInstruction().GetEntity().getComponent<AI.Staff.Staff>().GetNorthFacingSprite()); });
+                    instruction.AddProcess(faceNorth);
+
+                    // Create the actual build
+                    Process constructProcess = new Process(t, .5f, onComplete => { });
+                    instruction.AddProcess(constructProcess);
+                    constructProcess.RegisterOnTickHandle( onUpdate =>
                         {
-                            int percentage = (int) (100 - (onUpdate.GetTimeLeft() / onUpdate.GetTimeMaximum()) * 100);
-                            BuildingSprite sprite = renderer.GetSpriteAt(onUpdate.GetTile().GetTileNumber());
-
+                            int percentage = (int) (100 - (onUpdate.GetRemainingTime() / onUpdate.GetProcessTime()) * 100);
+                            BuildingSprite sprite = renderer.GetSpriteAt(onUpdate.GetWorkTile().GetTileNumber());
                             if (sprite != null) sprite.SetPercentageBuilt(percentage);
-                        });
+                        }
+                    );
 
-                    TaskManager.WORKMAN_TASK_QUEUE.Enqueue(task);
+                    Process turnWhite = new Process(t, 0.01f, onComplete => 
+                        {
+                            onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.White;
+                            WorldController.PATHFINDING_HUMAN_GRID.RebuildTile(onComplete.GetWorkTile());
+                        });
+                    instruction.AddProcess(turnWhite);
+
+                    constructBuilding.AddInstruction(instruction);
                 }
             }
         }

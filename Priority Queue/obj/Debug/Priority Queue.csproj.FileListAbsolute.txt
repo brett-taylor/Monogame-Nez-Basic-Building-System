@@ -1,0 +1,8 @@
+C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\bin\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\bin\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\obj\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\obj\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.pdb

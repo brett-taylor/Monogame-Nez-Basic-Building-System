@@ -22,7 +22,6 @@ namespace HospitalCeo
         {
             World.WorldController.Update();
             InputManager.Update();
-            Tasks.TaskManager.Update();
         }
 
         protected override void Initialize()
@@ -32,22 +31,15 @@ namespace HospitalCeo
             Core.exitOnEscapeKeypress = false;
             base.Initialize();
             Core.registerGlobalManager(this);
+            Transform.shouldRoundPosition = true;
 
             Utils.GlobalContent.Initialise();
             World.WorldController.Initialize();
             InputManager.Initialise();
             Building.BuildingController.Initialise();
-            Tasks.TaskManager.Initialise();
 
-            for (int i = 0; i < 1000; i++)
-            {
-                World.WorldController.SCENE.createEntity("worker " + i).addComponent<AI.Staff.Workman>(new AI.Staff.Workman(new Vector2(400 + (i * 1), 400 + (i * 1))));
-            }
-
-            Entity entity = World.WorldController.SCENE.createEntity("worker");
-            AI.Staff.Workman worker = new AI.Staff.Workman(new Vector2(550, 550));
-            entity.addComponent(worker);
-
+            for (int i = 0; i < 20; i++)
+                World.WorldController.SCENE.createEntity("worker" + i).addComponent<AI.Staff.Workman>(new AI.Staff.Workman(new Vector2((int) (400 + (i * 50)), (int) (400 + (i * 50)))));
         }
     }
 }

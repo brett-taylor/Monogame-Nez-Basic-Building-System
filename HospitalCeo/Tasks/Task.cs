@@ -1,71 +1,100 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using HospitalCeo.World;
 
 /*
  * Brett Taylor
- * Holds information for a queued up job,
- * E.G Construct a building.
+ * Task
  */
 
 namespace HospitalCeo.Tasks
 {
     public class Task
     {
-        private Tile tile;
-        private float jobTime;
-        private float maximumJobTime;
+        private Queue<Subtask> subtasks;
 
-        private Action<Task> OnJobCompleted;
-        private Action<Task> onJobCancelled;
-        private Action<Task> onJobTicked;
-
-        public Task(Tile tile, float jobTime, Action<Task> OnJobCompleted)
+        public Task()
         {
-            this.tile = tile;
-            this.maximumJobTime = jobTime;
-            this.jobTime = this.maximumJobTime;
-            this.OnJobCompleted += OnJobCompleted;
+            // Create the subtasks list
+            subtasks = new Queue<Subtask>();
+
+            // If the tasks list doesnt exist create it and add itself
+            if (tasks == null) tasks = new Queue<Task>();
+            tasks.Enqueue(this);
         }
 
-        public void RegisterTaskCompleted(Action<Task> callBack)
+        public void AddSubtask(Subtask subtask)
         {
-            OnJobCompleted += callBack;
+            subtasks.Enqueue(subtask);
         }
 
-        public void RegisterTaskUpdate(Action<Task> callBack)
+        public bool IsFinished()
         {
-            onJobTicked += callBack;
+            return subtasks.Count == 0 ? true : false;
         }
 
-        public void StartTask(float work)
+        public Subtask GetNextSubtask()
         {
-            jobTime -= work;
-            onJobTicked?.Invoke(this);
+            if (IsFinished()) return null;
 
-            if (jobTime <= 0)
+            return subtasks.Dequeue();
+        }
+
+        /*
+         * Start of the static Task methods
+         */
+        private static Queue<Task> tasks;
+        private static Task currentTask;
+        private static Subtask currentSubtask;
+
+        public static bool AnyTasks()
+        {
+            // Check if we have a sub task currently, then check if that sub task is finished or not
+            if (currentSubtask != null)
+                if (!currentSubtask.IsFinished())
+                    return true;
+
+            // Check if we have a task currently, then check if it has any sub tasks lefts
+            if (currentTask != null)
+                if (!currentTask.IsFinished())
+                    return true;
+
+            // If tasks is greater than 0
+            if (tasks != null && tasks.Count > 0)
+                return true;
+
+            return false;
+        }
+
+        public static Task GetCurrentTask()
+        {
+            return currentTask;
+        }
+
+        public static Subtask GetCurrentSubtask()
+        {
+            return currentSubtask;
+        }
+
+        public static Instruction GetNextInstruction()
+        {
+            if (currentSubtask != null)
+                if (!currentSubtask.IsFinished())
+                    return currentSubtask.GetNextInstruction();
+
+            if (currentTask != null)
+                if (!currentTask.IsFinished())
+                {
+                    currentSubtask = currentTask.GetNextSubtask();
+                    return GetNextInstruction();
+                }
+
+            if (tasks.Count > 0)
             {
-                OnJobCompleted?.Invoke(this);
+                currentTask = tasks.Dequeue();
+                return GetNextInstruction();
             }
-        }
 
-        public void CancelJob()
-        {
-            onJobCancelled?.Invoke(this);
-        }
-
-        public Tile GetTile()
-        {
-            return tile;
-        }
-
-        public float GetTimeLeft()
-        {
-            return jobTime;
-        }
-
-        public float GetTimeMaximum()
-        {
-            return maximumJobTime;
+            return null;
         }
     }
 }

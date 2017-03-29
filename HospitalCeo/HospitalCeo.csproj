@@ -42,12 +42,14 @@
     <Compile Include="AI\Interfaces\IMobRotatedSprite.cs" />
     <Compile Include="AI\Mob.cs" />
     <Compile Include="AI\MobSwapSpriteRenderer.cs" />
-    <Compile Include="AI\PathfindingComponent.cs" />
+    <Compile Include="AI\PathfindComponent.cs" />
     <Compile Include="AI\Staff\Staff.cs" />
     <Compile Include="AI\Staff\Workman.cs" />
-    <Compile Include="Tasks\Task.cs" />
-    <Compile Include="Tasks\TaskManager.cs" />
-    <Compile Include="Tasks\TaskQueue.cs" />
+    <Compile Include="Pathfinding\PathfindingHuman.cs" />
+    <Compile Include="Pathfinding\PathfindingAStar.cs" />
+    <Compile Include="Pathfinding\PathfindingEdge.cs" />
+    <Compile Include="Pathfinding\PathfindingGraph.cs" />
+    <Compile Include="Pathfinding\PathfindingNode.cs" />
     <Compile Include="Building\Building Components\BuildingBaseRenderer.cs" />
     <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
     <Compile Include="Building\Building Components\BuildingSprite.cs" />
@@ -69,6 +71,10 @@
     <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />
     <Compile Include="Building\InfrastructureObjects\CheapWallFoundation.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\Subtask.cs" />
+    <Compile Include="Tasks\Process.cs" />
+    <Compile Include="Tasks\Instruction.cs" />
     <Compile Include="UI\World\BuildingRulerTextComponent.cs" />
     <Compile Include="UI\World\CameraBoundsComponent.cs" />
     <Compile Include="InputManager.cs" />
@@ -109,9 +115,21 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nez.FarseerPhysics\Nez.FarseerPhysics.csproj">
+      <Project>{cb893b1d-ce04-4492-b957-31ce0dca6c15}</Project>
+      <Name>Nez.FarseerPhysics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nez.PipelineImporter\Nez.PipelineImporter.csproj">
+      <Project>{63e831f4-b847-4150-b5af-cbe059ee27b8}</Project>
+      <Name>Nez.PipelineImporter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nez.Portable\Nez.csproj">
       <Project>{60b7197d-d0d5-405c-90a2-a56903e9b039}</Project>
       <Name>Nez</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Priority Queue\Priority Queue.csproj">
+      <Project>{1531c1ea-bd53-41d1-a34b-cfcdf79d2651}</Project>
+      <Name>Priority Queue</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
