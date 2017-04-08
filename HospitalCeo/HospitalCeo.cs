@@ -14,14 +14,14 @@ namespace HospitalCeo
 {
     public class HospitalCeo : Core, IUpdatableManager
     {
-        public HospitalCeo() : base(1000, 600)
+        public HospitalCeo() : base(width: 1000, height: 600, windowTitle: "Hospital CEO")
         {
         }
 
         public void update()
         {
-            World.WorldController.Update();
             InputManager.Update();
+            Pathfinding.PathfindManager.Update();
         }
 
         protected override void Initialize()
@@ -37,8 +37,9 @@ namespace HospitalCeo
             World.WorldController.Initialize();
             InputManager.Initialise();
             Building.BuildingController.Initialise();
+            Pathfinding.PathfindManager.Initialise();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 70; i++)
                 World.WorldController.SCENE.createEntity("worker" + i).addComponent<AI.Staff.Workman>(new AI.Staff.Workman(new Vector2((int) (400 + (i * 50)), (int) (400 + (i * 50)))));
         }
     }

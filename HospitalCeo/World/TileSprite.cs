@@ -2,6 +2,7 @@
 using Nez.Sprites;
 using Nez.Textures;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 /* 
  * Brett Taylor
@@ -14,32 +15,36 @@ namespace HospitalCeo.World
 {
     public class TileSprite : Sprite
     {
-        public static bool drawInfrastructureStatus = false;
-        public static bool drawPathfindingInformation = false;
-        private Tile tile; 
+        public static bool DRAW_INFRASTRUCTURE_STATUS = false;
+        public static bool DRAW_PATHFIND_STATUS = false;
+        private Tile tile;
 
         public TileSprite(Tile tile, Subtexture texture) : base(texture)
         {
             this.tile = tile;
+            this.setMaterial(new Material(BlendState.AlphaBlend));
         }
 
         public override void debugRender(Graphics graphics)
         {
-            if (drawInfrastructureStatus)
+            if (!isVisibleFromCamera(WorldController.SCENE.camera))
+                return;
+
+            if (DRAW_INFRASTRUCTURE_STATUS)
             {
                 Color color;
                 if (tile.GetInfrastructureItem() != null) color = new Color(Color.Blue, 0.1f);
                 else color = new Color(Color.Red, 0.1f);
-                graphics.batcher.drawRect(new Rectangle((int) tile.GetPosition().X - 10, (int) tile.GetPosition().Y - 10, 20, 20), color);
+                graphics.batcher.drawRect(new Rectangle((int)tile.GetPosition().X - 10, (int)tile.GetPosition().Y - 10, 20, 20), color);
             }
 
-            if (drawPathfindingInformation)
+            if (DRAW_PATHFIND_STATUS)
             {
                 if (!tile.CanPathfindTo())
                     return;
 
                 Pathfinding.PathfindingNode<Tile> node = tile.GetPathfindNode();
-                graphics.batcher.drawRect(new Rectangle((int) tile.GetPosition().X - 10, (int) tile.GetPosition().Y - 10, 20, 20), Color.HotPink);
+                graphics.batcher.drawRect(new Rectangle((int)tile.GetPosition().X - 10, (int)tile.GetPosition().Y - 10, 20, 20), Color.HotPink);
 
                 foreach (Pathfinding.PathfindingEdge<Tile> edge in node.Edges)
                 {

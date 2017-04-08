@@ -28,10 +28,6 @@ namespace HospitalCeo.World
             this.tileNumber = tileNumber;
         }
 
-        public void Update()
-        {
-        }
-
         public override string ToString()
         {
             return "Tile: " + position + " : " + tileNumber;

@@ -55,16 +55,12 @@ namespace HospitalCeo.AI.Staff
         void IUpdatable.update()
         {
             if (currentInstructions == null && Task.AnyTasks())
-            {
                 currentInstructions = Task.GetNextInstruction();
-            }
 
             if (currentInstructions != null)
             {
                 if (currentInstructions.IsFinished())
-                {
                     currentInstructions = null;
-                }
 
                 if (currentProcess == null & currentInstructions != null)
                 {

@@ -45,11 +45,9 @@
     <Compile Include="AI\PathfindComponent.cs" />
     <Compile Include="AI\Staff\Staff.cs" />
     <Compile Include="AI\Staff\Workman.cs" />
-    <Compile Include="Pathfinding\PathfindingHuman.cs" />
-    <Compile Include="Pathfinding\PathfindingAStar.cs" />
-    <Compile Include="Pathfinding\PathfindingEdge.cs" />
-    <Compile Include="Pathfinding\PathfindingGraph.cs" />
-    <Compile Include="Pathfinding\PathfindingNode.cs" />
+    <Compile Include="Appearance Builder\Appearance.cs" />
+    <Compile Include="Appearance Builder\Bodypart.cs" />
+    <Compile Include="Appearance Builder\WorkmanAppearance.cs" />
     <Compile Include="Building\Building Components\BuildingBaseRenderer.cs" />
     <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
     <Compile Include="Building\Building Components\BuildingSprite.cs" />
@@ -71,6 +69,16 @@
     <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />
     <Compile Include="Building\InfrastructureObjects\CheapWallFoundation.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
+    <Compile Include="Pathfinding\impl\FastPriorityQueuePathfindNode.cs" />
+    <Compile Include="Pathfinding\impl\PathfindingAStar.cs" />
+    <Compile Include="Pathfinding\impl\PathfindingEdge.cs" />
+    <Compile Include="Pathfinding\impl\PathfindingGraph.cs" />
+    <Compile Include="Pathfinding\impl\PathfindingHuman.cs" />
+    <Compile Include="Pathfinding\impl\PathfindingNode.cs" />
+    <Compile Include="Pathfinding\PathfindManager.cs" />
+    <Compile Include="Pathfinding\PathfindPriority.cs" />
+    <Compile Include="Pathfinding\PathfindTask.cs" />
+    <Compile Include="Pathfinding\PathfindTaskStatus.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\Subtask.cs" />
     <Compile Include="Tasks\Process.cs" />
@@ -135,6 +143,11 @@
   <ItemGroup>
     <Folder Include="Building\GameplayObjects\" />
     <Folder Include="Content\nez\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Post-List-PriorityQueueSimple.diagsession" />
+    <None Include="Post-Simple-Fast.diagsession" />
+    <None Include="Pre-Any-Optismation.diagsession" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

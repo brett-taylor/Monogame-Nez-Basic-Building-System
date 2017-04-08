@@ -24,7 +24,7 @@ namespace HospitalCeo.World
         public static void Initialize()
         {
             // Create the scene
-            SCENE = Scene.createWithDefaultRenderer(Color.LightSlateGray);
+            SCENE = Scene.createWithDefaultRenderer(new Color(25, 25, 25));
             Core.scene = SCENE;
 
             // Create the world
@@ -32,14 +32,6 @@ namespace HospitalCeo.World
 
             // Create the pathfind
             PATHFINDING_HUMAN_GRID = new Pathfinding.PathfindingHuman();
-        }
-
-        public static void Update()
-        {
-            foreach (Tile t in tiles)
-            {
-                if (t != null) t.Update();
-            }
         }
 
         private static void CreateBaseTiles()
@@ -78,8 +70,8 @@ namespace HospitalCeo.World
          */
         public static Tile GetTileAt(Vector2 coord, bool ShouldUseToFloor = false, bool isTileCoords = false)
         {
-            int x = (int) coord.X;
-            int y = (int) coord.Y;
+            int x = (int)coord.X;
+            int y = (int)coord.Y;
 
             if (!isTileCoords)
             {

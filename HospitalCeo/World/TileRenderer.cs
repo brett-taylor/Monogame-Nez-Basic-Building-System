@@ -10,7 +10,7 @@ namespace HospitalCeo.World
 {
     public class TileRenderer : Component
     {
-        public static bool drawTileInformation = false;
+        public static bool DRAW_TILE_HOVER_INFORMATION = false;
         private TileSprite[,] sprites;
 
         public override void onAddedToEntity()
@@ -34,7 +34,7 @@ namespace HospitalCeo.World
 
         public override void debugRender(Graphics graphics)
         {
-            if (!drawTileInformation) return;
+            if (!DRAW_TILE_HOVER_INFORMATION) return;
             Tile t = WorldController.GetMouseOverTile();
             if (t != null)
             {

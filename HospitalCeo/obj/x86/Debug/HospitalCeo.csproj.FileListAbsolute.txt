@@ -134,3 +134,6 @@ D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.pdb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\characters.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\environment.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll.config

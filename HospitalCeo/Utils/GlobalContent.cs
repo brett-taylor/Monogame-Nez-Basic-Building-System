@@ -15,6 +15,7 @@ namespace HospitalCeo.Utils
     {
         public static List<Subtexture> INFRASTRUCTURE_SPRITE_ALTAS;
         public static List<Subtexture> MOB_SPRITE_ATLAS;
+        public static List<Subtexture> CHARACTER_SPRITE_ATLAS;
 
         public static void Initialise()
         {
@@ -25,6 +26,10 @@ namespace HospitalCeo.Utils
             Texture2D mobSpriteAtlas = Core.content.Load<Texture2D>("hospitalceo/mobs");
             MOB_SPRITE_ATLAS = Subtexture.subtexturesFromAtlas(mobSpriteAtlas, 70, 70);
             Nez.Console.DebugConsole.instance.log("Amount of mob textures loaded: " + MOB_SPRITE_ATLAS.Count);
+
+            Texture2D characterSpriteAltas = Core.content.Load<Texture2D>("hospitalceo/characters");
+            CHARACTER_SPRITE_ATLAS = Subtexture.subtexturesFromAtlas(characterSpriteAltas, 70, 70);
+            Nez.Console.DebugConsole.instance.log("Amount of character textures loaded: " + CHARACTER_SPRITE_ATLAS.Count);
         }
 
         public static class Util
@@ -75,6 +80,27 @@ namespace HospitalCeo.Utils
             public static Subtexture Worker_North = MOB_SPRITE_ATLAS[1];
             public static Subtexture Worker_South = MOB_SPRITE_ATLAS[2];
             public static Subtexture Worker_West = MOB_SPRITE_ATLAS[0];
+        }
+
+        public static class Character
+        {
+            public static class Heads
+            {
+                public static class One
+                {
+                    public static Subtexture North = CHARACTER_SPRITE_ATLAS[2];
+                    public static Subtexture South = CHARACTER_SPRITE_ATLAS[3];
+                }
+            }
+
+            public static class WorkerBody
+            {
+                public class BodyOne
+                {
+                    public static Subtexture North = CHARACTER_SPRITE_ATLAS[0];
+                    public static Subtexture South = CHARACTER_SPRITE_ATLAS[1];
+                }
+            }
         }
     }
 }

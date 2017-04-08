@@ -1,6 +1,7 @@
-﻿using Nez;
+﻿using System;
+using System.Collections.Generic;
+using Nez;
 using HospitalCeo.World;
-using System;
 using Microsoft.Xna.Framework;
 using HospitalCeo.Pathfinding;
 
@@ -14,16 +15,21 @@ namespace HospitalCeo.AI
 {
     public class PathfindComponent : Component, IUpdatable
     {
+        public static bool SHOULD_DRAW_PATHFIND_LINE = false;
+        private Color color;
+
         private Mob mob;
-        private Vector2 destination = new Vector2(-1, -1);
-        private Vector2 nextPosition = new Vector2(-1, -1);
-        private Tile destinationTile;
+        private Tile[] tilePath;
         private Tile nextTile;
-        private Action onReached;
-        private Action onFailed;
-        private PathfindingAStar pathfind;
+        private Tile destinationTile;
+        private int currentTileElement;
         private float posLerpTime;
         private float tileLerpTime;
+        private bool alreadyAtDestination = false;
+        private Vector2 destination = new Vector2(-1, -1);
+        private Vector2 nextPosition = new Vector2(-1, -1);
+        private Action onReached;
+        private Action onFailed;
 
         public void SetDestination(Mob mob, Vector2 destination)
         {
@@ -44,6 +50,16 @@ namespace HospitalCeo.AI
                 Nez.Console.DebugConsole.instance.log("PathfindComponent -> SetDestinationTile -> Unable to find tile under the entity's feet. (" + entity.position + ")");
                 Nez.Console.DebugConsole.instance.Open();
                 return;
+            }
+
+            if (currentTile == destinationTile)
+            {
+                alreadyAtDestination = true;
+                return;
+            }
+            else
+            {
+                alreadyAtDestination = false;
             }
 
             if (!currentTile.CanPathfindTo())
@@ -102,23 +118,29 @@ namespace HospitalCeo.AI
             this.mob = mob;
             this.destination = destination;
             this.destinationTile = destinationTile;
-            pathfind = new PathfindingAStar(currentTile, destinationTile);
+            color = new Color(Nez.Random.range(0, 255), Nez.Random.range(0, 255), Nez.Random.range(0, 255));
+            PathfindManager.RequestPathfind(PathfindPriority.Normal, this, currentTile, destinationTile);
+        }
+
+        public void AllowedToPathfind(Tile[] tiles)
+        {
+            tilePath = tiles;
         }
 
         public void RegisterOnReachHandle(Action action)
         {
+            if (alreadyAtDestination)
+            {
+                action?.Invoke();
+                return;
+            }
+            
             onReached += action;
         }
 
         public void RegisterOnFailedHandle(Action action)
         {
             onFailed += action;
-        }
-
-        public void ClearHandles()
-        {
-            ClearOnFailedHandles();
-            ClearOnReachedHandles();
         }
 
         private void ClearOnReachedHandles()
@@ -128,7 +150,7 @@ namespace HospitalCeo.AI
             if (onReached.GetInvocationList().Length == 0) return;
 
             foreach (Delegate action in onReached.GetInvocationList())
-                onReached -= (Action)action;
+                onReached -= (Action) action;
         }
 
         private void ClearOnFailedHandles()
@@ -138,58 +160,83 @@ namespace HospitalCeo.AI
             if (onFailed.GetInvocationList().Length == 0) return;
 
             foreach (Delegate action in onFailed.GetInvocationList())
-                onFailed -= (Action)action;
+                onFailed -= (Action) action;
+        }
+
+        private void DonePathfinding()
+        {
+            tilePath = null;
+            nextTile = null;
+            destinationTile = null;
+            currentTileElement = 0;
+            posLerpTime = 0f;
+            tileLerpTime = 0f;
+            destination = new Vector2(-1, -1);
+            nextPosition = new Vector2(-1, -1);
+            ClearOnReachedHandles();
+            ClearOnFailedHandles();
         }
 
         void IUpdatable.update()
         {
-            if (destinationTile != null && destination != new Vector2(-1, -1))
+            if (tilePath == null)
+                return;
+            
+            Tile currentTile = WorldController.GetTileAt((int) entity.position.X / 100, (int) entity.position.Y / 100);
+
+            // If we havent got a nextTile set
+            if (nextTile == null && nextPosition == new Vector2(-1, -1))
             {
-                Tile currentTile = WorldController.GetTileAt((int) entity.position.X / 100, (int) entity.position.Y / 100);
-                
-                // If our pathfinding is null lets just give up
-                if (pathfind == null)
+                if (currentTileElement < 0 || currentTileElement > tilePath.Length)
                 {
-                    destination = new Vector2(-1, -1);
-                    destinationTile = null;
-                    onFailed?.Invoke();
-                    ClearHandles();
+                    Nez.Console.DebugConsole.instance.log("Current Tile Element is out of bounds compared to the tilePath - stopping pathfinding");
+                    Nez.Console.DebugConsole.instance.Open();
+                    DonePathfinding();
                     return;
                 }
 
-                // If we havent got a nextTile set
-                if (nextTile == null && nextPosition == new Vector2(-1, -1) && pathfind.Length() > 0)
+                nextTile = tilePath[currentTileElement];
+                nextPosition = nextTile.GetPosition();
+                currentTileElement++;
+                posLerpTime = 0f;
+                tileLerpTime = 0f;
+            }
+
+            if (nextTile != null)
+            {
+                entity.position = new Vector2(Mathf.lerp(entity.position.X, nextTile.GetPosition().X, tileLerpTime), Mathf.lerp(entity.position.Y, nextTile.GetPosition().Y, tileLerpTime));
+                tileLerpTime += (mob.GetMovementSpeed() * 0.1f) * Time.deltaTime;
+
+                if (nextTile == currentTile)
+                    nextTile = null;
+            }
+
+            if (nextTile == null & nextPosition != new Vector2(-1, -1))
+            {
+                entity.position = new Vector2(Mathf.lerp(entity.position.X, nextPosition.X, posLerpTime), Mathf.lerp(entity.position.Y, nextPosition.Y, posLerpTime));
+                posLerpTime += (mob.GetMovementSpeed() * 0.5f) * Time.deltaTime;
+
+                if (new Rectangle((int) nextPosition.X - 5, (int) nextPosition.Y - 5, 10, 10).Contains(entity.position))
+                    nextPosition = new Vector2(-1, -1);
+            }
+
+            if (currentTile == destinationTile & new Rectangle((int) destination.X - 10, (int) destination.Y - 10, 20, 20).Contains(entity.position))
+            {
+                onReached?.Invoke();
+                DonePathfinding();
+            }
+        }
+
+        public override void debugRender(Graphics graphics)
+        {
+            if (SHOULD_DRAW_PATHFIND_LINE && tilePath != null)
+            {
+                Tile lastTile = null;
+                for (int i = 0; i < tilePath.Length; i++)
                 {
-                    nextTile = pathfind.Dequeue();
-                    nextPosition = nextTile.GetPosition();
-                    posLerpTime = 0f;
-                    tileLerpTime = 0f;
-                }
-
-                if (nextTile != null)
-                {
-                    entity.position = new Vector2(Mathf.lerp(entity.position.X, nextTile.GetPosition().X, tileLerpTime), Mathf.lerp(entity.position.Y, nextTile.GetPosition().Y, tileLerpTime));
-                    tileLerpTime += (mob.GetMovementSpeed() * 0.1f) * Time.deltaTime;
-
-                    if (nextTile == currentTile)
-                        nextTile = null;
-                }
-
-                if (nextTile == null & nextPosition != new Vector2(-1, -1))
-                {
-                    entity.position = new Vector2(Mathf.lerp(entity.position.X, nextPosition.X, posLerpTime), Mathf.lerp(entity.position.Y, nextPosition.Y, posLerpTime));
-                    posLerpTime += (mob.GetMovementSpeed() * 0.5f) * Time.deltaTime;
-
-                    if (new Rectangle((int) nextPosition.X - 5, (int) nextPosition.Y - 5, 10, 10).Contains(entity.position))
-                        nextPosition = new Vector2(-1, -1);
-                }
-
-                if (currentTile == destinationTile & new Rectangle((int) destination.X - 5, (int) destination.Y - 5, 10, 10).Contains(entity.position))
-                {
-                    destinationTile = null;
-                    pathfind = null;
-                    onReached?.Invoke();
-                    ClearHandles();
+                    if (lastTile != null)
+                        graphics.batcher.drawLine(lastTile.GetPosition(), tilePath[i].GetPosition(), color, thickness: 5f);
+                    lastTile = tilePath[i];
                 }
             }
         }
