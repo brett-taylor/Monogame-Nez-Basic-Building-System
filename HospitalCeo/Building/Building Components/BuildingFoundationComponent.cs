@@ -29,14 +29,14 @@ namespace HospitalCeo.Building
 
         private void CreateFoundation()
         {
+            // Create the flooring
+            BuildingLogic flooring = BuildingController.PlaceBuilding(floorType, new Vector2(tilePosition.X + 1, tilePosition.Y + 1), new Vector2(tileSize.X - 2, tileSize.Y - 2), extraCategories: new[] { BuildingCategory.Wall });
+
             // Create the Top, Bottom, Left, Right walls
             BuildingLogic northWall = BuildingController.PlaceBuilding(wallType, tilePosition, new Vector2(tileSize.X, 1));
             BuildingLogic leftWall = BuildingController.PlaceBuilding(wallType, new Vector2(tilePosition.X, tilePosition.Y + 1), new Vector2(1, tileSize.Y - 2));
             BuildingLogic rightWall = BuildingController.PlaceBuilding(wallType, new Vector2(tilePosition.X + tileSize.X - 1, tilePosition.Y + 1), new Vector2(1, tileSize.Y - 2));
             BuildingLogic bottomWall = BuildingController.PlaceBuilding(wallType, new Vector2(tilePosition.X, tilePosition.Y + tileSize.Y - 1), new Vector2(tileSize.X, 1));
-
-            // Create the flooring
-            BuildingLogic flooring = BuildingController.PlaceBuilding(floorType, new Vector2(tilePosition.X + 1, tilePosition.Y + 1), new Vector2(tileSize.X - 2, tileSize.Y - 2), extraCategories: new[] { BuildingCategory.Wall });
 
             // Destory the entity
             entity.destroy();

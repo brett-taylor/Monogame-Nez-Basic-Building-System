@@ -16,7 +16,6 @@ namespace HospitalCeo.Pathfinding
     {
         private static Priority_Queue.SimplePriorityQueue<PathfindTask> pathfindQueue;
         private static PathfindTask currentPathfind;
-        private static float timeLeft = 0f;
 
         public static void Initialise()
         {

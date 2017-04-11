@@ -22,8 +22,8 @@ namespace HospitalCeo.Building
         {
             if (percentageBuilt < 80)
             {
-                graphics.batcher.drawHollowRect(new Rectangle((int) position.X + 10, (int) position.Y + 10, 80, 80), Color.White, thickness: 5);
-                graphics.batcher.drawRect(new Rectangle((int) position.X + 10, (int) position.Y + 10 + (80 - percentageBuilt), 80, percentageBuilt), new Color(Color.Green, 0.3f));
+                graphics.batcher.drawHollowRect(new Rectangle((int)position.X + 10, (int)position.Y + 10, 80, 80), Color.White, thickness: 5);
+                graphics.batcher.drawRect(new Rectangle((int)position.X + 10, (int)position.Y + 10 + (80 - percentageBuilt), 80, percentageBuilt), new Color(Color.Green, 0.3f));
             }
             else
             {

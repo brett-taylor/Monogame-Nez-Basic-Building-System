@@ -191,10 +191,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../Sprites/Characters/Body/worker_one_body_north.psd</key>
-            <key type="filename">../Sprites/Characters/Body/worker_one_body_south.psd</key>
-            <key type="filename">../Sprites/Characters/Head/default_head_north.psd</key>
-            <key type="filename">../Sprites/Characters/Head/default_head_south.psd</key>
+            <key type="filename">../Sprites/Characters/Hats/Hard hat/hat_north.psd</key>
+            <key type="filename">../Sprites/Characters/Hats/Hard hat/hat_south.psd</key>
+            <key type="filename">../Sprites/Characters/Hats/Hard hat/hat_west.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadOne/head_north.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadOne/head_south.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadOne/head_west.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadTwo/head_north.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadTwo/head_south.psd</key>
+            <key type="filename">../Sprites/Characters/Heads/HeadTwo/head_west.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body one/worker_one_body_north.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body one/worker_one_body_south.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body one/worker_one_body_west.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body two/worker_two_body_north.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body two/worker_two_body_south.psd</key>
+            <key type="filename">../Sprites/Characters/Worker/Body two/worker_two_body_west.psd</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -27,8 +27,9 @@ namespace HospitalCeo.Building
             infrastructureBuildingComponent.StartBuilding(buildingLogic);
         }
 
-        public static void ForceFinishBuilding()
+        public static bool IsDragging()
         {
+            return infrastructureBuildingComponent.IsDragging();
         }
 
         public static BuildingLogic PlaceBuilding(Type buildingType, Vector2 tilePosition, Vector2 tileSize, BuildingCategory[] extraCategories = null)

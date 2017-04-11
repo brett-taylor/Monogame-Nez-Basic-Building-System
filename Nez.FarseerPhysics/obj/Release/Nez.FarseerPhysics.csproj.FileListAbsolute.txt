@@ -1,0 +1,6 @@
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\bin\Release\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\bin\Release\MonoGame.Framework.dll
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\bin\Release\Nez.dll
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\bin\Release\Nez.pdb
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Release\Nez.FarseerPhysics.csprojResolveAssemblyReference.cache
+D:\CPP\HospitalCeo\Nez.FarseerPhysics\obj\Release\Nez.FarseerPhysics.dll

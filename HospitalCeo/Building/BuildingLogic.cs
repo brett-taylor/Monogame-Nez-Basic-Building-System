@@ -120,10 +120,14 @@ namespace HospitalCeo.Building
                     Process waitAtTile = new Process(t, 1f, onComplete => { });
                     instruction.AddProcess(waitAtTile);
 
-                    Process turnRed = new Process(t, 0.01f, onComplete => { onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.Red; });
+                    Process turnRed = new Process(t, 0.01f, onComplete => {
+                        //onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.Red;*
+                    });
                     instruction.AddProcess(turnRed);
 
-                    Process faceNorth = new Process(t, 0.01f, onComplete => { onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().setSubtexture(onComplete.GetInstruction().GetEntity().getComponent<AI.Staff.Staff>().GetNorthFacingSprite()); });
+                    Process faceNorth = new Process(t, 0.01f, onComplete => {
+                        //onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().setSubtexture(onComplete.GetInstruction().GetEntity().getComponent<AI.Staff.Staff>().GetNorthFacingSprite());
+                    });
                     instruction.AddProcess(faceNorth);
 
                     // Create the actual build
@@ -139,7 +143,7 @@ namespace HospitalCeo.Building
 
                     Process turnWhite = new Process(t, 0.01f, onComplete =>
                     {
-                        onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.White;
+                        //onComplete.GetInstruction().GetEntity().getComponent<AI.MobSwapSpriteRenderer>().color = Color.White;
                         WorldController.PATHFINDING_HUMAN_GRID.RebuildTile(onComplete.GetWorkTile());
                     });
                     instruction.AddProcess(turnWhite);

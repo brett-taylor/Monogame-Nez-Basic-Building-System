@@ -129,6 +129,11 @@ namespace HospitalCeo
             {
                 Building.BuildingController.StartBuilding(typeof(Building.CheapWallFoundation));
             }
+
+            if (IsKeyDown(Keys.K))
+            {
+                Zoning.ZoneController.StartZoning(typeof(Zoning.Office));
+            }
         }
 
         private static void OutOfBounds()

@@ -41,13 +41,12 @@
     <Compile Include="AI\Interfaces\IMobSwapSprite.cs" />
     <Compile Include="AI\Interfaces\IMobRotatedSprite.cs" />
     <Compile Include="AI\Mob.cs" />
-    <Compile Include="AI\MobSwapSpriteRenderer.cs" />
     <Compile Include="AI\PathfindComponent.cs" />
     <Compile Include="AI\Staff\Staff.cs" />
     <Compile Include="AI\Staff\Workman.cs" />
-    <Compile Include="Appearance Builder\Appearance.cs" />
-    <Compile Include="Appearance Builder\Bodypart.cs" />
-    <Compile Include="Appearance Builder\WorkmanAppearance.cs" />
+    <Compile Include="AppearanceBuilder\Appearance.cs" />
+    <Compile Include="AppearanceBuilder\Bodypart.cs" />
+    <Compile Include="AppearanceBuilder\WorkerAppearence.cs" />
     <Compile Include="Building\Building Components\BuildingBaseRenderer.cs" />
     <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
     <Compile Include="Building\Building Components\BuildingSprite.cs" />
@@ -69,12 +68,14 @@
     <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />
     <Compile Include="Building\InfrastructureObjects\CheapWallFoundation.cs" />
     <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
-    <Compile Include="Pathfinding\impl\FastPriorityQueuePathfindNode.cs" />
-    <Compile Include="Pathfinding\impl\PathfindingAStar.cs" />
-    <Compile Include="Pathfinding\impl\PathfindingEdge.cs" />
-    <Compile Include="Pathfinding\impl\PathfindingGraph.cs" />
-    <Compile Include="Pathfinding\impl\PathfindingHuman.cs" />
-    <Compile Include="Pathfinding\impl\PathfindingNode.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="GameStateManager.cs" />
+    <Compile Include="Pathfinding\Impl\FastPriorityQueuePathfindNode.cs" />
+    <Compile Include="Pathfinding\Impl\PathfindingAStar.cs" />
+    <Compile Include="Pathfinding\Impl\PathfindingEdge.cs" />
+    <Compile Include="Pathfinding\Impl\PathfindingGraph.cs" />
+    <Compile Include="Pathfinding\Impl\PathfindingHuman.cs" />
+    <Compile Include="Pathfinding\Impl\PathfindingNode.cs" />
     <Compile Include="Pathfinding\PathfindManager.cs" />
     <Compile Include="Pathfinding\PathfindPriority.cs" />
     <Compile Include="Pathfinding\PathfindTask.cs" />
@@ -83,13 +84,22 @@
     <Compile Include="Tasks\Subtask.cs" />
     <Compile Include="Tasks\Process.cs" />
     <Compile Include="Tasks\Instruction.cs" />
-    <Compile Include="UI\World\BuildingRulerTextComponent.cs" />
-    <Compile Include="UI\World\CameraBoundsComponent.cs" />
+    <Compile Include="UI\Elements\UI Game\StaffBuildMenu.cs" />
+    <Compile Include="UI\Elements\UI Game\ZoneBuildMenu.cs" />
+    <Compile Include="UI\Elements\UI Game\InfrastructureBuildMenu.cs" />
+    <Compile Include="UI\Elements\UI Game\ConstructionMenu.cs" />
+    <Compile Include="UI\Elements\UI World\StartGameMainMenu.cs" />
+    <Compile Include="UI\InGameWorldMenu.cs" />
+    <Compile Include="UI\Menu.cs" />
+    <Compile Include="UI\InGameScreenMenu.cs" />
+    <Compile Include="UI\OutOfGameScreenMenu.cs" />
+    <Compile Include="UI\UIManager.cs" />
+    <Compile Include="UI\Elements\Draw World\BuildingRulerTextComponent.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="HospitalCeo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\World\BuildingRulerLineComponent.cs" />
+    <Compile Include="UI\Elements\Draw World\BuildingRulerLineComponent.cs" />
     <Compile Include="Utils\Commands.cs" />
     <Compile Include="Utils\GlobalContent.cs" />
     <Compile Include="Utils\Noise.cs" />
@@ -98,6 +108,11 @@
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileSprite.cs" />
     <Compile Include="World\WorldController.cs" />
+    <Compile Include="Zoning\ZoneDraggingComponent.cs" />
+    <Compile Include="Zoning\Types\Office.cs" />
+    <Compile Include="Zoning\VisualZoneComponent.cs" />
+    <Compile Include="Zoning\Zone.cs" />
+    <Compile Include="Zoning\ZoneController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -113,6 +128,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\hospitalceo\characters.png" />
+    <Content Include="Content\hospitalceo\shaders\CharacterColourPixelChange.fx" />
     <EmbeddedResource Include="Icon.ico" />
     <Content Include="Content\hospitalceo\tiles.png" />
     <Content Include="OpenTK.dll.config">

@@ -20,6 +20,7 @@ namespace HospitalCeo.World
         private BuildingLogic infrastructureItem;
         private BuildingLogic gameplayItem;
         private Pathfinding.PathfindingNode<Tile> pathfindNode;
+        private Zoning.Zone zone;
 
         public Tile(Subtexture texture, Vector2 position, Vector2 tileNumber)
         {
@@ -196,6 +197,16 @@ namespace HospitalCeo.World
         public Pathfinding.PathfindingNode<Tile> GetPathfindNode()
         {
             return pathfindNode;
+        }
+
+        public void SetZone(Zoning.Zone zone)
+        {
+            this.zone = zone;
+        }
+
+        public Zoning.Zone GetZone()
+        {
+            return zone;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace HospitalCeo.Building
 
         public override int GetMovementCost()
         {
-            return -1;
+            return 99;
         }
 
         // ---------- Start of the IBuildingWallSprites interface

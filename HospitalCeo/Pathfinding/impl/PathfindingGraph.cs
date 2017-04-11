@@ -130,7 +130,7 @@ namespace HospitalCeo.Pathfinding
         public void RebuildTile(Tile t)
         {
             RemoveNode(t);
-            if (t.GetMovementCost() != -1)
+            if (t.GetMovementCost() != 99)
                AddNode(t, true);
         }
 

@@ -3,3 +3,4 @@ D:\CPP\HospitalCeo\Nez.Portable\bin\Release\Nez.pdb
 D:\CPP\HospitalCeo\Nez.Portable\bin\Release\MonoGame.Framework.dll
 D:\CPP\HospitalCeo\Nez.Portable\obj\Release\Nez.dll
 D:\CPP\HospitalCeo\Nez.Portable\obj\Release\Nez.pdb
+D:\CPP\HospitalCeo\Nez.Portable\obj\Release\Nez.csprojResolveAssemblyReference.cache

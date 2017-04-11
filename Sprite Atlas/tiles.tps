@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.3.3</string>
         <key>fileName</key>
-        <string>D:/CPP/HospitalCeo/Sprite Atlas/Texture packer.tps</string>
+        <string>D:/CPP/HospitalCeo/Sprite Atlas/tiles.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -76,7 +76,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -104,7 +104,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -179,7 +179,7 @@
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -194,8 +194,8 @@
             <key type="filename">../Sprites/ClearSprite.png</key>
             <key type="filename">../Sprites/Tiles/Tile_CheapCarpet.png</key>
             <key type="filename">../Sprites/Tiles/Tile_CheapConcrete.png</key>
-            <key type="filename">../Sprites/Tiles/Tile_Dirt.png</key>
-            <key type="filename">../Sprites/Tiles/Tile_Grass.png</key>
+            <key type="filename">../Sprites/Tiles/Tile_Dirt.psd</key>
+            <key type="filename">../Sprites/Tiles/Tile_Grass.psd</key>
             <key type="filename">../Sprites/Tiles/Tile_Sand.png</key>
             <key type="filename">../Sprites/Walls/BaseWall/Wall_Basic_Cross.png</key>
             <key type="filename">../Sprites/Walls/BaseWall/Wall_Basic_East_Ending.png</key>
@@ -212,6 +212,7 @@
             <key type="filename">../Sprites/Walls/BaseWall/Wall_Basic_T_North_South_West.png</key>
             <key type="filename">../Sprites/Walls/BaseWall/Wall_Basic_Vertical.png</key>
             <key type="filename">../Sprites/Walls/BaseWall/Wall_Basic_West_Ending.png</key>
+            <key type="filename">../Sprites/Zones/Office.psd</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -230,6 +231,7 @@
             <filename>../Sprites/Tiles</filename>
             <filename>../Sprites/Walls</filename>
             <filename>../Sprites/ClearSprite.png</filename>
+            <filename>../Sprites/Zones</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

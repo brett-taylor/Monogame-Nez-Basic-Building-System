@@ -14,8 +14,10 @@ namespace HospitalCeo.World
 {
     public static class WorldController
     {
+        public const int SCREEN_SPACE_RENDER_LAYER = 999;
         public static Scene SCENE { get; private set; }
         public const int WORLD_WIDTH = 100, WORLD_HEIGHT = 100;
+
         public static Tile[,] tiles { get; private set; }
         public static Entity inputManager { get; private set; }
         private static Entity tilesGraphic;
@@ -24,7 +26,10 @@ namespace HospitalCeo.World
         public static void Initialize()
         {
             // Create the scene
-            SCENE = Scene.createWithDefaultRenderer(new Color(25, 25, 25));
+            SCENE = new Scene();
+            SCENE.clearColor = new Color(25, 25, 25);
+            SCENE.addRenderer(new ScreenSpaceRenderer(100, SCREEN_SPACE_RENDER_LAYER));
+            SCENE.addRenderer(new RenderLayerExcludeRenderer(0, SCREEN_SPACE_RENDER_LAYER));
             Core.scene = SCENE;
 
             // Create the world

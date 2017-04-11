@@ -137,3 +137,5 @@ D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\characters.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\environment.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll.config
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\ColourReplacement.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\CharacterColourPixelChange.xnb

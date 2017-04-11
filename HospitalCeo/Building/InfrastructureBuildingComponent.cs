@@ -30,6 +30,12 @@ namespace HospitalCeo.Building
                 return;
             }
 
+            if (Zoning.ZoneController.IsDragging())
+            {
+                DebugConsole.instance.log("We are already Zoning");
+                return;
+            }
+
             buildingLogic = logic;
             BuildingLogic actualBuilding = (BuildingLogic) Activator.CreateInstance(buildingLogic);
             StartDragging(actualBuilding.CarryOnBuildingAfterBuild());

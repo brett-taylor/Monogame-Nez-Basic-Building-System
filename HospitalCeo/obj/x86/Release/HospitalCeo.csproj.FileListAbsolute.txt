@@ -1,24 +1,3 @@
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\ClearSprite.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Tiles\Tile_CheapConcrete.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Tiles\Tile_Dirt.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Tiles\Tile_Grass.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Tiles\Tile_Sand.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\UI\Pixel_White.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_Cross.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_East_Ending.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_Horizontal.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_East_South.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_North_East.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_North_West.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_L_South_West.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_North_Ending.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_South_Ending.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_East_South_West.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_East_South.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_East_West.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_T_North_South_West.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_Vertical.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\Walls\BaseWall\Wall_Basic_West_Ending.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\nez\effects\Bevels.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\nez\effects\BloomCombine.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\nez\effects\BloomExtract.xnb
@@ -75,3 +54,19 @@ D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Nez.pdb
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Release\HospitalCeo.csprojResolveAssemblyReference.cache
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Release\HospitalCeo.exe
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Release\HospitalCeo.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\characters.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\environment.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\mobs.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\tiles.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\shaders\CharacterColourPixelChange.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Content\hospitalceo\shaders\ColourReplacement.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Nez.PipelineImporter.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Priority Queue.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\MonoGame.Framework.Content.Pipeline.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Newtonsoft.Json.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Ionic.ZLib.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Nez.PipelineImporter.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Priority Queue.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\MonoGame.Framework.dll.config
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Release\Newtonsoft.Json.xml

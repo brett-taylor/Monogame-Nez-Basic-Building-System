@@ -17,34 +17,9 @@ namespace HospitalCeo.AI.Staff
         private Process currentProcess;
         private bool isDoingTask;
 
-        public Workman(Vector2 position) : base(position)
+        public Workman() : base()
         {
             SetMovementSpeed(Nez.Random.range(0.2f, 1.8f));
-        }
-
-        public override Subtexture GetEastFacingSprite()
-        {
-            return Utils.GlobalContent.Worker.Worker_West;
-        }
-
-        public override Subtexture GetNorthFacingSprite()
-        {
-            return Utils.GlobalContent.Worker.Worker_North;
-        }
-
-        public override Subtexture GetSouthFacingSprite()
-        {
-            return Utils.GlobalContent.Worker.Worker_South;
-        }
-
-        public override Subtexture GetWestFacingSprite()
-        {
-            return Utils.GlobalContent.Worker.Worker_West;
-        }
-
-        public override bool UsesEastSprite()
-        {
-            return false;
         }
 
         private void ReachedJobTile()

@@ -22,7 +22,6 @@ namespace HospitalCeo.Pathfinding
         private Tile tileStart, tileEnd;
         private List<Tile> path;
         private Dictionary<Tile, PathfindingNode<Tile>> nodes;
-        private List<Tile> tilePath;
 
         private Priority_Queue.FastPriorityQueue<PathfindingNode<Tile>> openSet;
         private Priority_Queue.FastPriorityQueue<PathfindingNode<Tile>> closedSet;

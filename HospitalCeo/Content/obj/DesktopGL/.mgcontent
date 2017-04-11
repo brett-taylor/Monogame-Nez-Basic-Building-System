@@ -51,7 +51,7 @@
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/gooCursor.bmp</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/nez/textures/heatDistortionNoise.png</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/tiles.png</File>
-    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/mobs.png</File>
     <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/characters.png</File>
+    <File>D:/CPP/HospitalCeo/HospitalCeo/Content/hospitalceo/shaders/CharacterColourPixelChange.fx</File>
   </SourceFiles>
 </SourceFileCollection>

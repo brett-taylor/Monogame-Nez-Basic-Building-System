@@ -15,7 +15,7 @@ namespace HospitalCeo.World
 
         public override void onAddedToEntity()
         {
-            sprites = new TileSprite[WorldController.WORLD_WIDTH, WorldController.WORLD_HEIGHT];
+            /*sprites = new TileSprite[WorldController.WORLD_WIDTH, WorldController.WORLD_HEIGHT];
 
             for (int x = 0; x < WorldController.tiles.GetUpperBound(0); x++)
             {
@@ -29,7 +29,7 @@ namespace HospitalCeo.World
 
                     sprites[x, y] = newSprite;
                 }
-            }
+            }*/
         }
 
         public override void debugRender(Graphics graphics)

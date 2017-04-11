@@ -10,36 +10,20 @@ using Nez.Textures;
 
 namespace HospitalCeo.AI.Staff
 {
-    public abstract class Staff : Mob, IMobSwapSprite
+    public abstract class Staff : Mob
     {
-        protected MobSwapSpriteRenderer renderer;
-
-        // IMobSwapSprite Interface
-        public abstract Subtexture GetNorthFacingSprite();
-        public abstract Subtexture GetEastFacingSprite();
-        public abstract Subtexture GetSouthFacingSprite();
-        public abstract Subtexture GetWestFacingSprite();
-        public abstract bool UsesEastSprite();
-
-        public Staff(Vector2 position) : base(position)
+        public Staff() : base()
         {
         }
 
         public override void onAddedToEntity()
         {
             base.onAddedToEntity();
-            AddRenderer();
         }
 
         public override string GetName()
         {
             return "Staff No-one";
-        }
-
-        private void AddRenderer()
-        {
-            renderer = new MobSwapSpriteRenderer(GetNorthFacingSprite());
-            entity.addComponent(renderer);
         }
     }
 }
