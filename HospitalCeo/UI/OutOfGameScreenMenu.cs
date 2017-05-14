@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Nez.UI;
+﻿using Microsoft.Xna.Framework;
 using Nez;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace HospitalCeo.UI
 {
@@ -28,6 +23,11 @@ namespace HospitalCeo.UI
             canvas = new UICanvas();
             canvas.isFullScreen = true;
             return canvas;
+        }
+
+        public void DestoryScene()
+        {
+            scene.destroyAllEntities();
         }
 
         protected abstract Color GetSceneColor();

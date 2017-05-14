@@ -56,8 +56,28 @@ D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.exe
 D:\CPP\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.pdb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\tiles.xnb
 D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.Content.Pipeline.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Ionic.ZLib.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\characters.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\environment.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll.config
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\ColourReplacement.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\CharacterColourPixelChange.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\characters.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\environment.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\mobs.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\tiles.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\CharacterColourPixelChange.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\ColourReplacement.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\nez\effects\Bevels.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\nez\effects\BloomCombine.xnb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\nez\effects\BloomExtract.xnb
@@ -120,22 +140,14 @@ C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.Far
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.pdb
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll.config
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
-C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.csprojResolveAssemblyReference.cache
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.exe
 C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\obj\x86\Debug\HospitalCeo.pdb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.Content.Pipeline.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Ionic.ZLib.dll
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.FarseerPhysics.pdb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Nez.PipelineImporter.pdb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Priority Queue.pdb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Newtonsoft.Json.xml
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\characters.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\environment.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll.config
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\ColourReplacement.xnb
-D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\shaders\CharacterColourPixelChange.xnb
+C:\Users\Brett\Documents\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\objects.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\objects.xnb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MoonSharp.Interpreter.dll
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MoonSharp.Interpreter.pdb
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\MoonSharp.Interpreter.xml
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\lua\HelloWorld.lua
+D:\CPP\HospitalCeo\HospitalCeo\bin\DesktopGL\x86\Debug\Content\hospitalceo\lua\PathfindTest.lua

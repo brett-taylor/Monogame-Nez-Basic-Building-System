@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Nez.UI;
-using Microsoft.Xna.Framework;
 
 namespace HospitalCeo.UI.Elements.UI_GAME
 {
@@ -21,25 +16,25 @@ namespace HospitalCeo.UI.Elements.UI_GAME
 
             concreteWall.onClicked += onClicked =>
             {
-                Building.BuildingController.StartBuilding(typeof(Building.CheapWall));
+                Building.BuildingController.StartBuilding(new Building.Infrastructure.ConcreteWall());
                 Hide();
             };
 
             cheapConcreteFlooring.onClicked += onClicked =>
             {
-                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapConcrete));
+                Building.BuildingController.StartBuilding(new Building.Infrastructure.ConcreteFloorOne());
                 Hide();
             };
 
             cheapCarpetFlooring.onClicked += onClicked =>
             {
-                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapCarpet));
+                Building.BuildingController.StartBuilding(new Building.Infrastructure.CarpetFloorOne());
                 Hide();
             };
 
             concreteFoundation.onClicked += onClicked =>
             {
-                Building.BuildingController.StartBuilding(typeof(Building.CheapWallFoundation));
+                Building.BuildingController.StartBuilding(new Building.Infrastructure.ConcreteWallFoundation());
                 Hide();
             };
         }
@@ -56,7 +51,7 @@ namespace HospitalCeo.UI.Elements.UI_GAME
         {
             Table t = new Table();
             t.padBottom(40);
-            t.defaults().setPadLeft(10).setPadBottom(5).setMinWidth(170).setMinHeight(30);
+            t.defaults().setPadLeft(10).setPadBottom(5).setMinWidth(140).setMinHeight(30);
             t.setFillParent(true).bottom().left();
             t.setColor(Color.Red);
             return t;

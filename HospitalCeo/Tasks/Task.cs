@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using HospitalCeo.World;
 
 /*
  * Brett Taylor
@@ -8,6 +7,7 @@ using HospitalCeo.World;
 
 namespace HospitalCeo.Tasks
 {
+    [MoonSharp.Interpreter.MoonSharpUserData]
     public class Task
     {
         private Queue<Subtask> subtasks;
@@ -95,6 +95,13 @@ namespace HospitalCeo.Tasks
             }
 
             return null;
+        }
+
+        public static void Clear()
+        {
+            tasks.Clear();
+            currentTask = null;
+            currentSubtask = null;
         }
     }
 }

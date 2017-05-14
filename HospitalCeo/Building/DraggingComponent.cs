@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using HospitalCeo.UI.World;
+using HospitalCeo.World;
+using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Console;
-using Microsoft.Xna.Framework;
-using HospitalCeo.World;
-using HospitalCeo.UI.World;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor

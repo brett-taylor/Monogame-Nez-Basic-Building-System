@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using HospitalCeo.World;
+﻿using HospitalCeo.World;
 using Nez;
-using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -66,8 +65,9 @@ namespace HospitalCeo.Pathfinding
                 {
                     PathfindingEdge<Tile> e = new PathfindingEdge<Tile>();
                     e.Cost = neighbours[i].GetMovementCost();
-                    e.PathNode = Nodes[neighbours[i]];
-                    edges.Add(e);
+                    Nodes.TryGetValue(neighbours[i], out e.PathNode);
+                    if (e.PathNode != null)
+                        edges.Add(e);
                 }
             }
 
@@ -129,9 +129,24 @@ namespace HospitalCeo.Pathfinding
 
         public void RebuildTile(Tile t)
         {
-            RemoveNode(t);
+            /*RemoveNode(t);
             if (t.GetMovementCost() != 99)
-               AddNode(t, true);
+               AddNode(t, true);*/
+
+            /*if (t.GetMovementCost() == 99)
+            {
+                Tile north = t.GetNeighbour(Compass.N);
+                if (north != null) RemoveEdgeBetween(north, t);
+
+                Tile east = t.GetNeighbour(Compass.E);
+                if (east != null) RemoveEdgeBetween(east, t);
+
+                Tile south = t.GetNeighbour(Compass.S);
+                if (south != null) RemoveEdgeBetween(south, t);
+
+                Tile west = t.GetNeighbour(Compass.W);
+                if (west != null) RemoveEdgeBetween(west, t);
+            }*/
         }
 
         protected bool IsClippingCorner(Tile current, Tile neighbour)

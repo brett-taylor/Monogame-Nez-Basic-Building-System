@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using HospitalCeo.World;
-using Nez;
+﻿using Nez;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -11,6 +10,7 @@ using Nez;
 
 namespace HospitalCeo.Tasks
 {
+    [MoonSharp.Interpreter.MoonSharpUserData]
     public class Instruction
     {
         private Queue<Process> processes;

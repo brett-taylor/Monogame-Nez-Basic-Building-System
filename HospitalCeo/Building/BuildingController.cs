@@ -1,7 +1,7 @@
-﻿using System;
-using Nez;
-using HospitalCeo.World;
+﻿using HospitalCeo.World;
 using Microsoft.Xna.Framework;
+using Nez;
+using System;
 
 /*
  * Brett Taylor
@@ -12,29 +12,34 @@ namespace HospitalCeo.Building
 {
     public static class BuildingController
     {
-        private static Entity infrastructureBuilding;
+        private static Entity buildingEntity;
         private static InfrastructureBuildingComponent infrastructureBuildingComponent;
+        private static GameplayItemPlacementComponent gameplayItemPlacingComponent;
 
         public static void Initialise()
         {
-            // Create the infrastructure building entity
-            infrastructureBuilding = WorldController.SCENE.createEntity("Infrastructure building entity");
-            infrastructureBuildingComponent = infrastructureBuilding.addComponent<InfrastructureBuildingComponent>(new InfrastructureBuildingComponent(new Color(Color.Green, 0.2f), true, true));
+            // Create the infrastructure & gameplay building entity
+            buildingEntity = WorldController.SCENE.createEntity("Infrastructure building entity");
+            infrastructureBuildingComponent = buildingEntity.addComponent(new InfrastructureBuildingComponent(new Color(Color.Green, 0.2f), true, true));
+            gameplayItemPlacingComponent = buildingEntity.addComponent(new GameplayItemPlacementComponent());
         }
 
-        public static void StartBuilding(Type buildingLogic)
+        public static void StartBuilding(PrimitiveBuilding primitiveBuilding)
         {
-            infrastructureBuildingComponent.StartBuilding(buildingLogic);
+            if (primitiveBuilding.GetBuildingType() == BuildingType.Infrastructure)
+                infrastructureBuildingComponent.StartBuilding(primitiveBuilding, true);
+            else
+                gameplayItemPlacingComponent.StartPlacing(primitiveBuilding);
         }
 
         public static bool IsDragging()
         {
-            return infrastructureBuildingComponent.IsDragging();
+            return infrastructureBuildingComponent.IsDragging() || gameplayItemPlacingComponent.IsPlacing();
         }
 
-        public static BuildingLogic PlaceBuilding(Type buildingType, Vector2 tilePosition, Vector2 tileSize, BuildingCategory[] extraCategories = null)
+        public static Building PlaceBuilding(PrimitiveBuilding primitiveBuilding, Vector2 tilePosition, Vector2 tileSize)
         {
-            return infrastructureBuildingComponent.PlaceBuilding(buildingType, tilePosition, tileSize, extraCategories);
+            return infrastructureBuildingComponent.PlaceBuilding(primitiveBuilding, tilePosition, tileSize);
         }
     }
 }

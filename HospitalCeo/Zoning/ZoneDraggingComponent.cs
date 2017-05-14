@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HospitalCeo.Building;
 using HospitalCeo.World;
 using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Console;
-using HospitalCeo.Building;
+using System;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -25,15 +25,9 @@ namespace HospitalCeo.Zoning
 
         public void StartZoning(Type zoneType)
         {
-            if (IsDragging())
+            if (BuildingController.IsDragging() || IsDragging())
             {
-                DebugConsole.instance.log("We are already zoning");
-                return;
-            }
-
-            if (Building.BuildingController.IsDragging())
-            {
-                DebugConsole.instance.log("We are already building");
+                DebugConsole.instance.log("We are already building, placing or zoning.");
                 return;
             }
 

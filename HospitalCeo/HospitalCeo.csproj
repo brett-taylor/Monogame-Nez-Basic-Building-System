@@ -44,32 +44,42 @@
     <Compile Include="AI\PathfindComponent.cs" />
     <Compile Include="AI\Staff\Staff.cs" />
     <Compile Include="AI\Staff\Workman.cs" />
-    <Compile Include="AppearanceBuilder\Appearance.cs" />
-    <Compile Include="AppearanceBuilder\Bodypart.cs" />
-    <Compile Include="AppearanceBuilder\WorkerAppearence.cs" />
-    <Compile Include="Building\Building Components\BuildingBaseRenderer.cs" />
-    <Compile Include="Building\Building Components\BuildingFoundationComponent.cs" />
-    <Compile Include="Building\Building Components\BuildingSprite.cs" />
-    <Compile Include="Building\Building Components\BuildingWallRenderer.cs" />
-    <Compile Include="Building\Building Components\BuildingRepeatedTiledRenderer.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingWallSprites.cs" />
+    <Compile Include="Appearance\Appearance.cs" />
+    <Compile Include="Appearance\Bodypart.cs" />
+    <Compile Include="Appearance\WorkerAppearence.cs" />
+    <Compile Include="Building\Building.cs" />
     <Compile Include="Building\BuildingCategory.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingBeforeBuild.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingPlaceableOverBuilding.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingCustomRenderer.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingOnBuild.cs" />
     <Compile Include="Building\BuildingController.cs" />
-    <Compile Include="Building\BuildingLogic.cs" />
     <Compile Include="Building\BuildingType.cs" />
     <Compile Include="Building\DraggingComponent.cs" />
-    <Compile Include="Building\Building Interfaces\IBuildingInformation.cs" />
+    <Compile Include="Building\GameplayItemPlacementComponent.cs" />
+    <Compile Include="Building\Gameplay\Components\BuildingStandardGameplayRenderer.cs" />
+    <Compile Include="Building\Gameplay\Interfaces\IBuildingStandardGameplayRenderer.cs" />
+    <Compile Include="Building\Gameplay\OfficeTable.cs" />
     <Compile Include="Building\InfrastructureBuildingComponent.cs" />
-    <Compile Include="Building\InfrastructureObjects\CheapWall.cs" />
-    <Compile Include="Building\InfrastructureObjects\FlooringCheapCarpet.cs" />
-    <Compile Include="Building\InfrastructureObjects\CheapWallFoundation.cs" />
-    <Compile Include="Building\InfrastructureObjects\FlooringCheapConcrete.cs" />
+    <Compile Include="Building\Infrastructure\Components\BuildingDynamicTextureRenderer.cs" />
+    <Compile Include="Building\Infrastructure\ConcreteWallFoundation.cs" />
+    <Compile Include="Building\Infrastructure\ConcreteWall.cs" />
+    <Compile Include="Building\Shared Components\BuildingRenderer.cs" />
+    <Compile Include="Building\Infrastructure\Interfaces\IBuildingBeforeBuild.cs" />
+    <Compile Include="Building\Infrastructure\Interfaces\IBuildingDynamicTexture.cs" />
+    <Compile Include="Building\PlacingComponent.cs" />
+    <Compile Include="Building\Infrastructure\Components\BuildingRepeatedTextureRenderer.cs" />
+    <Compile Include="Building\Infrastructure\CarpetFloorOne.cs" />
+    <Compile Include="Building\Infrastructure\ConcreteFloorOne.cs" />
+    <Compile Include="Building\Infrastructure\Interfaces\IBuildingRepeatedTextureRenderer.cs" />
+    <Compile Include="Building\PrimitiveBuilding.cs" />
+    <Compile Include="Building\Shared Components\ConstructionRenderer.cs" />
+    <Compile Include="Building\Shared Components\UnderConstruction.cs" />
+    <Compile Include="Building\Shared Interfaces\IBuildingRequiresConstruction.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateManager.cs" />
+    <Compile Include="Lua\LuaMob.cs" />
+    <Compile Include="Lua\LuaTasks.cs" />
+    <Compile Include="Lua\LuaWorld.cs" />
+    <Compile Include="Lua\LuaUtils.cs" />
+    <Compile Include="Lua\LuaBuildings.cs" />
+    <Compile Include="Lua\LuaManager.cs" />
     <Compile Include="Pathfinding\Impl\FastPriorityQueuePathfindNode.cs" />
     <Compile Include="Pathfinding\Impl\PathfindingAStar.cs" />
     <Compile Include="Pathfinding\Impl\PathfindingEdge.cs" />
@@ -84,10 +94,12 @@
     <Compile Include="Tasks\Subtask.cs" />
     <Compile Include="Tasks\Process.cs" />
     <Compile Include="Tasks\Instruction.cs" />
+    <Compile Include="UI\Elements\UI Game\ItemBuildMenu.cs" />
     <Compile Include="UI\Elements\UI Game\StaffBuildMenu.cs" />
     <Compile Include="UI\Elements\UI Game\ZoneBuildMenu.cs" />
     <Compile Include="UI\Elements\UI Game\InfrastructureBuildMenu.cs" />
     <Compile Include="UI\Elements\UI Game\ConstructionMenu.cs" />
+    <Compile Include="UI\Elements\UI World\LoadingGameMenu.cs" />
     <Compile Include="UI\Elements\UI World\StartGameMainMenu.cs" />
     <Compile Include="UI\InGameWorldMenu.cs" />
     <Compile Include="UI\Menu.cs" />
@@ -103,6 +115,7 @@
     <Compile Include="Utils\Commands.cs" />
     <Compile Include="Utils\GlobalContent.cs" />
     <Compile Include="Utils\Noise.cs" />
+    <Compile Include="Utils\RenderLayers.cs" />
     <Compile Include="World\TileRenderer.cs" />
     <Compile Include="World\Compass.cs" />
     <Compile Include="World\Tile.cs" />
@@ -115,6 +128,9 @@
     <Compile Include="Zoning\ZoneController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MoonSharp.Interpreter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=921e73ce94aa17f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\OpenTK.dll</HintPath>
     </Reference>
@@ -158,10 +174,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Building\GameplayObjects\" />
     <Folder Include="Content\nez\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\hospitalceo\lua\HelloWorld.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\hospitalceo\lua\PathfindTest.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
     <None Include="Post-List-PriorityQueueSimple.diagsession" />
     <None Include="Post-Simple-Fast.diagsession" />
     <None Include="Pre-Any-Optismation.diagsession" />

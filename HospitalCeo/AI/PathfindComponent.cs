@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Nez;
+﻿using HospitalCeo.Pathfinding;
 using HospitalCeo.World;
 using Microsoft.Xna.Framework;
-using HospitalCeo.Pathfinding;
+using Nez;
+using System;
 
 /*
 * Brett Taylor

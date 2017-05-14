@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Nez;
 using Nez.UI;
-using Nez;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace HospitalCeo.UI
 {
@@ -14,6 +10,10 @@ namespace HospitalCeo.UI
         protected UICanvas canvas;
         protected Table table;
         protected Skin defaultSkin;
+
+        public bool enabled => throw new NotImplementedException();
+
+        public int updateOrder => throw new NotImplementedException();
 
         public Menu()
         {
@@ -47,7 +47,14 @@ namespace HospitalCeo.UI
 
         public void Destory()
         {
-            entity.destroy();
+            OnDestory();
+
+            OutOfGameScreenMenu scene = this as OutOfGameScreenMenu;
+            if (scene != null)
+                scene.DestoryScene();
+            else
+                entity.destroy();
+
             entity = null;
             canvas = null;
             table = null;
@@ -59,6 +66,15 @@ namespace HospitalCeo.UI
 
         protected virtual void AfterCreation()
         {
+        }
+
+        protected virtual void OnDestory()
+        {
+        }
+
+        public virtual void Update()
+        {
+
         }
 
         protected abstract Entity CreateEntity();

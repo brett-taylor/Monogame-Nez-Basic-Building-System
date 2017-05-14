@@ -1,6 +1,6 @@
-﻿using Nez;
+﻿using HospitalCeo.World;
 using Microsoft.Xna.Framework;
-using HospitalCeo.World;
+using Nez;
 
 /*
  * Brett Taylor

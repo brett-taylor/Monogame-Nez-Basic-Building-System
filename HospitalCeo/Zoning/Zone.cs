@@ -1,7 +1,6 @@
-﻿using System;
+﻿using HospitalCeo.World;
 using Microsoft.Xna.Framework;
 using Nez;
-using HospitalCeo.World;
 using Nez.Textures;
 
 /*

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Nez.UI;
+﻿using HospitalCeo.World;
 using Nez;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace HospitalCeo.UI
 {

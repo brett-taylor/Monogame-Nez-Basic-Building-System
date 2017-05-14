@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Nez;
+﻿using HospitalCeo.AI;
 using HospitalCeo.World;
-using HospitalCeo.AI;
 
 /*
  * Brett Taylor

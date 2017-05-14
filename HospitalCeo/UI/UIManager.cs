@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Nez.UI;
-using Nez;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections.Generic;
 
 namespace HospitalCeo.UI
 {
@@ -32,6 +26,7 @@ namespace HospitalCeo.UI
             openInterfaces.TryGetValue(menuName, out menu);
             if (menu != null)
             {
+                menu.Destory();
                 menu = null;
                 openInterfaces.Remove(menuName);
                 return true;
@@ -80,6 +75,15 @@ namespace HospitalCeo.UI
             }
 
             return false;
+        }
+
+        public static void Update()
+        {
+            if (openInterfaces == null)
+                return;
+
+            foreach (Menu m in openInterfaces.Values)
+                m.Update();
         }
     }
 }

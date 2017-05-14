@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using HospitalCeo.Building;
 using Microsoft.Xna.Framework;
-using Nez;
-using Nez.Sprites;
 using Nez.Textures;
-using HospitalCeo.Building;
+using System;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -12,21 +11,31 @@ using HospitalCeo.Building;
 
 namespace HospitalCeo.World
 {
+    [MoonSharp.Interpreter.MoonSharpUserData]
     public class Tile
     {
+        private TileSprite tileSprite;
         private Subtexture texture;
         private Vector2 position;
         private Vector2 tileNumber;
-        private BuildingLogic infrastructureItem;
-        private BuildingLogic gameplayItem;
+        private Building.Building infrastructureItem;
+        private Building.Building gameplayItem;
         private Pathfinding.PathfindingNode<Tile> pathfindNode;
         private Zoning.Zone zone;
+        private Action<Tile> onInfrastructureObjectChanged;
+        private Action<Tile> onGameplayObjectChanged;
+        private Action<Tile> onZoneChanged;
 
         public Tile(Subtexture texture, Vector2 position, Vector2 tileNumber)
         {
             this.texture = texture;
             this.position = position;
             this.tileNumber = tileNumber;
+        }
+
+        public void SetTileSprite(TileSprite ts)
+        {
+            tileSprite = ts;
         }
 
         public override string ToString()
@@ -79,48 +88,81 @@ namespace HospitalCeo.World
             }
         }
 
-        public void SetInfrastructureItem(Building.BuildingLogic item)
+        public void SetInfrastructureItem(Building.Building item)
         {
             this.infrastructureItem = item;
+            onInfrastructureObjectChanged?.Invoke(this);
         }
 
-        public void SetGameplayItem(Building.BuildingLogic item)
+        public void SetGameplayItem(Building.Building item)
         {
             this.gameplayItem = item;
+            onGameplayObjectChanged?.Invoke(this);
         }
 
-        public Building.BuildingLogic GetInfrastructureItem()
+        public Building.Building GetInfrastructureItem()
         {
             return infrastructureItem == null ? null : infrastructureItem;
         }
 
-        public Building.BuildingLogic GetGameplayItem()
+        public Building.Building GetGameplayItem()
         {
             return gameplayItem == null ? null : gameplayItem;
         }
 
-        public int SimilarItemsAroundTile(BuildingLogic building)
+        public int SimilarConstructedItemsAroundTile(Building.Building building)
         {
             Compass[] Compasss = { Compass.N, Compass.E, Compass.S, Compass.W };
             int similarAmount = 0;
 
-            if (building.GetBuildingType() == BuildingType.Infrastructure)
+            if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Infrastructure)
             {
                 foreach (Compass d in Compasss)
                 {
                     Tile t = GetNeighbour(d);
                     if (t != null)
-                        if ( t.GetInfrastructureItem() != null && t.GetInfrastructureItem().GetBuildingCatergory() == building.GetBuildingCatergory())
+                        if (t.GetInfrastructureItem() != null && t.GetInfrastructureItem().GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
+                            if (t.GetInfrastructureItem().IsConstructed(t.GetTileNumber(), true))
+                                similarAmount++;
+                }
+            }
+            else if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Gameplay)
+            {
+                foreach (Compass d in Compasss)
+                {
+                    Tile t = GetNeighbour(d);
+                    if (t != null)
+                        if (t.GetGameplayItem() != null && t.GetGameplayItem().GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
+                            if (t.GetGameplayItem().IsConstructed(t.GetTileNumber(), true))
+                                similarAmount++;
+                }
+            }
+
+            return similarAmount;
+        }
+
+        public int SimilarItemsAroundTile(Building.Building building)
+        {
+            Compass[] Compasss = { Compass.N, Compass.E, Compass.S, Compass.W };
+            int similarAmount = 0;
+
+            if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Infrastructure)
+            {
+                foreach (Compass d in Compasss)
+                {
+                    Tile t = GetNeighbour(d);
+                    if (t != null)
+                        if ( t.GetInfrastructureItem() != null && t.GetInfrastructureItem().GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
                             similarAmount++;
                 }
             }
-            else if (building.GetBuildingType() == BuildingType.Gameplay)
+            else if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Gameplay)
             {
                 foreach (Compass d in Compasss)
                 {
                     Tile t = GetNeighbour(d);
                     if (t != null)
-                        if (t.GetGameplayItem() != null && t.GetGameplayItem().GetType() == building.GetType())
+                        if (t.GetGameplayItem() != null && t.GetGameplayItem().GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
                             similarAmount++;
                 }
             }
@@ -128,27 +170,27 @@ namespace HospitalCeo.World
             return similarAmount;
         }
 
-        public bool SimilarItemNextToTile(Compass Compass, Building.BuildingLogic building)
+        public bool SimilarItemNextToTile(Compass Compass, Building.Building building)
         {
-            if (building.GetBuildingType() == BuildingType.Infrastructure)
+            if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Infrastructure)
             {
                 Tile t = GetNeighbour(Compass);
                 if (t != null)
                 {
-                    Building.BuildingLogic neighbourBuilding = t.GetInfrastructureItem();
-                    if (neighbourBuilding != null && neighbourBuilding.GetBuildingCatergory() == building.GetBuildingCatergory())
+                    Building.Building neighbourBuilding = t.GetInfrastructureItem();
+                    if (neighbourBuilding != null && neighbourBuilding.GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
                     {
                         return true;
                     }
                 }
             }
-            else if (building.GetBuildingType() == BuildingType.Gameplay)
+            else if (building.GetPrimitiveObject().GetBuildingType() == BuildingType.Gameplay)
             {
                 Tile t = GetNeighbour(Compass);
                 if (t != null)
                 {
-                    Building.BuildingLogic neighbourBuilding = t.GetGameplayItem();
-                    if (neighbourBuilding != null && neighbourBuilding.GetType() == building.GetType())
+                    Building.Building neighbourBuilding = t.GetGameplayItem();
+                    if (neighbourBuilding != null && neighbourBuilding.GetPrimitiveObject().GetBuildingCategory() == building.GetPrimitiveObject().GetBuildingCategory())
                     {
                         return true;
                     }
@@ -176,7 +218,7 @@ namespace HospitalCeo.World
         public float GetMovementCost()
         {
             if (infrastructureItem == null) return 1;
-            return 1 * infrastructureItem.GetMovementCost();
+            return 1 * infrastructureItem.GetPrimitiveObject().GetMovementCost();
         }
 
         public void AddToPathfind(Pathfinding.PathfindingNode<Tile> node)
@@ -191,7 +233,7 @@ namespace HospitalCeo.World
 
         public bool CanPathfindTo()
         {
-            return pathfindNode == null ? false : true;
+            return pathfindNode != null;
         }
 
         public Pathfinding.PathfindingNode<Tile> GetPathfindNode()
@@ -202,11 +244,27 @@ namespace HospitalCeo.World
         public void SetZone(Zoning.Zone zone)
         {
             this.zone = zone;
+            onZoneChanged?.Invoke(this);
         }
 
         public Zoning.Zone GetZone()
         {
             return zone;
+        }
+
+        public void RegisterOnInfrastructureObjectChanged(Action<Tile> a)
+        {
+            onInfrastructureObjectChanged += a;
+        }
+
+        public void RegisterOnGameplayObjectChanged(Action<Tile> a)
+        {
+            onGameplayObjectChanged += a;
+        }
+
+        public void RegisterOnZoneChanged(Action<Tile> a)
+        {
+            onZoneChanged += a;
         }
     }
 }

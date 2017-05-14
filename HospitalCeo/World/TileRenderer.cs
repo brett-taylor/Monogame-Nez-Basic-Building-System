@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework;
-using Nez;
-using Nez.Sprites;
-using Nez.Textures;
+﻿using Nez;
 
 namespace HospitalCeo.World
 {
     public class TileRenderer : Component
     {
         public static bool DRAW_TILE_HOVER_INFORMATION = false;
-        private TileSprite[,] sprites;
+        //private TileSprite[,] sprites;
 
         public override void onAddedToEntity()
         {

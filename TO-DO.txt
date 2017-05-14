@@ -1,0 +1,59 @@
+Finish PlacingComponent
+Add a way to place "gameplay items" e.g. tables using the PlacingComponent component.
+Add a way to place down "staffs" e.g. Workers using the PlacingComponent Component (This will involve adding the Table gameplay item)
+	- Probably wanna use some event system with that ^
+		- Event -> OnPlacementMove (Move tile under)
+		- Event -> OnPlacementCancelled
+		- Event -> OnPlacementSuccesfull
+Get the UI staff menu -> worker working with the above ^
+Add it so when we hover gameplay items E.G tables it should show a box, when clicked it should make a outline box and also deselect any other selected item.
+Add it so when we hover over a staff member(NPC) it should show a circle, when clicked it should make a outline circle and deselect any other selected staff.
+Switch the infrastructure building component to go from inheriting the DraggingComponent to using it as a component and the event system
+Switch the Input Manager to a add/remove system with a action
+	- E.G. Infrastructure Building
+		-> AddKey("Infrastructure_Escape", Key.ESC, CancelBuilding());
+		-> RemoveKey("Infrastructure_Escape");
+		-> AddMouseButton("Infrastructure_LMB_Click", MouseButton.Left, CancelBuilding());
+		-> RemoveMouseButton("Infrastructure_LMB_Click", MouseButton.Left, CancelBuilding());
+Using the Input Manager switch the camera control system to the AddKey/AddMouseButton system.
+Look at rewriting the Building code to have BuildingLogic as a component no idea how this will work
+Change building code to be able to place down fully built buildings
+	-> This will be involved rewriting the building code
+Using the new building system, the world should load with a foundation already built
+Rewrite the Worker AI system into an AI system that we like using an FSM
+The world should start with a worker AI doing a repeating task of moving from one corner of the foundation to another
+	-> Should add some walls into the foundation to test pathfinding
+	-> The Moving corner to corner should be a permanent task system for that worker?
+		-> When we read a corner we simply reissue the same task to another corner. EZ right?
+Add funtionality to the infrastructure building system to beable to drag out buildings that are bigger than 1x1 in default system
+Figure out a better way for foundations to work
+	This includes a system for the foundation's walls sprites changing depending on stuff - Surely gotta be a better system?
+Add Roads
+The default world should start with a road on the left side going from the north to the south
+We should be able to declare "road spawn points" and "road despawn points" when roads connect to the edge of the map
+Roads should have a pathfinding system made for Cars, roads should act as one way roads by default.
+Add a bus that simply starts at the road spawn point and travels down the road to the road despawn point.
+	-> Should have a vehicle component and stuff
+	-> The bus itself moving from the north to the south should be a task
+Add a car that simply starts at the road spawn point and travels down the road to the road despawn point.
+	-> Should be a different vehicle component to the bus
+	-> Should use the same task as the bus use maybe the task should be a component?
+		-> Should each task be a component?
+		-> Maybe a task component system using the ECS or the FSM?
+Add car parking as a item
+The car parking should be able to connect to the road, affect the road pathfinding and road sprites showing its connect
+The car that was made earlier should now go from the road spawn point to the car park, wait for 10ish seconds? then proceed to the road despawn point.
+Road vehicles should not be able to go through each other. They should probably check the road they want to go on and see if its free if not wait for 5 seconds then recheck
+Should add doors to walls
+Get doors working where AI will wait on one side of the door till the door opens walk through and the door should then shut
+Get foundation requiring a wall to be replaced before being built and affecting pathfinding and stuff. Exactly like Prison architect.
+Add a system to check for a enclosed space 
+Add certain items being required to be built in a enclosed space which will be in a foundation
+	Walls and flooring should only be able to be built insied foundations
+Get offices working
+	-> Build foundation
+	-> Place the office zone
+	-> Office zone should alert if it is too small (smaller than 3x3 for office?)
+	-> Office zone should alert it has no table place down.
+	-> A table should be placed
+	-> The office should be fine

@@ -1,10 +1,4 @@
-﻿using System;
-using Nez;
-using Microsoft.Xna.Framework;
-using HospitalCeo.AI.Interfaces;
-using Nez.Textures;
-
-/*
+﻿/*
  * Staff Class
  */
 

@@ -1,9 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Nez;
-using Nez.Sprites;
+﻿using Nez;
 
 /*
  * Brett Taylor

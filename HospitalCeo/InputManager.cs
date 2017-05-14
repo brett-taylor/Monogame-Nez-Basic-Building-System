@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Input;
 using Nez;
 using Nez.Console;
-using HospitalCeo.World;
 
 /*
  * Brett Taylor
@@ -107,32 +106,6 @@ namespace HospitalCeo
             if (Input.mousePosition.Y > Screen.height - 10 && camera.position.Y < WORLD_HEIGHT)
             {
                 camera.transform.position = new Vector2(camera.transform.position.X, camera.transform.position.Y + 10f);
-            }
-
-            // ------------ Debug Keys ------------
-            if (IsKeyDown(Keys.F))
-            {
-                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapConcrete));
-            }
-
-            if (IsKeyDown(Keys.G))
-            {
-                Building.BuildingController.StartBuilding(typeof(Building.FlooringCheapCarpet));
-            }
-
-            if (IsKeyDown(Keys.H))
-            {
-                Building.BuildingController.StartBuilding(typeof(Building.CheapWall));
-            }
-
-            if (IsKeyDown(Keys.J))
-            {
-                Building.BuildingController.StartBuilding(typeof(Building.CheapWallFoundation));
-            }
-
-            if (IsKeyDown(Keys.K))
-            {
-                Zoning.ZoneController.StartZoning(typeof(Zoning.Office));
             }
         }
 

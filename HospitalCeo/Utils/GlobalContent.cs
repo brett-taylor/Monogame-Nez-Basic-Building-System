@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Nez;
-using Nez.Sprites;
 using Nez.Textures;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -15,6 +14,7 @@ namespace HospitalCeo.Utils
     {
         public static List<Subtexture> INFRASTRUCTURE_SPRITE_ALTAS;
         public static List<Subtexture> CHARACTER_SPRITE_ATLAS;
+        public static List<Subtexture> OBJECT_SPRITE_ATLAS;
 
         public static void Initialise()
         {
@@ -25,6 +25,11 @@ namespace HospitalCeo.Utils
             Texture2D characterSpriteAltas = Core.content.Load<Texture2D>("hospitalceo/characters");
             CHARACTER_SPRITE_ATLAS = Subtexture.subtexturesFromAtlas(characterSpriteAltas, 70, 70);
             Nez.Console.DebugConsole.instance.log("Amount of character textures loaded: " + CHARACTER_SPRITE_ATLAS.Count);
+
+            Texture2D objectSpriteAtlas = Core.content.Load<Texture2D>("hospitalceo/objects");
+            OBJECT_SPRITE_ATLAS = Subtexture.subtexturesFromAtlas(objectSpriteAtlas, 200, 100);
+            Nez.Console.DebugConsole.instance.log("Amount of object textures loaded: " + OBJECT_SPRITE_ATLAS.Count);
+
         }
 
         public static class Util
@@ -119,6 +124,14 @@ namespace HospitalCeo.Utils
                     public static Subtexture South = CHARACTER_SPRITE_ATLAS[13];
                     public static Subtexture West = CHARACTER_SPRITE_ATLAS[14];
                 }
+            }
+        }
+
+        public static class Objects
+        {
+            public static class OfficeTable
+            {
+                public static Subtexture North_South = OBJECT_SPRITE_ATLAS[0];
             }
         }
     }

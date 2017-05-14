@@ -1,7 +1,5 @@
-﻿using System;
-using Nez;
+﻿using HospitalCeo.AI;
 using HospitalCeo.World;
-using HospitalCeo.AI;
 
 namespace HospitalCeo.Pathfinding
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Console;
 
@@ -61,6 +60,18 @@ namespace HospitalCeo.Utils
             }
 
             World.TileSprite.DRAW_INFRASTRUCTURE_STATUS = !World.TileSprite.DRAW_INFRASTRUCTURE_STATUS;
+        }
+
+        [Command("draw-tile-gameplay-status", "Draws a square on each tile indicating its gameplay status")]
+        private static void drawTileGameplayStatus()
+        {
+            if (!Core.debugRenderEnabled)
+            {
+                DebugConsole.instance.log("Will not draw unless debug-renderer is turned on");
+                DebugConsole.instance.Open();
+            }
+
+            World.TileSprite.DRAW_GAMEPLAY_STATUS = !World.TileSprite.DRAW_GAMEPLAY_STATUS;
         }
 
         [Command("draw-tile-pathfind-status", "Draws a square on each tile indicating its pathfinding status")]

@@ -1,7 +1,4 @@
-﻿using System;
-using Nez;
-using Microsoft.Xna.Framework;
-using HospitalCeo.World;
+﻿using Nez;
 
 /*
  * Default mob class

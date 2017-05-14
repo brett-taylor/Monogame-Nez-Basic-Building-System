@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using HospitalCeo.World;
 using Nez;
-using HospitalCeo.World;
-using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 /*

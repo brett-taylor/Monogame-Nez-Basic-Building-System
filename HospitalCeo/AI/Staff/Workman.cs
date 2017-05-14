@@ -1,9 +1,5 @@
-﻿using System;
+﻿using HospitalCeo.Tasks;
 using Nez;
-using Microsoft.Xna.Framework;
-using Nez.Textures;
-using HospitalCeo.World;
-using HospitalCeo.Tasks;
 
 /*
  * Workman Class
@@ -11,11 +7,13 @@ using HospitalCeo.Tasks;
 
 namespace HospitalCeo.AI.Staff
 {
+    [MoonSharp.Interpreter.MoonSharpUserData]
     public class Workman : Staff, IUpdatable
     {
         private Instruction currentInstructions;
         private Process currentProcess;
         private bool isDoingTask;
+        private bool canTakeJobs = true;
 
         public Workman() : base()
         {
@@ -29,7 +27,7 @@ namespace HospitalCeo.AI.Staff
 
         void IUpdatable.update()
         {
-            if (currentInstructions == null && Task.AnyTasks())
+            if (currentInstructions == null && Task.AnyTasks() && canTakeJobs)
                 currentInstructions = Task.GetNextInstruction();
 
             if (currentInstructions != null)
@@ -54,6 +52,21 @@ namespace HospitalCeo.AI.Staff
                     isDoingTask = false;
                 }
             }
+        }
+
+        public void SetCurrentInstruction(Instruction instruction)
+        {
+            currentInstructions = instruction;
+        }
+
+        public void SetCanTakeJobs(bool canTakeJobs)
+        {
+            this.canTakeJobs = canTakeJobs;
+        }
+
+        public bool CanTakeJobs()
+        {
+            return this.canTakeJobs;
         }
     }
 }

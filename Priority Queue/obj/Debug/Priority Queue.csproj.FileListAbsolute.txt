@@ -2,12 +2,13 @@ C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\bin\Debug\Prio
 C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\bin\Debug\Priority Queue.pdb
 C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\obj\Debug\Priority Queue.dll
 C:\Users\Brett\Documents\BlueRaja - Priority Queue\Priority Queue\obj\Debug\Priority Queue.pdb
-C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.dll
-C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.pdb
-C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.dll
-C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.pdb
 D:\CPP\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.dll
 D:\CPP\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.pdb
 D:\CPP\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.dll
 D:\CPP\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.pdb
 D:\CPP\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\bin\Debug\Priority Queue.pdb
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.dll
+C:\Users\Brett\Documents\HospitalCeo\Priority Queue\obj\Debug\Priority Queue.pdb

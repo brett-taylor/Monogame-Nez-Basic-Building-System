@@ -2,8 +2,8 @@
 {
     public enum BuildingCategory
     {
-        Flooring,
-        Wall,
-        Foundation
+        WALL,
+        FLOOR,
+        OBJECT
     }
 }

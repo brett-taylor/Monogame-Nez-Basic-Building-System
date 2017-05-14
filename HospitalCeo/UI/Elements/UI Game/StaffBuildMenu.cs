@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nez.UI;
+﻿using HospitalCeo.World;
 using Microsoft.Xna.Framework;
+using Nez;
+using Nez.UI;
 
 namespace HospitalCeo.UI.Elements.UI_GAME
 {
@@ -15,6 +12,16 @@ namespace HospitalCeo.UI.Elements.UI_GAME
         protected override void AfterCreation()
         {
             AddButton("Worker", out worker);
+
+            worker.onClicked += onClicked =>
+            {
+                Entity e = WorldController.SCENE.createEntity("Worker");
+                e.addComponent(new AI.Staff.Workman());
+                e.addComponent(new Appearance.WorkerAppearence());
+                e.position = new Vector2(Random.range(300, 700), Random.range(300, 700));
+
+                Hide();
+            };
         }
 
         private void AddButton(string text, out TextButton button)
@@ -29,8 +36,8 @@ namespace HospitalCeo.UI.Elements.UI_GAME
         {
             Table t = new Table();
             t.padBottom(40);
-            t.padLeft(360);
-            t.defaults().setPadLeft(10).setPadBottom(5).setMinWidth(170).setMinHeight(30);
+            t.padLeft(450);
+            t.defaults().setPadLeft(10).setPadBottom(5).setMinWidth(140).setMinHeight(30);
             t.setFillParent(true).bottom().left();
             t.setColor(Color.Red);
             return t;

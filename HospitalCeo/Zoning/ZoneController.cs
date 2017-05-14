@@ -1,7 +1,7 @@
-﻿using System;
-using Nez;
-using HospitalCeo.World;
+﻿using HospitalCeo.World;
 using Microsoft.Xna.Framework;
+using Nez;
+using System;
 
 /*
  * Brett Taylor

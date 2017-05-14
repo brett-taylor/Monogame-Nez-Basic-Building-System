@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Nez;
-using Nez.Sprites;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace HospitalCeo.Zoning
 {
@@ -27,7 +24,7 @@ namespace HospitalCeo.Zoning
         public VisualZoneComponent(Zone zone)
         {
             this.zone = zone;
-            renderLayer = 16;
+            renderLayer = Utils.RenderLayers.ZONES;
         }
 
         public override void render(Graphics graphics, Camera camera)

@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Nez;
+﻿using Microsoft.Xna.Framework;
 using Nez.Textures;
 
 namespace HospitalCeo.Zoning

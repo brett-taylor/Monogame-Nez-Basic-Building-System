@@ -1,5 +1,5 @@
-﻿using Nez;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 
 /*
  * Brett Taylor

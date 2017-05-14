@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
-using Nez.Sprites;
 using Nez.Textures;
-using Nez.AI.Pathfinding;
 
 /*
  * Brett Taylor
@@ -44,6 +42,8 @@ namespace HospitalCeo.World
             float[,] noiseMap = Utils.Noise.Calc2D(WORLD_WIDTH, WORLD_HEIGHT, 0.10f);
             tiles = new Tile[WORLD_WIDTH, WORLD_HEIGHT];
 
+            tilesGraphic = SCENE.createEntity("Tiles graphic");
+
             for (int x = 0; x < tiles.GetUpperBound(0); x++)
             {
                 for (int y = 0; y < tiles.GetUpperBound(1); y++)
@@ -55,11 +55,14 @@ namespace HospitalCeo.World
 
                     Tile tile = new Tile(texture, new Vector2(-50 + (x + 1) * 100, -50 + (y + 1) * 100), new Vector2(x, y));
                     tiles[x, y] = tile;
+
+                    if (x > 30 || y > 30) continue;
+                    TileSprite ts = new TileSprite(tile, texture);
+                    ts.localOffset = new Vector2(tile.GetPosition().X, tile.GetPosition().Y);
+                    tilesGraphic.addComponent(ts);
+                    tile.SetTileSprite(ts);
                 }
             }
-
-            tilesGraphic = SCENE.createEntity("Tiles graphic");
-            tilesGraphic.addComponent<TileRenderer>(new TileRenderer());
         }
 
         public static Tile GetMouseOverTile(bool ShouldUseToFloor = false)

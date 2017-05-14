@@ -1,5 +1,6 @@
-﻿using System;
-using HospitalCeo.World;
+﻿using HospitalCeo.World;
+using System;
+using System.Collections.Generic;
 
 /*
  * Brett Taylor
@@ -10,6 +11,7 @@ using HospitalCeo.World;
 
 namespace HospitalCeo.Tasks
 {
+    [MoonSharp.Interpreter.MoonSharpUserData]
     public class Process
     {
         private Tile tile;
@@ -19,6 +21,8 @@ namespace HospitalCeo.Tasks
 
         private Action<Process> onActionCompleted;
         private Action<Process> onActionTicked;
+        private List<String> onActionCompletedLua;
+        private List<String> onActionTickedLua;
 
         public Process(Tile tile, float actionTime, Action<Process> onActionCompleted)
         {
@@ -26,6 +30,16 @@ namespace HospitalCeo.Tasks
             this.actionTime = actionTime;
             this.remainingTime = actionTime;
             this.onActionCompleted += onActionCompleted;
+        }
+
+        public Process(Tile tile, float actionTime, string functionName)
+        {
+            this.tile = tile;
+            this.actionTime = actionTime;
+            this.remainingTime = actionTime;
+            onActionCompletedLua = new List<string>();
+            onActionTickedLua = new List<string>();
+            onActionCompletedLua.Add(functionName);
         }
 
         public void RegisterOnCompleteHandle(Action<Process> callback)
@@ -38,14 +52,32 @@ namespace HospitalCeo.Tasks
             onActionTicked += callback;
         }
 
+        public void RegisterOnCompleteHandleLua(string functionName)
+        {
+            if (onActionCompletedLua == null) onActionCompletedLua = new List<string>();
+            onActionCompletedLua.Add(functionName);
+        }
+
+        public void RegisterOnTickHandleLua(string functionName)
+        {
+            if (onActionTickedLua == null) onActionTickedLua = new List<string>();
+            onActionTickedLua.Add(functionName);
+        }
+
         public void DoProcess(float workAmount)
         {
             remainingTime -= workAmount;
             onActionTicked?.Invoke(this);
+            if (onActionTickedLua != null)
+                foreach (string s in onActionTickedLua)
+                    Lua.LuaManager.luaScript.Call(Lua.LuaManager.luaScript.Globals[s]);
 
             if (remainingTime <= 0)
             {
                 onActionCompleted?.Invoke(this);
+                if (onActionCompletedLua != null)
+                    foreach (string s in onActionCompletedLua)
+                        Lua.LuaManager.luaScript.Call(Lua.LuaManager.luaScript.Globals[s]);
             }
         }
 
